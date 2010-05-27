@@ -1,0 +1,15 @@
+#!/bin/bash
+#This scripts adds journaling to the specified ext3 partition. The options are really nice 
+#and have served me well through the years! Enjoy. 
+#!!!Caution: please enter init 1 before doing that to your partition
+HELP="Usage: $(basename $0) <partition>"
+if [[ $# = 0 ]]; then
+    echo "Sorry, haven't specified a partition'"
+    echo $HELP
+    exit 1
+fi
+mke2fs -j "${1}"
+tune2fs -O dir_index "${1}"
+e2fsck -D "${1}"
+tune2fs -O has_journal -o journal_data "${1}"
+tune2fs -c 0 -i 0 "${1}" 

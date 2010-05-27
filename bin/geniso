@@ -1,0 +1,3 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+genisoimage -o Music.iso -r -J -l /home/nikolavp/CD_Music

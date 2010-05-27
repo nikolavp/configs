@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+xrandr --output CRT1 --mode 1280x1024 --pos 0x0 --output LCD --mode 1280x800 --pos 1280x224
+

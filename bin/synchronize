@@ -1,0 +1,7 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+SRC="/mnt/backup/work/"
+DESTINATION="/home/nikolavp/proba/"
+
+rsync -avz --include-from=includes --exclude='/*' --delete $SRC $DESTINATION
