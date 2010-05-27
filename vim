@@ -1,1 +1,0 @@
-/home/nikolavp/.vim

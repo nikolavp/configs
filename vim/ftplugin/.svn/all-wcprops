@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/nikolavp_vim/!svn/ver/63/ftplugin
+END
+php.vim
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/nikolavp_vim/!svn/ver/32/ftplugin/php.vim
+END
+tex_latexSuite.vim
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/nikolavp_vim/!svn/ver/53/ftplugin/tex_latexSuite.vim
+END
+forum.vim
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/nikolavp_vim/!svn/ver/1/ftplugin/forum.vim
+END
+help.vim
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/nikolavp_vim/!svn/ver/12/ftplugin/help.vim
+END
+vo_checkbox.vim
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/nikolavp_vim/!svn/ver/53/ftplugin/vo_checkbox.vim
+END
+vo_hoist.vim
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/nikolavp_vim/!svn/ver/53/ftplugin/vo_hoist.vim
+END
+vim.vim
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/nikolavp_vim/!svn/ver/48/ftplugin/vim.vim
+END
+vo_base.vim
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/nikolavp_vim/!svn/ver/53/ftplugin/vo_base.vim
+END
+python.vim
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/nikolavp_vim/!svn/ver/48/ftplugin/python.vim
+END
+cpp.vim
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/nikolavp_vim/!svn/ver/54/ftplugin/cpp.vim
+END
+bib_latexSuite.vim
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/nikolavp_vim/!svn/ver/53/ftplugin/bib_latexSuite.vim
+END

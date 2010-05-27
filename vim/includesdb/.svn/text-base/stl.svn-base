@@ -1,0 +1,7 @@
+list <list>
+vector <vector>
+auto_ptr <memory>
+cin <iostream>
+map <map>
+string <string>
+cout <iostream>

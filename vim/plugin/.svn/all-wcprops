@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/nikolavp_vim/!svn/ver/61/plugin
+END
+file_line.vim
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/nikolavp_vim/!svn/ver/61/plugin/file_line.vim
+END
+matchit.vim
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/nikolavp_vim/!svn/ver/53/plugin/matchit.vim
+END
+bufexplorer.vim
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/nikolavp_vim/!svn/ver/43/plugin/bufexplorer.vim
+END
+autoclose.vim
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/nikolavp_vim/!svn/ver/43/plugin/autoclose.vim
+END
+NERD_commenter.vim
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/nikolavp_vim/!svn/ver/48/plugin/NERD_commenter.vim
+END
+libList.vim
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/nikolavp_vim/!svn/ver/53/plugin/libList.vim
+END
+autoincludex.vim
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/nikolavp_vim/!svn/ver/46/plugin/autoincludex.vim
+END
+taglist.vim
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/nikolavp_vim/!svn/ver/53/plugin/taglist.vim
+END
+NERD_tree.vim
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/nikolavp_vim/!svn/ver/48/plugin/NERD_tree.vim
+END
+nopaste.vim
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/nikolavp_vim/!svn/ver/55/plugin/nopaste.vim
+END
+imaps.vim
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/nikolavp_vim/!svn/ver/53/plugin/imaps.vim
+END
+snippetsEmu.vim
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/nikolavp_vim/!svn/ver/53/plugin/snippetsEmu.vim
+END
+remoteOpen.vim
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/nikolavp_vim/!svn/ver/53/plugin/remoteOpen.vim
+END
+SyntaxFolds.vim
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/nikolavp_vim/!svn/ver/53/plugin/SyntaxFolds.vim
+END
+filebrowser.vim
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/nikolavp_vim/!svn/ver/53/plugin/filebrowser.vim
+END
