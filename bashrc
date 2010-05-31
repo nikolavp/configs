@@ -84,6 +84,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+    alias ack=ack-grep
 fi
 
 # some more ls aliases
@@ -95,9 +96,8 @@ alias l='ls -CF'
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
 fi
-
 
 #Start my options
 
@@ -133,10 +133,22 @@ mycd()
     fi 
 }
 
+#some bash goodies
 shopt -s no_empty_cmd_completion
 shopt -s nocaseglob
 shopt -s cdspell
 alias cd='mycd'
 alias _='popd'
-export PATH=/home/nikolavp/Desktop/maven/apache-maven-3.0-alpha-7/bin/:$PATH
 
+
+export ONTO_SVN="https://svn.ontotext.com/svn/"
+export JOCI_SVN="${ONTO_SVN}joci/trunk"
+export ROCI_SVN="${ONTO_SVN}roci"
+export ROCI_DEV="192.168.130.52"
+export NI4=ni4.innovantage.co.uk
+export joci=~/workspaces/joci
+export roci=~/workspaces/roci
+
+export PATH="~/bin/:$PATH"
+
+MOZILLA_DIST=/home/nikolavp/onto-dist
