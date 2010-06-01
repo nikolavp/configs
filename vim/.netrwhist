@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/nikolavp/Documents'
-let g:netrw_dirhist_2='/usr/share/vim/vim72/doc'
-let g:netrw_dirhist_3='/home/nikolavp/Documents'
-let g:netrw_dirhist_4='/home/nikolavp/proba/python_19_04_10'

@@ -144,10 +144,10 @@ alias _='popd'
 export ONTO_SVN="https://svn.ontotext.com/svn/"
 export JOCI_SVN="${ONTO_SVN}joci/trunk"
 export ROCI_SVN="${ONTO_SVN}roci"
-export ROCI_DEV="192.168.130.52"
 export NI4=ni4.innovantage.co.uk
-export joci=~/workspaces/joci
-export roci=~/workspaces/roci
+export WORK=$HOME/workspace
+export JOCI=$WORK/joci
+export ROCI=$WORK/roci
 
 export PATH="~/bin/:$PATH"
 
