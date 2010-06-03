@@ -1,0 +1,9 @@
+install:
+	test -h $(HOME)/.screenrc || ln -sf $(PWD)/screenrc $(HOME)/.screenrc
+	test -h $(HOME)/.bashrc   || ln -sf $(PWD)/bashrc $(HOME)/.bashrc
+	test -h $(HOME)/.gitconfig || ln -sf $(PWD)/gitconfig $(HOME)/.gitconfig
+	test -h $(HOME)/.config/awesome/rc.lua || ln -sf $(PWD)/rc.lua $(HOME)/.config/awesome/rc.lua
+	test -h $(HOME)/.toprc || ln -sf $(PWD)/toprc $(HOME)/.toprc
+	test -h $(HOME)/.Xdefaults || ln -sf $(PWD)/Xdefaults $(HOME)/.Xdefaults
+	test -h $(HOME)/.vim || ln -sf $(PWD)/vim $(HOME)/.vim
+	test -h $(HOME)/.vimrc || ln -sf $(PWD)/vim/.vimrc $(HOME)/.vimrc
