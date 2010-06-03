@@ -1,0 +1,7 @@
+[user]
+	name = Nikola Petrov
+	email = nikolavp@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
