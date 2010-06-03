@@ -141,6 +141,9 @@ alias cd='mycd'
 alias _='popd'
 
 
+#Prefer vim for everything. Some strange distros like ubuntu have bad defaults like ed -.-
+export GIT_EDITOR=vi
+export GIT_PAGER=vi
 export ONTO_SVN="https://svn.ontotext.com/svn/"
 export JOCI_SVN="${ONTO_SVN}joci/trunk"
 export ROCI_SVN="${ONTO_SVN}roci"
