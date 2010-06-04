@@ -2,9 +2,16 @@ Xcursor.theme: Vanilla-DMZ
 Xcursor.size: 24
 
 XTerm*.toolBar: false
-XTerm*.foreground: white
-XTerm*.background: grey5
-XTerm*.color4: royalblue
+XTerm*.foreground: #DCDCCD
+XTerm*.background: #2C2C2C
+XTerm*.color1: #3F3F3F
+XTerm*.color2: #705050
+XTerm*.color3: #60B48A
+XTerm*.color4: #DFAF8F
+XTerm*.color5: #9AB9D7
+XTerm*.color6: #DC8CC4
+XTerm*.color7: #8CD1D3
+XTerm*.color8: #DCDCCD
 XTerm*.boldFont: -xos4-terminus-bold-r-normal--16-*-72-72-c-80-*
 XTerm*.font: -xos4-terminus-medium-r-normal--16-*-72-72-c-80-*
 XTerm*.multiScroll: true
