@@ -137,6 +137,9 @@ mycd()
 shopt -s no_empty_cmd_completion
 shopt -s nocaseglob
 shopt -s cdspell
+alias rm='rm -i'
+alias mv='mv -i'
+
 alias cd='mycd'
 alias _='popd'
 
