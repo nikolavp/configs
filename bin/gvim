@@ -1,6 +1,6 @@
 #!/bin/bash
 if [[ $# > 0 ]];then
-	/usr/bin/gvim --remote-tab "$@"
+	/usr/bin/gvim --remote "$@"
 else
 	/usr/bin/gvim
 fi

@@ -8,3 +8,4 @@ install:
 	test -h $(HOME)/.vim || ln -sf $(PWD)/vim $(HOME)/.vim
 	test -h $(HOME)/.vimrc || ln -sf $(PWD)/vim/.vimrc $(HOME)/.vimrc
 	test -h $(HOME)/.xinitrc || ln -sf $(PWD)/xinitrc $(HOME)/.xinitrc
+	test -h $(HOME)/bin || ln -sf $(PWD)/bin $(HOME)/bin
