@@ -106,6 +106,10 @@ if has("folding")
     set foldmethod=indent
 endif
 "}}}
+if $TERM=='screen-256color-bce'
+   exe "set title titlestring=vim:%f"
+   exe "set title t_ts=\<ESC>k t_fs=\<ESC>\\"
+endif
 "{{{1
 "{{{2 Status bar options(ciaranm's vimrc)
 set laststatus=2
@@ -288,18 +292,6 @@ vmap <silent> <F7> :make<CR><CR>
 imap <silent> <F7> <esc>:make<CR><CR>
 map <F2> :nohl<ESC>
 map <F2><F2> :on<cr>
-if !has('win32')
-    "This moves the text on the current line one line up and one down(taken
-    "from eclipse :)). Those characters are just <ALT+j>;<ALT+k>. It seems that
-    "this doesnt work nice on Windows :(
-    nnoremap ê ddp
-    nnoremap ë ddkP
-    inoremap ë <ESC>ddkP
-    inoremap ê <ESC>ddp
-    "Those move one word left/right in insert mode emacs like"
-    inoremap æ <esc>lea
-    inoremap â <esc>bi
-endif
 
 "More emacs like keystrokes - those move to the end/beginign of line"
 inoremap <C-e> <esc>$a
@@ -314,6 +306,8 @@ imap kk <esc>
 map <up> g<up>
 map <down> g<down>
 noremap <F3> <C-w>w
+
+map // /\V
 nnoremap % %zz
 nnoremap * *zn
 nnoremap <C-f> <C-f>zz
