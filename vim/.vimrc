@@ -331,22 +331,7 @@ map <leader>brn mR:call functions#BuffersRenameVar("<C-R><C-W>", "nvname")
 "If we don't have permissions use that to filter
 "the save with sudoers
 cmap w!! %!sudo tee > /dev/null %
-"Those are for Bulgarian language, because I want to have some of the
-"keystrokes in that language too 
-nmap А A
-nmap И I
-nmap и i
-nmap а a
-nmap :я :q
-nmap :я! :q!
-nmap :в :w
-nmap о o
-nmap О O
-nmap ь x
-nmap д d
-nmap Ж V
-nmap ж v
-nmap у u
+
 imap <c-space> <C-x><C-o>
 map <F12> :TlistToggle<cr>
 map <F6> :NERDTreeToggle<CR>

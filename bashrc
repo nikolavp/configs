@@ -110,7 +110,7 @@ pushd()
 popd()
 {
     #Checks if we have one argument
-    if [ $1 -ge 0 ]; then
+    if [[ $1 -ge 0 ]]; then
         count=0
         while [[ count -ne $1 ]];do
             builtin popd > /dev/null
@@ -127,7 +127,7 @@ mycd()
         pushd "$HOME"
     elif [[ $# == 1 && $1 == '-' ]];then
         shift
-        popd "$@" > /dev/null
+        builtin popd "$@" > /dev/null
     else
         pushd "$@"
     fi 
@@ -142,13 +142,18 @@ list()
 shopt -s no_empty_cmd_completion
 shopt -s nocaseglob
 shopt -s cdspell
+alias rm='rm -i'
+alias mv='mv -i'
+
 alias cd='mycd'
 alias _='popd'
 
 
+
 #Prefer vim for everything. Some strange distros like ubuntu have bad defaults like ed -.-
-export GIT_EDITOR=vi
-export GIT_PAGER=vi
+export PAGER=less
+export GIT_EDITOR=vim
+export GIT_PAGER=less
 export ONTO_SVN="https://svn.ontotext.com/svn/"
 export JOCI_SVN="${ONTO_SVN}joci/trunk"
 export ROCI_SVN="${ONTO_SVN}roci"
