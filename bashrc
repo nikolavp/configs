@@ -133,6 +133,11 @@ mycd()
     fi 
 }
 
+list()
+{
+    tree -d -I "target*|[Bb]uild"
+}
+
 #some bash goodies
 shopt -s no_empty_cmd_completion
 shopt -s nocaseglob
