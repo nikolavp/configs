@@ -19,7 +19,6 @@ class PyWatchEventProcessor(ProcessEvent):
         if excludes(event.name):
             return
         modified_filename = os.path.join(event.path, event.name)
-        print(modified_filename)
         for pattern, function in self.rules.items():
             matcher = pattern.match(modified_filename)
             if matcher:
