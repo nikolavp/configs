@@ -138,12 +138,17 @@ list()
     tree -d -I "target*|[Bb]uild"
 }
 
+cleanpy(){
+    rm -f *.pyc
+}
+
 #some bash goodies
 shopt -s no_empty_cmd_completion
 shopt -s nocaseglob
 shopt -s cdspell
 alias rm='rm -i'
 alias mv='mv -i'
+alias clean=clean
 
 alias cd='mycd'
 alias _='popd'
@@ -151,6 +156,7 @@ alias _='popd'
 
 
 #Prefer vim for everything. Some strange distros like ubuntu have bad defaults like ed -.-
+export TERM=xterm-256color
 export PAGER=less
 export GIT_EDITOR=vim
 export GIT_PAGER=less
@@ -161,6 +167,7 @@ export NI4=ni4.innovantage.co.uk
 export WORK=$HOME/workspace
 export JOCI=$WORK/joci
 export ROCI=$WORK/roci
+export PYTHONSTARTUP=/home/nikolavp/.pystartup
 
 export PATH="~/bin/:$PATH"
 
