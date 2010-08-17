@@ -6,77 +6,72 @@ from pyinotify import WatchManager, Notifier, ThreadedNotifier, ProcessEvent, Ex
 from subprocess import Popen, PIPE
 import pyinotify
 import os.path
-import os
-
+import os, re
 
 excludes = ExcludeFilter("/home/nikolavp/excludes")
 wm = WatchManager(exclude_filter = excludes)
-test_dir = 'test/java'
-prefix = 'src'
-event_names = []
-
-
 mask = pyinotify.IN_CLOSE_WRITE
 
-
 class PyWatchEventProcessor(ProcessEvent):
+    def __init__(self):
+        self.rules = {}
     def process_default(self, event):
         if excludes(event.name):
             return
-        call_tests(event.path, event.name)
+        for pattern, function in self.rules.items():
+            matcher = pattern.match(os.path.join(event.path, event.name))
+            if matcher:
+                function(matcher)
+    def addRule(self,regexp_str, func):
+        pattern = re.compile(regexp_str)
+        self.rules[pattern] = func
+class JavaProcessor(object):
+    def __init__(self, test_dir):
+        self.test_dir = test_dir
 
-def get_current_package(event_path, remove_prefix):
-    dirs = []
-    path = event_path
-    while path != remove_prefix:
-        path, d = os.path.split(path)
-        dirs.insert(0, d)
-    if dirs:
-        return os.path.join(*dirs)
-    else:
-        return ""
+        test_dir = 'test/java'
 
-def call_tests(event_path, event_file):
-    current_package = get_current_package(event_path, prefix)
+    def __call__(self, matcher):
+        self.package_dir = matcher.group("package_dir")
+        self.classname = matcher.group("classname")
+        tests_to_run = self.get_suitable_tests_to_run()
+        run_java_tests(tests_to_run, classname)
 
-    current_tests_dir = os.path.join(test_dir, current_package)
+    @staticmethod
+    def run_java_tests(tests_to_run, event_file):
+        if tests_to_run:
+            print("No tests to run after " + event_file + " was changed")
+            return
+        execute_list_string = ['java',  'org.junit.runner.JUnitCore']
+        execute_list_string.extend(tests_to_run)
+        print("Executing tests " + ",".join(tests_to_run))
+        output = Popen(execute_list_string, stdout=PIPE).communicate()[0]
+        print(output)
+
+
+
+def get_suitable_tests_to_run(package_dir, modified_classname):
+    current_tests_dir = os.path.join(test_dir, package_dir)
     if not os.path.exists(current_tests_dir):
-        print("Couldn't find test package " + current_tests_dir)
+        print("Couldn't find the test directory " + current_tests_dir)
         return
-    tests_to_run = get_suitable_tests_to_run(current_tests_dir, event_file)
-
-    if tests_to_run is None:
-        print("No tests to run after " + event_file + " was changed")
-        return
-    execute_list_string = ['java',  'org.junit.runner.JUnitCore']
-    execute_list_string.extend(tests_to_run)
-    print("Starting tests " + ",".join(tests_to_run))
-    output = Popen(execute_list_string, stdout=PIPE).communicate()[0]
-    print(output)
-
-def get_suitable_tests_to_run(current_tests_dir, modified_class):
     files = os.listdir(current_tests_dir)
-    modified_class_name, extensions = os.path.splitext(modified_class)
-    test_class = None
+    test_classes []
     for f in files:
-        if f.rfind(modified_class_name) != -1:
-            test_class, ext = os.path.splitext(f)
-            break
-    if test_class:
-        test_class = test_package + "." + test_class
-        test_class_name = test_class.replace("/", ".")
-        return [test_class_name]
+        if f.rfind(modified_classname) != -1:
+            package = package.dir.replace("/", ".")
+            test_classname, ext = os.path.splitext(f)
+            test_classes.append(package + "." + test_classname)
+    return test_classes
 
+event_processor = PyWatchEventProcessor()
 
-def process_all_events(d):
-    notifier = Notifier(wm, PyWatchEventProcessor())
-    dd = wm.add_watch(d, mask, rec=True)
-    notifier.loop()
+def watch(regexp, function):
+    event_processor.addRule(regexp, function)
 
-
-import sys
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("Please provide at least the directory to watch")
-        sys.exit(1)
-    process_all_events(sys.argv[1])
+    notifier = Notifier(wm, event_processor)
+    dd = wm.add_watch(".", mask, rec=True)
+    notifier.loop()
+    watch("src/(?P<package_dir>.*)/(?P<classname>.*?)\.java", call_tests)
+    process_all_events()
