@@ -56,7 +56,7 @@ def get_suitable_tests_to_run(package_dir, modified_classname):
         print("Couldn't find the test directory " + current_tests_dir)
         return
     files = os.listdir(current_tests_dir)
-    test_classes []
+    test_classes =  []
     for f in files:
         if f.rfind(modified_classname) != -1:
             package = package.dir.replace("/", ".")
