@@ -18,24 +18,18 @@ class PyWatchEventProcessor(ProcessEvent):
     def process_default(self, event):
         if excludes(event.name):
             return
+        modified_filename = os.path.join(event.path, event.name)
         for pattern, function in self.rules.items():
-            matcher = pattern.match(os.path.join(event.path, event.name))
+            matcher = pattern.match(modified_filename)
             if matcher:
                 function(matcher)
     def addRule(self,regexp_str, func):
         pattern = re.compile(regexp_str)
         self.rules[pattern] = func
+
 class JavaProcessor(object):
     def __init__(self, test_dir):
         self.test_dir = test_dir
-
-        test_dir = 'test/java'
-
-    def __call__(self, matcher):
-        self.package_dir = matcher.group("package_dir")
-        self.classname = matcher.group("classname")
-        tests_to_run = self.get_suitable_tests_to_run()
-        run_java_tests(tests_to_run, classname)
 
     @staticmethod
     def run_java_tests(tests_to_run, event_file):
@@ -48,21 +42,28 @@ class JavaProcessor(object):
         output = Popen(execute_list_string, stdout=PIPE).communicate()[0]
         print(output)
 
+    def __call__(self, matcher):
+        self.package_dir = matcher.group("package_dir")
+        self.modified_classname = matcher.group("classname")
+        tests_to_run = self.get_suitable_tests_to_run()
+        JavaProcessor.run_java_tests(tests_to_run, self.modified_classname)
+    def get_suitable_tests_to_run(self):
+        current_tests_dir = os.path.join(self.test_dir, self.package_dir)
+        if not os.path.exists(current_tests_dir):
+            print("Couldn't find the test directory " + current_tests_dir)
+            return
+        files = os.listdir(current_tests_dir)
+        test_classes =  []
+        for f in files:
+            if f.rfind(self.modified_classname) != -1:
+                package = package.dir.replace("/", ".")
+                test_classname, ext = os.path.splitext(f)
+                test_classes.append(package + "." + test_classname)
+        return test_classes
 
 
-def get_suitable_tests_to_run(package_dir, modified_classname):
-    current_tests_dir = os.path.join(test_dir, package_dir)
-    if not os.path.exists(current_tests_dir):
-        print("Couldn't find the test directory " + current_tests_dir)
-        return
-    files = os.listdir(current_tests_dir)
-    test_classes =  []
-    for f in files:
-        if f.rfind(modified_classname) != -1:
-            package = package.dir.replace("/", ".")
-            test_classname, ext = os.path.splitext(f)
-            test_classes.append(package + "." + test_classname)
-    return test_classes
+
+
 
 event_processor = PyWatchEventProcessor()
 
@@ -72,6 +73,5 @@ def watch(regexp, function):
 if __name__ == '__main__':
     notifier = Notifier(wm, event_processor)
     dd = wm.add_watch(".", mask, rec=True)
+    watch("src/(?P<package_dir>.*)/(?P<classname>.*?)\.java", JavaProcessor("test/java"))
     notifier.loop()
-    watch("src/(?P<package_dir>.*)/(?P<classname>.*?)\.java", call_tests)
-    process_all_events()
