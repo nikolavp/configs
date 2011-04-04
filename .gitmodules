@@ -1,0 +1,30 @@
+[submodule "vim/bundle/pathogen"]
+	path = vim/bundle/pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "vim/bundle/snippetsEmu"]
+	path = vim/bundle/snippetsEmu
+	url = https://github.com/vim-scripts/snippetsEmu.git
+[submodule "vim/bundle/inkpot"]
+	path = vim/bundle/inkpot
+	url = https://github.com/ciaranm/inkpot.git
+[submodule "vim/bundle/scala-support"]
+	path = vim/bundle/scala-support
+	url = https://github.com/rosstimson/scala-vim-support.git
+[submodule "vim/bundle/matchit"]
+	path = vim/bundle/matchit
+	url = https://github.com/edsono/vim-matchit.git
+[submodule "vim/bundle/autoclose"]
+	path = vim/bundle/autoclose
+	url = https://github.com/Townk/vim-autoclose.git
+[submodule "vim/bundle/bufexplorer"]
+	path = vim/bundle/bufexplorer
+	url = https://github.com/vim-scripts/bufexplorer.zip.git
+[submodule "vim/bundle/NERD-Commenter"]
+	path = vim/bundle/NERD-Commenter
+	url = https://github.com/vim-scripts/The-NERD-Commenter.git
+[submodule "vim/bundle/NERD-Tree"]
+	path = vim/bundle/NERD-Tree
+	url = https://github.com/vim-scripts/The-NERD-tree.git
+[submodule "vim/bundle/taglist"]
+	path = vim/bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
