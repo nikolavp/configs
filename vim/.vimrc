@@ -7,6 +7,8 @@
 ""{{{1 Basic options in vim
 "source ~/kdesdk.vim
 "source ~/bookmarks.vim
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 runtime ftplugin/man.vim
 source ~/.vim/abbs.vim
 set runtimepath+=~/myvimfiles
