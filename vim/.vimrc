@@ -208,6 +208,7 @@ if has("autocmd")
     " File formats
     au BufNewFile,BufRead  *.pls    set syntax=dosini
     au BufNewFile,BufRead  *.tex  set ft=tex
+    au BufNewFile,BufRead  *.jape  set ft=jape
     au BufNewFile,BufRead  *.forum  set ft=forum
     au BufNewFile,BufRead  modprobe.conf    set syntax=modconf
     " Completion modes for the languages we are using
@@ -350,7 +351,7 @@ let g:nickname = "nikolavp"
 let g:AutoCloseProtectedRegions = ["Comment", "String", "Character"] 
 "}}}
 "Close NERDTree if open after we open a new file
-let g:NERDTreeQuitOnOpen=1
+"let g:NERDTreeQuitOnOpen=1
 "
 let g:load_doxygen_syntax=1
 let g:doxygen_enhanced_color=1

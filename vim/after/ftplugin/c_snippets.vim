@@ -42,6 +42,7 @@ exec "Snippet beginend ".st."v".et.".begin(), ".st."v".et.".end()".st.et
 exec "Snippet once #ifndef ``CMacroName(expand('%'))``_<CR><CR>#define ``CMacroName(expand('%'))``_<CR><CR>".st.et."<CR><CR>#endif /* ``CMacroName(expand('%'))``_ */<CR>"
 "exec "Snippet once #ifndef _".st."file:substitute(expand('%'),'\\(.\\)','\\u\\1','g')".et."_<CR><CR>#define _".st."file".et."_<CR><CR>".st.et."<CR><CR>#endif /* _".st."file".et."_ */<CR>".st.et
 exec "Snippet class class ".st."name".et."<CR>{<CR>public:<CR>".st."name".et." (".st."arguments".et.");<CR>virtual ~".st."name".et."();<CR><CR>private:<CR>".st.et."<CR>};<CR>".st.et
+exec "Snippet debug #ifdef DEBUG <CR> printf(\"".st.et."\");<CR>#endif".st.et
 " TODO This is a good one but I can't quite work out the syntax yet
 exec "Snippet printf printf(\"".st."\"%s\"".et."\\n\"".st."\"%s\":CArgList(Count(@z, '%[^%]'))".et.");<CR>".st.et
 exec "Snippet vector std::vector<".st."char".et."> v".st.et.";"
