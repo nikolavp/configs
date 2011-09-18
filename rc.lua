@@ -16,7 +16,7 @@ beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
-editor = os.getenv("EDITOR") or "editor"
+editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -308,36 +308,26 @@ awful.rules.rules = {
     -- group for now it is just hacky/manual
 }
 
-editors = { "Gvim", "Kate", "Gedit", "KWrite" }
-for i, v in pairs(editors) do
-	table.insert(awful.rules.rules, { rule = { class = v }, properties = { tag = tags[1][4] } })
-end
-email_applications = { "Kontact", "Kmail", "Evolution", "Thunderbird" }
-for i, v in pairs(email_applications) do
-	table.insert(awful.rules.rules, { rule = { class = v }, properties = { tag = tags[1][3] } })
-end
-dev_applications = { "Eclipse" }
-for i, v in pairs(dev_applications) do
-	table.insert(awful.rules.rules, { rule = { class = v }, properties = { tag = tags[1][2] } })
-end
-term_applications = { "XTerm", "Konsole" }
-for i, v in pairs(term_applications) do
-	table.insert(awful.rules.rules, { rule = { class = v }, properties = { tag = tags[1][5] } })
+function setTags(applications, tagDestination)
+    for i, v in pairs(applications) do
+        table.insert(awful.rules.rules, {rule = {class = v}, properties = {tag = tagDestination} })
+    end
 end
 
-irc_applications = { "Konversation", "Xchat"}
-for i, v in pairs(irc_applications) do
-	table.insert(awful.rules.rules, { rule = { class = v }, properties = { tag = tags[1][7] } })
-end
-
-chat_applications = { "Skype", "Kopete" }
-for i, v in pairs(chat_applications) do
-	table.insert(awful.rules.rules, { rule = { class = v }, properties = { tag = tags[1][6] } })
-end
 www_applications = {"Firefox", "Chromium", "Konqueror"}
-for i, v in pairs(www_applications) do
-	table.insert(awful.rules.rules, { rule = { class = v }, properties = { tag = tags[1][1] } })
-end
+setTags(www_applications, tags[1][1])
+dev_applications = { "Eclipse" }
+setTags(dev_applications, tags[1][2])
+email_applications = { "Kontact", "Kmail", "Evolution", "Thunderbird" }
+setTags(email_applications, tags[1][3])
+editors = { "Gvim", "Kate", "Gedit", "KWrite" }
+setTags(editors, tags[1][4])
+term_applications = { "XTerm", "Konsole" }
+setTags(term_applications, tags[1][5])
+chat_applications = { "Skype", "Kopete" }
+setTags(chat_applications, tags[1][6])
+irc_applications = { "Konversation", "Xchat"}
+setTags(irc_applications, tags[1][7])
 
 -- }}}
 
