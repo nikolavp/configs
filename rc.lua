@@ -49,7 +49,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "www", "dev", "email", "gvim", "terms", "skype", "irc", 8, 9 }, s, layouts[7])
+    tags[s] = awful.tag({ "1=www", "2=dev", "3=email", "4=gvim", "5=terms", "6=skype", "7=irc", 8, 9 }, s, layouts[7])
 end
 -- }}}
 
@@ -291,11 +291,10 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
+      properties = { 
                      focus = true,
-	 	     -- go to this window at startup
-		     switchtotag = true,
+                     -- go to this window at startup
+                     switchtotag = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
@@ -308,6 +307,7 @@ awful.rules.rules = {
     -- Make this more dynamic in the future so www group goes to the proper
     -- group for now it is just hacky/manual
 }
+
 editors = { "Gvim", "Kate", "Gedit", "KWrite" }
 for i, v in pairs(editors) do
 	table.insert(awful.rules.rules, { rule = { class = v }, properties = { tag = tags[1][4] } })
@@ -339,8 +339,6 @@ for i, v in pairs(www_applications) do
 	table.insert(awful.rules.rules, { rule = { class = v }, properties = { tag = tags[1][1] } })
 end
 
-	
-
 -- }}}
 
 -- {{{ Signals
@@ -370,6 +368,4 @@ client.add_signal("manage", function (c, startup)
     end
 end)
 
-client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
