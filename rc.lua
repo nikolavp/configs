@@ -43,15 +43,16 @@ layouts =
     awful.layout.suit.magnifier
 }
 -- }}}
+Tags = {
+    {screen = 1, name = "www", applications = {"Firefox", "Chromium", "Konqueror"}, layout = layouts[7]},
+    {screen = 1, name = "dev", applications = {"Eclipse"}, layout = layouts[7]},
+    {screen = 1, name = "email", applications = { "Kontact", "Kmail", "Evolution", "Thunderbird" }, layout = layouts[7]},
+    {screen = 1, name = "gvim", applications = { "Gvim", "Kate", "Gedit", "KWrite" }, layout = layouts[7]},
+    {screen = 1, name = "terms", applications = { "XTerm", "Konsole" }, layout = layouts[7]},
+    {screen = 1, name = "skype", applications = { "Skype", "Kopete" }, layout = layouts[7]},
+    {screen = 1, name = "irc", applications = { "Konversation", "Xchat"}, layout = layouts[7]},
+}
 
--- {{{ Tags
--- Define a tag table which hold all screen tags.
-tags = {}
-for s = 1, screen.count() do
-    -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "1=www", "2=dev", "3=email", "4=gvim", "5=terms", "6=skype", "7=irc", 8, 9 }, s, layouts[7])
-end
--- }}}
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
@@ -239,10 +240,11 @@ clientkeys = awful.util.table.join(
 )
 
 -- Compute the maximum number of digit we need, limited to 9
-keynumber = 0
-for s = 1, screen.count() do
-   keynumber = math.min(9, math.max(#tags[s], keynumber));
-end
+--keynumber = 0
+--for s = 1, screen.count() do
+--   keynumber = math.min(9, math.max(#tags[s], keynumber));
+--end
+keynumber = math.min(9, #Tags)
 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.
@@ -251,28 +253,32 @@ for i = 1, keynumber do
     globalkeys = awful.util.table.join(globalkeys,
         awful.key({ modkey }, "#" .. i + 9,
                   function ()
-                        local screen = mouse.screen
-                        if tags[screen][i] then
-                            awful.tag.viewonly(tags[screen][i])
+                        if Tags[i].tag then
+                            awful.tag.viewonly(Tags[i].tag)
+                        end
+                        local current_screen = mouse.screen
+                        tag_screen = Tags[i].screen
+                        if not current_screen == tag_screen then
+                            mouse.screen = tag_screen
                         end
                   end),
         awful.key({ modkey, "Control" }, "#" .. i + 9,
                   function ()
                       local screen = mouse.screen
-                      if tags[screen][i] then
-                          awful.tag.viewtoggle(tags[screen][i])
+                      if Tags[i].tag then
+                          awful.tag.viewtoggle(Tags[i].tag)
                       end
                   end),
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
                   function ()
-                      if client.focus and tags[client.focus.screen][i] then
-                          awful.client.movetotag(tags[client.focus.screen][i])
+                      if client.focus and Tags[i].tag then
+                          awful.client.movetotag(Tags[i].tag)
                       end
                   end),
         awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
                   function ()
-                      if client.focus and tags[client.focus.screen][i] then
-                          awful.client.toggletag(tags[client.focus.screen][i])
+                      if client.focus and Tags[i].tag then
+                          awful.client.toggletag(Tags[i].tag)
                       end
                   end))
 end
@@ -286,50 +292,6 @@ clientbuttons = awful.util.table.join(
 root.keys(globalkeys)
 -- }}}
 
--- {{{ Rules
-
-awful.rules.rules = {
-    -- All clients will match this rule.
-    { rule = { },
-      properties = { 
-                     focus = true,
-                     -- go to this window at startup
-                     switchtotag = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
-    -- TOOD:
-    -- Make this more dynamic in the future so www group goes to the proper
-    -- group for now it is just hacky/manual
-}
-
-function setTags(applications, tagDestination)
-    for i, v in pairs(applications) do
-        table.insert(awful.rules.rules, {rule = {class = v}, properties = {tag = tagDestination} })
-    end
-end
-
-www_applications = {"Firefox", "Chromium", "Konqueror"}
-setTags(www_applications, tags[1][1])
-dev_applications = { "Eclipse" }
-setTags(dev_applications, tags[1][2])
-email_applications = { "Kontact", "Kmail", "Evolution", "Thunderbird" }
-setTags(email_applications, tags[1][3])
-editors = { "Gvim", "Kate", "Gedit", "KWrite" }
-setTags(editors, tags[1][4])
-term_applications = { "XTerm", "Konsole" }
-setTags(term_applications, tags[1][5])
-chat_applications = { "Skype", "Kopete" }
-setTags(chat_applications, tags[1][6])
-irc_applications = { "Konversation", "Xchat"}
-setTags(irc_applications, tags[1][7])
-
--- }}}
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
@@ -358,4 +320,35 @@ client.add_signal("manage", function (c, startup)
     end
 end)
 
+-- {{{ Rules
+
+awful.rules.rules = {
+    -- All clients will match this rule.
+    { rule = { },
+      properties = { 
+                     focus = true,
+                     -- go to this window at startup
+                     switchtotag = true,
+                     keys = clientkeys,
+                     buttons = clientbuttons } },
+    { rule = { class = "MPlayer" },
+      properties = { floating = true } },
+    { rule = { class = "pinentry" },
+      properties = { floating = true } },
+    { rule = { class = "gimp" },
+      properties = { floating = true } },
+}
+-- }}}
+
+function setTags(applications, tagDestination)
+    for i, v in pairs(applications) do
+        table.insert(awful.rules.rules, {rule = {class = v}, properties = {tag = tagDestination} })
+    end
+end
+
+for i, v in pairs(Tags) do
+    result = awful.tag({i .. "=" .. v.name}, v.screen, v.layout)[1]
+    Tags[i]["tag"] = result
+    setTags(v.applications, result)
+end
 -- }}}
