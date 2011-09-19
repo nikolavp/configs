@@ -242,7 +242,12 @@ for s = 1, screen.count() do
                                           end, tasklist.buttons)
 
     -- Create the wibox
-    wibox[s] = awful.wibox({ position = "top", screen = s })
+    wibox[s] = awful.wibox({  screen = s,
+        fg = beautiful.fg_normal, height = 12,
+        bg = beautiful.bg_normal, position = "top",
+        border_color = beautiful.border_focus,
+        border_width = beautiful.border_width
+    })
     -- Add widgets to the wibox - order matters
     wibox[s].widgets = {
         {
