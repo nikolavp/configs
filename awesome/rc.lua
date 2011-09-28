@@ -7,8 +7,6 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
--- Load Debian menu entries
-require("debian.menu")
 require("vicious")
 
 
@@ -50,12 +48,12 @@ layouts =
 }
 -- }}}
 Tags = {
-    {screen = 1, name = "www", applications = {"Firefox", "Chromium", "Konqueror"}, layout = layouts[7]},
+    {screen = 1, name = "www", applications = {"Firefox", "Chromium", "Konqueror", "Google-chrome"}, layout = layouts[7]},
     {screen = 1, name = "dev", applications = {"Eclipse"}, layout = layouts[7]},
     {screen = 1, name = "email", applications = { "Kontact", "Kmail", "Evolution", "Thunderbird" }, layout = layouts[7]},
     {screen = 1, name = "gvim", applications = { "Gvim", "Kate", "Gedit", "KWrite" }, layout = layouts[7]},
     {screen = 1, name = "terms", applications = { "XTerm", "Konsole" }, layout = layouts[7]},
-    {screen = 1, name = "skype", applications = { "Skype", "Kopete" }, layout = layouts[7]},
+    {screen = 1, name = "im", applications = { "Skype", "Kopete", "Empathy" }, layout = layouts[7]},
     {screen = 1, name = "irc", applications = { "Konversation", "Xchat"}, layout = layouts[7]},
 }
 
@@ -70,7 +68,6 @@ awesomemenu = {
 }
 
 mainmenu = awful.menu({ items = { { "awesome", awesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
                                     { "open terminal", terminal }
                                   }
                         })
@@ -100,31 +97,6 @@ datewidget:buttons(awful.util.table.join(
 ))
 -- }}}
 
--- {{{ Volume level
-volicon = widget({ type = "imagebox" })
-volicon.image = image(beautiful.widget_vol)
--- Initialize widgets
-volbar    = awful.widget.progressbar()
-volwidget = widget({ type = "textbox" })
--- Progressbar properties
-volbar:set_vertical(true):set_ticks(true)
-volbar:set_height(12):set_width(8):set_ticks_size(2)
-volbar:set_background_color(beautiful.fg_off_widget)
-volbar:set_gradient_colors({ beautiful.fg_widget,
-   beautiful.fg_center_widget, beautiful.fg_end_widget
-}) -- Enable caching
-vicious.cache(vicious.widgets.volume)
--- Register widgets
-vicious.register(volbar,    vicious.widgets.volume,  "$1",  2, "PCM")
-vicious.register(volwidget, vicious.widgets.volume, " $1%", 2, "PCM")
--- Register buttons
-volbar.widget:buttons(awful.util.table.join(
-   awful.button({ }, 1, function () exec("kmix") end),
-   awful.button({ }, 4, function () exec("amixer -q set PCM 2dB+", false) end),
-   awful.button({ }, 5, function () exec("amixer -q set PCM 2dB-", false) end)
-)) -- Register assigned buttons
-volwidget:buttons(volbar.widget:buttons())
--- }}}
 
 -- {{{ Network usage
 dnicon = widget({ type = "imagebox" })
@@ -258,7 +230,6 @@ for s = 1, screen.count() do
         },
         layoutbox[s],
         separator, datewidget, dateicon,
-        separator, volwidget,  volbar.widget, volicon,
         separator, upicon,     netwidget, dnicon,
         separator, membar.widget, memicon,
         separator, batwidget, baticon,

@@ -153,13 +153,6 @@ alias clean=clean
 alias cd='mycd'
 alias _='popd'
 
-if [ "$PS1" ] ; then  
-   mkdir -m 0700 /dev/cgroup/cpu/user/$$ > /dev/null 2>&1
-   echo $$ > /dev/cgroup/cpu/user/$$/tasks
-   echo "1" > /dev/cgroup/cpu/user/$$/notify_on_release
-fi
-
-
 #Prefer vim for everything. Some strange distros like ubuntu have bad defaults like ed -.-
 export TERM=xterm-256color
 export PAGER=less
