@@ -20,6 +20,8 @@ beautiful.init(home .. "/.config/awesome/zenburn.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
+filemanager_app = "thunar"
+video_app = "mplayer"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -435,4 +437,54 @@ for i, v in pairs(Tags) do
     Tags[i]["tag"] = result
     setTags(v.applications, result)
 end
+-- }}}
+
+
+-- {{{Autostart
+require("lfs") 
+local function processwalker()
+   local function yieldprocess()
+      for dir in lfs.dir("/proc") do
+        -- All directories in /proc containing a number, represent a process
+        if tonumber(dir) ~= nil then
+          local f, err = io.open("/proc/"..dir.."/cmdline")
+          if f then
+            local cmdline = f:read("*all")
+            f:close()
+            if cmdline ~= "" then
+              coroutine.yield(cmdline)
+            end
+          end
+        end
+      end
+    end
+    return coroutine.wrap(yieldprocess)
+end
+
+local function run_once(process, cmd)
+   assert(type(process) == "string")
+   local regex_killer = {
+      ["+"]  = "%+", ["-"] = "%-",
+      ["*"]  = "%*", ["?"]  = "%?" }
+
+   for p in processwalker() do
+      if p:find(process:gsub("[-+?*]", regex_killer)) then
+	 return
+      end
+   end
+   return awful.util.spawn(cmd or process)
+end
+
+run_once("chrome", "google-chrome")
+run_once("nm-applet")
+run_once("gnome-sound-applet")
+
+devmon_cmd = [[devmon --exec-on-drive "%s %%d"     \
+       --exec-on-disc  "%s %%d"                    \
+       --exec-on-video "%s dvd://%%f"             \
+       --exec-on-audio "%s cdda://%%f"
+       ]]
+devmon_cmd = string.format(devmon_cmd, filemanager_app, filemanager_app, video_app, video_app)
+run_once("devmon", devmon_cmd)
+
 -- }}}
