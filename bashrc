@@ -168,6 +168,8 @@ export ROCI=$WORK/roci
 export PYTHONSTARTUP=/home/nikolavp/.pystartup
 export EDITOR=vim
 
+set bell-setle none
+
 export PATH="~/Desktop/android-sdk-linux_x86/tools:~/bin/:$PATH"
 
 MOZILLA_DIST=/home/nikolavp/onto-dist

@@ -1,0 +1,14 @@
+gnome-sound-applet&
+nm-applet&
+$BROWSER&
+
+session_cmd=$(cat <<EOF
+            devmon --exec-on-drive "$FILE_MANAGER_APP %d" \
+            --exec-on-disc  "$FILE_MANAGER_APP %d" \
+            --exec-on-video "$VIDEO_APP dvd://%f" \
+            --exec-on-audio "$VIDEO_APP cdda://%f" & awesome
+EOF
+)
+
+
+eval exec ck-launch-session $session_cmd

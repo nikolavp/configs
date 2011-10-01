@@ -11,7 +11,10 @@ require("vicious")
 
 
 local home = os.getenv("HOME")
-local exec = awful.util.spawn
+--Don't add ugly notifications at startup...
+local exec = function (s)
+  awful.util.spawn(s, false)
+end
 
 
 -- {{{ Variable definitions
@@ -20,8 +23,8 @@ beautiful.init(home .. "/.config/awesome/zenburn.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
-filemanager_app = "thunar"
-video_app = "mplayer"
+filemanager_app = os.getenv("FILE_MANAGER_APP") or "thunar"
+video_app = os.getenv("VIDEO_APP") or "mplayer"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -475,16 +478,17 @@ local function run_once(process, cmd)
    return awful.util.spawn(cmd or process)
 end
 
-run_once("chrome", "google-chrome")
-run_once("nm-applet")
-run_once("gnome-sound-applet")
+-- run_once("gnome-sound-applet")
+-- run_once("gnome-session", "gnome-session --session=awesome")
+-- run_once("nm-applet")
+-- run_once("chrome", "google-chrome")
 
-devmon_cmd = [[devmon --exec-on-drive "%s %%d"     \
-       --exec-on-disc  "%s %%d"                    \
-       --exec-on-video "%s dvd://%%f"             \
-       --exec-on-audio "%s cdda://%%f"
-       ]]
-devmon_cmd = string.format(devmon_cmd, filemanager_app, filemanager_app, video_app, video_app)
-run_once("devmon", devmon_cmd)
+--devmon_cmd = [[
+--       ]]
+--devmon_cmd = string.format(devmon_cmd, filemanager_app, filemanager_app, video_app, video_app)
+--run_once("devmon", devmon_cmd)
+
+--XXX: OK... Starting gnome-session overrides those after we issue startx...
+--run_once("xrdb merge ".. home.. "/.Xdefaults")
 
 -- }}}
