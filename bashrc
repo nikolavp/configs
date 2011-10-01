@@ -149,6 +149,8 @@ shopt -s cdspell
 alias rm='rm -i'
 alias mv='mv -i'
 alias clean=clean
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
 
 alias cd='mycd'
 alias _='popd'

@@ -3,11 +3,14 @@
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
-userxkbmap=$HOME/.Xkbmap
 
 
-#setup caps lock to change the layouts and add bg phonetic for a layout
+#set the an alternative layout and switch with caps lock
 setxkbmap -model pc104 -option "grp:caps_toggle" -layout "us,bg" -variant ",phonetic"
+
+#some fonts on arch are installed in local
+xset +fp /usr/share/fonts/local
+xset fp rehash
 
 # merge in defaults and keymaps
 if [ -f $userresources ]; then
@@ -16,10 +19,6 @@ fi
 
 if [ -f $usermodmap ]; then
     xmodmap $usermodmap
-fi
-
-if [ -f userxkbmap ]; then
-    xsetxkbmap `cat $userxkbmap`
 fi
 
 export BROWSER=`which google-chrome`

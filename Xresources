@@ -17,3 +17,17 @@ XTerm*.multiScroll: true
 XTerm*.saveLines: 10000
 XTerm*.showBlinkAsBold: true
 XTerm*.utf8: 1
+
+xterm*.toolBar: false
+xterm*.foreground: white
+xterm*.background: grey5
+xterm*.color4: royalblue
+xterm*.color11: gold
+xterm*.color3: chocolate
+xterm*.boldFont: -xos4-terminus-bold-r-normal--16-*-72-72-c-80-*
+xterm*.font: -xos4-terminus-medium-r-normal--16-*-72-72-c-80-*
+xterm*.multiScroll: true
+xterm*.saveLines: 10000
+xterm*.showBlinkAsBold: true
+xterm*.utf8: 1
+xterm*.visualBell: true
