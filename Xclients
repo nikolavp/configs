@@ -1,14 +1,19 @@
-gnome-sound-applet&
-nm-applet&
-$BROWSER&
+#Damn, this is so ugly -.-
+#We have to launch all programs with polickit and dbus support 
+#so we have to declare a new scope and execute in a new shell that is a parent
+#for them all.
 
 session_cmd=$(cat <<EOF
+            gnome-sound-applet& \
+            nm-applet& \
+            $BROWSER& \
             devmon --exec-on-drive "$FILE_MANAGER_APP %d" \
             --exec-on-disc  "$FILE_MANAGER_APP %d" \
             --exec-on-video "$VIDEO_APP dvd://%f" \
-            --exec-on-audio "$VIDEO_APP cdda://%f" & awesome
+            --exec-on-audio "$VIDEO_APP cdda://%f"& \
+            awesome
 EOF
 )
 
 
-eval exec ck-launch-session $session_cmd
+exec ck-launch-session dbus-launch bash -c "$session_cmd"
