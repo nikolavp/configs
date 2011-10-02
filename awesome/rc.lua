@@ -7,6 +7,8 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
+require("revelation")
+
 require("vicious")
 
 
@@ -20,6 +22,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init(home .. "/.config/awesome/zenburn.lua")
+local pomodoro = require("pomodoro")
+pomodoro.pre_text = ""
+pomodoro.init()
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -72,10 +77,10 @@ awesomemenu = {
    { "quit", awesome.quit }
 }
 
-mainmenu = awful.menu({ items = { { "awesome", awesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
+mainmenu = awful.menu({ items = { 
+    { "awesome", awesomemenu, beautiful.awesome_icon },
+    { "open terminal", terminal }
+    }})
 
 launcher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
                                      menu = mainmenu })
@@ -239,6 +244,7 @@ for s = 1, screen.count() do
         separator, membar.widget, memicon,
         separator, batwidget, baticon,
         separator, tzswidget, cpugraph.widget, cpuicon,
+        separator, pomodoro.widget, pomodoro.icon_widget,
         s == 1 and systray or nil,
         tasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
@@ -256,6 +262,7 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+    awful.key({modkey}, "e", revelation),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
@@ -414,7 +421,7 @@ end)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { 
+      properties = {
                      focus = true,
                      -- go to this window at startup
                      switchtotag = true,
@@ -444,7 +451,7 @@ end
 
 
 -- {{{Autostart
-require("lfs") 
+require("lfs")
 local function processwalker()
    local function yieldprocess()
       for dir in lfs.dir("/proc") do
