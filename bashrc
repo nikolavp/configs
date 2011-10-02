@@ -175,3 +175,45 @@ set bell-setle none
 export PATH="~/Desktop/android-sdk-linux_x86/tools:~/bin/:$PATH"
 
 MOZILLA_DIST=/home/nikolavp/onto-dist
+
+extract() {
+    local c e i
+
+    (($#)) || return
+
+    for i; do
+        c=''
+        e=1
+
+        if [[ ! -r $i ]]; then
+            echo "$0: file is unreadable: \`$i'" >&2
+            continue
+        fi
+
+        case $i in
+        *.t@(gz|lz|xz|b@(2|z?(2))|a@(z|r?(.@(Z|bz?(2)|gz|lzma|xz)))))
+               c='bsdtar xvf';;
+        *.7z)  c='7z x';;
+        *.Z)   c='uncompress';;
+        *.bz2) c='bunzip2';;
+        *.exe) c='cabextract';;
+        *.gz)  c='gunzip';;
+        *.rar) c='unrar x';;
+        *.xz)  c='unxz';;
+        *.zip) c='unzip';;
+        *)     echo "$0: unrecognized file extension: \`$i'" >&2
+               continue;;
+        esac
+
+        command $c "$i"
+        e=$?
+    done
+
+    return $e
+}
+
+#if we haven't started a X server. Do so
+xline=`ps aux | grep -E "\bX\b|\bXorg\b"`
+if [ -z "$xline" ] ;then
+    startx
+fi
