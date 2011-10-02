@@ -28,3 +28,9 @@
 [submodule "vim/bundle/taglist"]
 	path = vim/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "awesome/revelation"]
+	path = awesome/revelation
+	url = git://github.com/nikolavp/awesome-revelation.git
+[submodule "awesome/pomodoro"]
+	path = awesome/pomodoro
+	url = git://github.com/nikolavp/awesome-pomodoro.git
