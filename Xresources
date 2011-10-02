@@ -15,7 +15,7 @@ XTerm*.color7: #8CD1D3
 XTerm*.color8: #DCDCCD
 XTerm*.multiScroll: true
 XTerm*.saveLines: 10000
-XTerm*.showBlinkAsBold: true
+XTerm*.showBlinkAsBold: false
 XTerm*.utf8: 1
 
 xterm*.toolBar: false
@@ -28,6 +28,6 @@ xterm*.boldFont: -xos4-terminus-bold-r-normal--16-*-72-72-c-80-*
 xterm*.font: -xos4-terminus-medium-r-normal--16-*-72-72-c-80-*
 xterm*.multiScroll: true
 xterm*.saveLines: 10000
-xterm*.showBlinkAsBold: true
+xterm*.showBlinkAsBold: false
 xterm*.utf8: 1
-xterm*.visualBell: true
+xterm*.visualBell: false
