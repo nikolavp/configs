@@ -4,6 +4,8 @@
 #for them all.
 
 session_cmd=$(cat <<EOF
+            gnome-settings-daemon& \
+            gnome-power-manager& \
             gnome-sound-applet& \
             nm-applet& \
             $BROWSER& \
