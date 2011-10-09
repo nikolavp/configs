@@ -57,13 +57,14 @@ layouts =
     awful.layout.suit.magnifier
 }
 -- }}}
+
 Tags = {
     {screen = 1, name = "www", applications = {"Firefox", "Chromium", "Konqueror", "Google-chrome"}, layout = layouts[7]},
-    {screen = 1, name = "dev", applications = {"Eclipse"}, layout = layouts[7]},
     {screen = 1, name = "email", applications = { "Kontact", "Kmail", "Evolution", "Thunderbird" }, layout = layouts[7]},
+    {screen = 1, name = "im", applications = { "Skype", "Kopete", "Empathy" }, layout = layouts[7]},
     {screen = 1, name = "gvim", applications = { "Gvim", "Kate", "Gedit", "KWrite" }, layout = layouts[7]},
     {screen = 1, name = "terms", applications = { "XTerm", "Konsole" }, layout = layouts[7]},
-    {screen = 1, name = "im", applications = { "Skype", "Kopete", "Empathy" }, layout = layouts[7]},
+    {screen = 1, name = "dev", applications = {"Eclipse"}, layout = layouts[7]},
     {screen = 1, name = "irc", applications = { "Konversation", "Xchat"}, layout = layouts[7]},
 }
 
@@ -320,8 +321,31 @@ globalkeys = awful.util.table.join(
               end)
 )
 
+function fullscreens(c)
+    awful.client.floating.toggle(c)
+    if awful.client.floating.get(c) then
+        local clientX = screen[2].workarea.x
+        local clientY = screen[2].workarea.y
+        local clientWidth = 0
+        -- look at http://www.rpm.org/api/4.4.2.2/llimits_8h-source.html
+        local clientHeight = 2147483640
+        for s = 1, screen.count() do
+            clientHeight = math.min(clientHeight, screen[s].workarea.height)
+            clientWidth = clientWidth + screen[s].workarea.width
+        end
+        local t = c:geometry({x = clientX, y = clientY, width = clientWidth, height = clientHeight})
+    else
+        --apply the rules to this client so he can return to the right tag if there is a rule for that.
+        awful.rules.apply(c)
+    end
+    -- focus our client
+    client.focus = c
+end
+
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
+    awful.key({ modkey, "Shift" }, "f",        fullscreens),
+
     awful.key({ modkey,}, "F4",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
@@ -354,7 +378,7 @@ for i = 1, keynumber do
                         end
                         local current_screen = mouse.screen
                         tag_screen = Tags[i].screen
-                        if not current_screen == tag_screen then
+                        if current_screen ~= tag_screen then
                             mouse.screen = tag_screen
                         end
                   end),
