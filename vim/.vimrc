@@ -77,7 +77,6 @@ set showmatch
 set spell
 set spelllang=
 silent set spelllang+=en
-silent set spelllang+=bg
 ""{{{Try to load a nice colourscheme (ciaranm)
 "if has("eval")
 "    fun! LoadColourScheme(schemes)
