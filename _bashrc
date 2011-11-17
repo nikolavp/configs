@@ -212,8 +212,3 @@ extract() {
     return $e
 }
 
-#if we haven't started a X server. Do so
-xline=`ps aux | grep -E "\bX\b|\bXorg\b"`
-if [ -z "$xline" ] ;then
-    startx
-fi

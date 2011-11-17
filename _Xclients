@@ -3,8 +3,9 @@
 #so we have to declare a new scope and execute in a new shell that is a parent
 #for them all.
 
+xbindkeys&
 session_cmd=$(cat <<EOF
-            gnome-settings-daemon& \
+            /usr/lib/gnome-settings-daemon/gnome-settings-daemon& \
             gnome-power-manager& \
             gnome-sound-applet& \
             nm-applet& \

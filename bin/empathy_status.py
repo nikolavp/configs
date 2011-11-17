@@ -2,6 +2,7 @@
 # vim: set sw=4 sts=4 et foldmethod=indent :
 
 import dbus
+import sys
 
 ACCOUNTMANAGER_PATH = "/org/freedesktop/Telepathy/AccountManager"
 ACCOUNTMANAGER_IFACE = "org.freedesktop.Telepathy.AccountManager"
@@ -65,4 +66,6 @@ def activate(status):
         except dbus.exceptions.DBusException:
             print(status + ' is not supported by ' + valid_account)
 
-activate('away')
+status = sys.argv[1].lower()
+
+activate(status)

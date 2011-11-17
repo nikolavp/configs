@@ -1,0 +1,12 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+xset dpms force off
+#mark us away in the chat clients
+skype_status.py away
+empathy_status.py away
+#actual lock
+slock
+#mark us available in the chat clients
+skype_status.py online
+empathy_status.py online
