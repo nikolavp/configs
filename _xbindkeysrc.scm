@@ -65,6 +65,8 @@
 ;; Examples of commands:
 (xbindkey '(Mod4 Return) "xterm")
 (xbindkey '(XF86ScreenSaver) "lock")
+(xbindkey '(Mod4 F12) "xcalib -i -a")
+
 
 
 ;;(xbindkey '(control shift q) "xbindkeys_show")

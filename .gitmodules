@@ -31,3 +31,6 @@
 [submodule "awesome/pomodoro"]
 	path = awesome/pomodoro
 	url = git://github.com/nikolavp/awesome-pomodoro.git
+[submodule "awesome/awesome-freedesktop"]
+	path = awesome/awesome-freedesktop
+	url = git://github.com/terceiro/awesome-freedesktop.git
