@@ -68,11 +68,18 @@ Tags = {
     {screen = 1, name = "www", applications = {"Firefox", "Chromium", "Konqueror", "Google-chrome"}, layout = layouts[7]},
     {screen = 1, name = "email", applications = { "Kontact", "Kmail", "Evolution", "Thunderbird" }, layout = layouts[7]},
     {screen = 1, name = "im", applications = { "Skype", "Kopete", "Empathy" }, layout = layouts[7]},
-    {screen = 1, name = "gvim", applications = { "Gvim", "Kate", "Gedit", "KWrite" }, layout = layouts[7]},
-    {screen = 1, name = "terms", applications = { "XTerm", "Konsole" }, layout = layouts[7]},
-    {screen = 1, name = "dev", applications = {"Eclipse"}, layout = layouts[7]},
-    {screen = 1, name = "irc", applications = { "Konversation", "Xchat"}, layout = layouts[7]},
 }
+-- This will handle 2 screens. When more come, write it with a loop.
+other_screen = screen.count()
+Tags = awful.util.table.join(
+    Tags,
+    {
+        {screen = other_screen, name = "gvim", applications = { "Gvim", "Kate", "Gedit", "KWrite" }, layout = layouts[7]},
+        {screen = other_screen, name = "terms", applications = { "XTerm", "Konsole" }, layout = layouts[7]},
+        {screen = other_screen, name = "dev", applications = {"Eclipse"}, layout = layouts[7]},
+        {screen = other_screen, name = "irc", applications = { "Konversation", "Xchat"}, layout = layouts[7]},
+    }
+)
 
 
 -- {{{ Menu
@@ -454,6 +461,7 @@ awful.rules.rules = {
                      focus = true,
                      -- go to this window at startup
                      switchtotag = true,
+                     size_hints_honor = false,
                      keys = clientkeys,
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
