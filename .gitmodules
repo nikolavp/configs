@@ -34,3 +34,6 @@
 [submodule "awesome/awesome-freedesktop"]
 	path = awesome/awesome-freedesktop
 	url = git://github.com/terceiro/awesome-freedesktop.git
+[submodule "vim/bundle/markdown"]
+	path = vim/bundle/markdown
+	url = git://github.com/plasticboy/vim-markdown.git
