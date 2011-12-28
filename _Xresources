@@ -24,9 +24,11 @@ xterm*.background: grey5
 xterm*.color4: royalblue
 xterm*.color11: gold
 xterm*.color3: chocolate
-xterm*.boldFont: -xos4-terminus-bold-r-normal--16-*-72-72-c-80-*
-xterm*.font: -xos4-terminus-medium-r-normal--16-*-72-72-c-80-*
+
+XTerm*faceName: monospace
+XTerm*faceSize: 9
 xterm*.multiScroll: true
+xterm*metaSendsEscape: true
 xterm*.saveLines: 10000
 xterm*.showBlinkAsBold: false
 xterm*.utf8: 1
