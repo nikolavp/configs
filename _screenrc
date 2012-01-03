@@ -15,3 +15,9 @@ defscrollback 10000
 bufferfile            $HOME/.screen_exchange
 encoding              UTF-8
 
+defscrollback 5000
+screen -t root 0 sudo -s
+screen -t shell 1 bash
+screen -t home 2 bash
+screen -t rss 3 newsbeuter
+select 1
