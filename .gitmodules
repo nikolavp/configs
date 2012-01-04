@@ -27,7 +27,7 @@
 	url = https://github.com/vim-scripts/taglist.vim.git
 [submodule "awesome/revelation"]
 	path = awesome/revelation
-	url = git://github.com/nikolavp/awesome-revelation.git
+    url = git://github.com/bioe007/awesome-revelation.git
 [submodule "awesome/pomodoro"]
 	path = awesome/pomodoro
 	url = git://github.com/nikolavp/awesome-pomodoro.git
