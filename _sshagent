@@ -51,3 +51,7 @@ function ssh {
 function git {
     if [[ $1 == "push" ]]; then check_agent; command git "$@"; else command git "$@"; fi;
 }
+
+function scp {
+    check_agent; command scp $@
+}
