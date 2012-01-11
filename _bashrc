@@ -216,3 +216,4 @@ extract() {
     return $e
 }
 
+source $HOME/.sshagent
