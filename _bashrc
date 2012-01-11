@@ -153,6 +153,8 @@ alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias open=xdg-open
 alias t=task
+alias eclipsejava='~/Genuitec/Profiles/Eclipse\ 3.7\ Java/eclipse'
+alias radioenergy='mplayer http://80.72.68.217:80/nrj.ogg'
 
 alias cd='mycd'
 alias _='popd'
