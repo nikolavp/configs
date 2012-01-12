@@ -7,7 +7,7 @@ function select_pane(){
     tmux select-pane -t "${window_name}.${pane_index}"
 }
 
-tmux -f tmux_tasks.conf new-session -d -s tasks
+tmux -f ~/.tmux_task.conf new-session -d -s tasks
 tmux split-window -h
 tmux split-window -v
 select_pane tasks:1 0
