@@ -39,6 +39,13 @@ schedule = low_diskspace,5,60,close_low_diskspace=300M
 # example: stop at ratio 2.0 with at least 200 MB uploaded, or else ratio 20.0
 #schedule = ratio,60,60,"stop_on_ratio=200,200M,2000"
 
+#Delete the torrent when ratio is met!
+ratio.enable=
+ratio.min.set=100
+ratio.max.set=200
+ratio.upload.set=20M
+system.method.set = group.seeding.ratio.command, d.close=, d.erase=
+
 # The ip address reported to the tracker.
 #ip = 127.0.0.1
 #ip = rakshasa.no
