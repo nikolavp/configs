@@ -216,4 +216,12 @@ extract() {
     return $e
 }
 
+task(){
+    if [[ $# -eq '1' ]] && [[ "$1" =~ ^[0-9]+$ ]] ; then
+        command task $1 info
+    else
+        command task $@
+    fi
+}
+
 source $HOME/.sshagent
