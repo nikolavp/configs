@@ -16,10 +16,19 @@ function select_pane(){
     tmux select-pane -t "${window_name}.${pane_index}"
 }
 
-send_command "$tasks_session" 'task next'
+send_command "$tasks_session" 'task'
 select_pane "$tasks_session" 1
 send_command "$tasks_session" 'task +today'
 select_pane "$tasks_session" 2
 send_command "$tasks_session" 'task +urgent'
 select_pane "$tasks_session" 0
 
+kanban_session='kanban:1'
+send_command "$kanban_session" 'task +today'
+select_pane "$kanban_session" 1
+send_command "$kanban_session" 'task +code'
+select_pane "$kanban_session" 2
+send_command "$kanban_session" 'task +deploy'
+select_pane "$kanban_session" 3
+send_command "$kanban_session" 'task +documentation'
+select_pane "$kanban_session" 0
