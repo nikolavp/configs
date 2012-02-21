@@ -1,0 +1,64 @@
+background no
+cpu_avg_samples 5
+net_avg_samples 5
+out_to_console no
+font 7x13
+own_window yes
+own_window_transparent no
+own_window_type desktop
+own_window_colour black
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+xftalpha 1.0
+update_interval 5
+double_buffer yes
+minimum_size 5 5
+draw_shades yes
+draw_outline no
+draw_borders yes
+stippled_borders 0
+border_width 2
+default_color white
+default_shade_color black
+default_outline_color white
+alignment top_left
+use_spacer right
+no_buffers yes
+uppercase no
+mpd_host localhost
+mpd_port 6600
+# stuff after 'TEXT' will be formatted on screen
+TEXT
+${color #CCCCCC}${time %A, %d %B %Y} ${alignr}${time %T}
+
+${color #ffccaa}SYSTEM ${color white}${hr 1}
+${color #888888}Kernel: ${color #CCCCCC}$kernel ${color #888888}${alignr}Uptime: ${color #CCCCCC}$uptime
+${color #888888}CPU   : ${color #CCCCCC}$freq MHz   $cpu%  ${alignr}${acpitemp} C
+${color #888888}        ${cpugraph 15,210 ff0000 ff00ff}
+${color #888888}RAM   : ${color #CCCCCC}$memmax     $memperc%  ${membar 6}
+${color #888888}Swap  : ${color #CCCCCC}$swapmax     $swapperc%  ${swapbar 6}
+
+${color #ffccaa}POWER ${color white}${hr 1}
+${color #888888}AC Adapter: ${color #CCCCCC}$acpiacadapter
+${color #888888}Battery   : ${color #CCCCCC}$battery $battery_time
+
+${color #ffccaa}DISK ${color white}${hr 1}
+${color #888888}/     : ${color #CCCCCC}${fs_size /}    ${fs_used_perc /} % ${alignr}${fs_bar 6,100 /}
+${color #888888}/home : ${color #CCCCCC}${fs_size /home}    ${fs_used_perc /home} % ${alignr}${fs_bar 6,100 /home}
+
+${color #ffccaa}PROCESSES ${color white}${hr 1}
+${color #888888}Processes: ${color #CCCCCC}$processes  ${color #888888}Running: ${color #CCCCCC}$running_processes
+
+${color #888888}Name             PID     CPU%   MEM%
+${color #CCCCCC}${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
+${color #CCCCCC}${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+${color #CCCCCC}${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
+
+${color #ffccaa}NETWORK ${color white}${hr 1}
+${color #888888}Down : ${color #CCCCCC}${downspeed wlan0}kb/s${color #888888}${alignr}Total : ${color #CCCCCC}${totaldown wlan0}
+${color #888888}Up   : ${color #CCCCCC}${upspeed wlan0}kb/s${color #888888}${alignr}Total : ${color #CCCCCC}${totalup wlan0}
+
+${color #ffccaa}NOW PLAYING ${color white}${hr 1}
+${color #888888}Artist: ${color #CCCCCC}$mpd_artist
+${color #888888}Title : ${color #CCCCCC}${mpd_title 30}
+${color #CCCCCC}$mpd_bar
+${color #CCCCCC}$mpd_elapsed/$mpd_length ${alignc}$mpd_status ${alignr}$mpd_percent%
