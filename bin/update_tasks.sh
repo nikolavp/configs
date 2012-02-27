@@ -23,7 +23,7 @@ select_pane "$tasks_session" 2
 send_command "$tasks_session" 'task +urgent'
 select_pane "$tasks_session" 0
 
-kanban_session='kanban:1'
+kanban_session='tasks:2'
 send_command "$kanban_session" 'task +today'
 select_pane "$kanban_session" 1
 send_command "$kanban_session" 'task +code'

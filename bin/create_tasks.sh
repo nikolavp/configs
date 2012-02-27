@@ -12,4 +12,11 @@ tmux split-window -h
 tmux split-window -v
 select_pane tasks:1 0
 
+tmux new-window -t tasks
+tmux split-window -h
+tmux split-window -h
+select_pane tasks:2 0
+tmux split-window -h
+select_pane tasks:2 0
+
 tmux -2 attach-session -t tasks
