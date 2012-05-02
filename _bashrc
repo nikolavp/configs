@@ -223,5 +223,10 @@ task(){
         command task $@
     fi
 }
-
 source $HOME/.sshagent
+
+export MAVEN_OPTS="-XX:PermSize=512m -XX:MaxPermSize=512m -XX:MaxHeapSize=1024m"
+
+jfind(){
+    find $1 -name '*.java'
+}
