@@ -14,6 +14,8 @@ require("vicious")
 
 
 local home = os.getenv("HOME")
+
+
 --Don't add ugly notifications at startup...
 local exec = function (s)
   awful.util.spawn(s, false)
@@ -336,8 +338,8 @@ globalkeys = awful.util.table.join(
 function fullscreens(c)
     awful.client.floating.toggle(c)
     if awful.client.floating.get(c) then
-        local clientX = screen[2].workarea.x
-        local clientY = screen[2].workarea.y
+        local clientX = screen[1].workarea.x
+        local clientY = screen[1].workarea.y
         local clientWidth = 0
         -- look at http://www.rpm.org/api/4.4.2.2/llimits_8h-source.html
         local clientHeight = 2147483640
@@ -391,7 +393,9 @@ for i = 1, keynumber do
                         local current_screen = mouse.screen
                         tag_screen = Tags[i].screen
                         if current_screen ~= tag_screen then
-                            mouse.screen = tag_screen
+                            newX = screen[tag_screen].geometry.x + 200
+                            newY = screen[tag_screen].geometry.y + 200
+                            mouse.coords({x=newX, y=newY})
                         end
                   end),
         awful.key({ modkey, "Control" }, "#" .. i + 9,
