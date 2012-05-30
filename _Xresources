@@ -26,7 +26,7 @@ xterm*.color11: gold
 xterm*.color3: chocolate
 
 XTerm*faceName: monospace
-XTerm*faceSize: 9
+XTerm*faceSize: 10
 xterm*.multiScroll: true
 xterm*metaSendsEscape: true
 xterm*.saveLines: 10000

@@ -212,6 +212,12 @@ if has("autocmd")
     au BufNewFile,BufRead  *.jape  set ft=jape
     au BufNewFile,BufRead  *.forum  set ft=forum
     au BufNewFile,BufRead  modprobe.conf    set syntax=modconf
+
+    " Set confluence syntax highlighting
+    au BufNewFile,BufRead */itsalltext/*confluence* set ft=confluencewiki
+    " Set notes filetype for tasknote and taskwarrior
+    au BufNewFile,BufRead */*task*/notes* set ft=notes
+
     " Completion modes for the languages we are using
     autocmd FileType python set omnifunc=pythoncomplete#Complete
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
