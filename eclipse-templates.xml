@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="java" deleted="false" description="" enabled="true" name="after">${:import (org.junit.After)}
+ 
+@After
+public void ${method_name}() {
+    ${cursor}
+}</template><template autoinsert="true" context="java" deleted="false" description="" enabled="true" name="afterclass">${:import (org.junit.AfterClass)}
+ 
+@AfterClass
+public static void ${method_name}() {
+	${cursor}
+}</template><template autoinsert="true" context="java" deleted="false" description="" enabled="true" name="before">${:import (org.junit.Before)}
+ 
+@Before
+public void ${methodName}() {
+    ${cursor}
+}</template><template autoinsert="true" context="java" deleted="false" description="" enabled="true" name="beforeclass">${:import (org.junit.BeforeClass)}
+ 
+@BeforeClass
+public static void ${method_name}() {
+    ${cursor}
+}</template><template autoinsert="true" context="java" deleted="false" description="" enabled="true" name="log4j">${:import(org.apache.log4j.Logger)}
+private static final Logger LOG = Logger.getLogger(${enclosing_type}.class);</template><template autoinsert="true" context="java" deleted="false" description="debug statement" enabled="true" name="logd">if(LOG.isDebugEnabled())
+     LOG.debug(${word_selection}${});
+${cursor}</template><template autoinsert="true" context="java" deleted="false" description="log an error" enabled="true" name="loge">LOG.error(${word_selection}${}, ${exception_variable_name});</template><template autoinsert="true" context="java" deleted="false" description="Insterts a logger for log4j" enabled="true" name="logger">${:import(org.slf4j.Logger,
+          org.slf4j.LoggerFactory)}
+private static final Logger LOG =
+       LoggerFactory.getLogger(${enclosing_type}.class);</template><template autoinsert="true" context="java" deleted="false" description="Instert logger info statement" enabled="true" name="logi">LOG.info(${word_selection}${});
+${cursor}</template><template autoinsert="true" context="java" deleted="false" description="" enabled="true" name="logw">LOG.warn(${word_selection}${}, ${});
+${cursor}</template></templates>
