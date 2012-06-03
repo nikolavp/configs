@@ -37,3 +37,6 @@
 [submodule "vim/bundle/markdown"]
 	path = vim/bundle/markdown
 	url = git://github.com/plasticboy/vim-markdown.git
+[submodule "vim/bundle/vim-notes"]
+	path = vim/bundle/vim-notes
+	url = https://github.com/xolox/vim-notes
