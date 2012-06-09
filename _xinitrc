@@ -4,6 +4,8 @@
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 
+#Autorepeat for my taste
+xset r rate 150 30
 
 #set the an alternative layout and switch with caps lock
 setxkbmap -model pc104 -option "grp:alt_shift_toggle" -layout "us,bg" -variant "dvorak,dvorak_phonetic"
