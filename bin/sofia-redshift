@@ -1,0 +1,4 @@
+#!/bin/bash
+
+redshift -l 42.6:23.3 -m vidmode -v
+
