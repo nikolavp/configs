@@ -6,7 +6,7 @@ usermodmap=$HOME/.Xmodmap
 
 
 #set the an alternative layout and switch with caps lock
-setxkbmap -model pc104 -option "grp:alt_shift_toggle" -layout "us,bg" -variant "dvorak,phonetic"
+setxkbmap -model pc104 -option "grp:alt_shift_toggle" -layout "us,bg" -variant "dvorak,dvorak_phonetic"
 
 #some fonts on arch are installed in local
 xset +fp /usr/share/fonts/local
@@ -33,12 +33,12 @@ if [[ ! -z "${syndaemon}" ]];then
 fi
 
 
-#if [ -d /etc/X11/xinit/xinitrc.d ] ; then
-#    for f in /etc/X11/xinit/xinitrc.d/* ; do
-#        [ -x "$f" ] && . "$f"
-#    done
-#    unset f
-#fi
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+    for f in /etc/X11/xinit/xinitrc.d/* ; do
+        [ -x "$f" ] && . "$f"
+    done
+    unset f
+fi
 
 # start some nice programs
 if [ -f $HOME/.Xclients ]; then

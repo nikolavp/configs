@@ -85,6 +85,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
     alias ack=ack-grep
+    #alias ack=/usr/bin/vendor_perl/ack
 fi
 
 # some more ls aliases
@@ -131,6 +132,11 @@ mycd()
     else
         pushd "$@"
     fi 
+    a=$(ls -1 | wc -l)
+    #dont ls if the listing is too big
+    if [[ $a < 35 ]];then
+        ls
+    fi
 }
 
 list()
@@ -217,6 +223,7 @@ extract() {
 
     return $e
 }
+
 
 task(){
     if [[ $# -eq '1' ]] && [[ "$1" =~ ^[0-9]+$ ]] ; then
