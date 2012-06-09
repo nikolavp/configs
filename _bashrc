@@ -141,10 +141,9 @@ mycd()
     fi
 }
 
-list()
-{
-    tree -d -I "target*|[Bb]uild"
-}
+
+alias cd='mycd'
+alias _='popd'
 
 cleanpy(){
     rm -f *.pyc
@@ -154,41 +153,12 @@ cleanpy(){
 shopt -s no_empty_cmd_completion
 shopt -s nocaseglob
 shopt -s cdspell
-alias rm='rm -i'
-alias mv='mv -i'
-alias clean=clean
-alias ls="ls --color=auto"
-alias grep="grep --color=auto"
-alias open=xdg-open
-alias t=task
-alias eclipsejava='~/Genuitec/Profiles/Eclipse\ 3.7\ Java/eclipse'
-alias radioenergy='mplayer http://80.72.68.217:80/nrj.ogg'
-#Ignore whitespace in svn
-alias svndiff='svn diff --diff-cmd diff -x -uw'
 
-alias cd='mycd'
-alias _='popd'
 
-#Prefer vim for everything. Some strange distros like ubuntu have bad defaults like ed -.-
-export TERM=xterm-256color
-export PAGER=less
-export GIT_EDITOR=vim
-export GIT_PAGER=less
-export ONTO_SVN="https://svn.ontotext.com/svn/"
-export JOCI_SVN="${ONTO_SVN}joci/trunk"
-export ROCI_SVN="${ONTO_SVN}roci"
-export NI4=ni4.innovantage.co.uk
-export WORK=$HOME/workspace
-export JOCI=$WORK/joci
-export ROCI=$WORK/roci
-export PYTHONSTARTUP=/home/nikolavp/.pystartup
-export EDITOR=vim
 
 set bell-setle none
 
 export PATH="~/Desktop/android-sdk-linux_x86/tools:~/bin/:$PATH"
-
-MOZILLA_DIST=/home/nikolavp/onto-dist
 
 extract() {
     local c e i
@@ -226,18 +196,7 @@ extract() {
     return $e
 }
 
-
-task(){
-    if [[ $# -eq '1' ]] && [[ "$1" =~ ^[0-9]+$ ]] ; then
-        command task $1 info
-    else
-        command task $@
-    fi
-}
 source $HOME/.sshagent
-
-export MAVEN_OPTS="-XX:PermSize=512m -XX:MaxPermSize=512m -XX:MaxHeapSize=1024m"
-
-jfind(){
-    find $1 -name '*.java'
-}
+source ~/.shell/aliases
+source ~/.shell/env
+source ~/.shell/fuctions

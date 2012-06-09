@@ -1,0 +1,17 @@
+task(){
+    if [[ $# -eq '1' ]] && [[ "$1" =~ ^[0-9]+$ ]] ; then
+        command task $1 info
+    else
+        command task $@
+    fi
+}
+
+
+jfind(){
+    find $1 -name '*.java'
+}
+
+list()
+{
+    tree -d -I "target*|[Bb]uild"
+}

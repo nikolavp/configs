@@ -1,0 +1,14 @@
+export TERM=xterm-256color
+export PAGER=less
+export GIT_EDITOR=vim
+export GIT_PAGER=less
+export ONTO_SVN="https://svn.ontotext.com/svn/"
+export JOCI_SVN="${ONTO_SVN}joci/trunk"
+export ROCI_SVN="${ONTO_SVN}roci"
+export WORK=$HOME/workspace
+export JOCI=$WORK/joci
+export ROCI=$WORK/roci
+export PYTHONSTARTUP=~/.pystartup
+#Prefer vim for everything. Some strange distros like ubuntu have bad defaults like ed -.-
+export EDITOR=vim
+export MAVEN_OPTS="-XX:PermSize=512m -XX:MaxPermSize=512m -XX:MaxHeapSize=1024m"
