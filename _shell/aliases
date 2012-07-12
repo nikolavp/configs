@@ -6,3 +6,5 @@ alias eclipsejava='~/Genuitec/Profiles/Eclipse\ 3.7\ Java/eclipse'
 alias radioenergy='mplayer http://80.72.68.217:80/nrj.ogg'
 #Ignore whitespace in svn
 alias svndiff='svn diff --diff-cmd diff -x -uw'
+#Skype goes crazy sometimes :(
+alias fixskype='killall -9 skype;skype&!'

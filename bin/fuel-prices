@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+#A script to get the curren prices of the fuel from omv.bg
+import sys
+from lxml import etree
+from urllib import urlopen
+
+
+OMV_URL = 'http://www.omv.bg/portal/01/bg/!ut/p/c5/04_SB8K8xLLM9MSSzPy8xBz9CP0os3hfA0sPN89Qo1BHEyMDb1NvE0sTAwgAykdiyoc5GsLk8esOTkrX9_PIz03VL8iNKAcAZISFPQ!!/dl3/d3/L2dJQSEvUUt3QS9ZQnZ3LzZfTTA5SEZJVTJVQTQyMEs1S0o5NDAwMDAwMDA!/'
+
+XPATH_PATTERN = '//tr[ @class = "RowHeadlineTop"]/following-sibling::tr/td/text()'
+
+xml = urlopen(OMV_URL).read()
+html = etree.HTML(xml)
+tags = html.xpath(XPATH_PATTERN)
+
+
+for tag in tags:
+    print(tag)
