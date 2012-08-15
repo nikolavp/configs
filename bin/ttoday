@@ -1,0 +1,11 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+
+if [[ $# = 0 ]];then
+    echo No arguments
+    task +today
+else
+    task $1 mod +today
+fi
+
