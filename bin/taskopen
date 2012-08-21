@@ -30,7 +30,7 @@
 # TODO parse 'task _query' output, use perl instead of bash
 
 # default configuration
-TASKBIN='/usr/bin/task'
+TASKBIN=`which task`
 FOLDER="~/tasknotes/"
 EXT=".txt"
 NOTEMSG="Notes"
