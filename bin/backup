@@ -1,7 +1,19 @@
 #!/bin/bash
 # vim: set sw=4 sts=4 et foldmethod=indent :
 
-HOME="/home/nikolavp"
 DESTINATION="/mnt/backup"
 
+if [[ ! -d $DESTINATION ]];then
+    echo "$DESTINATION doesn't exist or is not a directory"
+    exit 1
+fi
+
+echo Creating a backup in $DESTINATION
+
+echo backing up my blog
+rhc app snapshot save -a blog -f $DESTINATION/blog-$(date +%d-%m-%y).tar.gz
+
+echo syncing everything to $DESTINATION
 rsync -avz --include-from=includes --exclude='/*' --delete $HOME $DESTINATION
+
+
