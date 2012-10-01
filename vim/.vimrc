@@ -374,8 +374,7 @@ au VimEnter * nohls
 endif
 command! -nargs=+ Abb :call functions#Abbreviate(<f-args>)
 "Spot any double word, which are really hard to find. Especially useful for latex :)
-syn match texDoubleWord "\c\<\(\a\+\)\_s\+\1\>"
-hi def link texDoubleWord Error
+au Syntax * syn match Error "\c\<\(\a\+\)\_s\+\1\>"
 "This will indent and close the brace when we are at the end of the line for a
 "function"
 "inoremap <expr> <CR> (col("$")==col(".") ? "\<ESC>=a{\<C-O>o" : "\<CR>")
