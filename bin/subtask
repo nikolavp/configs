@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#This will duplicate the task that is provided for break
+#and then use the > 1 args to modify the resulting task
+#the new task will be marked as a dependency for the
+#breaking task
+
+if [ $# -lt 2 ];then
+    echo Usage:
+    echo "$0 <task-id-to-split> <new-task-attributes>"
+    exit
+fi
+
+task_id=$1
+task _ids | grep $task_id > /dev/null || ( echo "No task with id = $task_id"; exit 1 )
+task $task_id duplicate
+shift 
+new_task_id=$(task _ids | tail -1)
+task $task_id mod depend:$new_task_id
+task $new_task_id mod $@
