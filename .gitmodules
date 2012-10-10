@@ -13,9 +13,6 @@
 [submodule "vim/bundle/matchit"]
 	path = vim/bundle/matchit
 	url = https://github.com/edsono/vim-matchit.git
-[submodule "vim/bundle/bufexplorer"]
-	path = vim/bundle/bufexplorer
-	url = https://github.com/vim-scripts/bufexplorer.zip.git
 [submodule "vim/bundle/NERD-Commenter"]
 	path = vim/bundle/NERD-Commenter
 	url = https://github.com/vim-scripts/The-NERD-Commenter.git
@@ -40,3 +37,6 @@
 [submodule "vim/bundle/vim-notes"]
 	path = vim/bundle/vim-notes
 	url = https://github.com/xolox/vim-notes
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
+	url = git://github.com/kien/ctrlp.vim.git

@@ -264,6 +264,7 @@ endif
 nmap :Q! :q!
 nmap :q1 :q!
 nmap :Q1 :q!
+nmap <leader>be :CtrlPBuffer<CR>
 "I don't use the q macro name :)
 nmap qq :bdelete<CR>
 nmap :W :w
@@ -365,6 +366,9 @@ let g:doxygen_enhanced_color=1
 "Latex options
 let g:Tex_DefaultTargetFormat="pdf"
 let g:Tex_ViewRule_pdf="kpdf"
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 "-----------------------------------------------------------------------
 " final commands
 "-----------------------------------------------------------------------
