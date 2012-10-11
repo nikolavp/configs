@@ -369,6 +369,10 @@ let g:Tex_ViewRule_pdf="kpdf"
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "-----------------------------------------------------------------------
 " final commands
 "-----------------------------------------------------------------------
