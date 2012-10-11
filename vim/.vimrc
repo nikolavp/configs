@@ -7,7 +7,7 @@
 ""{{{1 Basic options in vim
 "source ~/kdesdk.vim
 "source ~/bookmarks.vim
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 call pathogen#helptags()
 runtime ftplugin/man.vim
 source ~/.vim/abbs.vim
@@ -254,7 +254,7 @@ if has("autocmd")
                     \ norm G
         autocmd BufNewFile *.py 0put ='# vim: set sw=4 sts=4 et foldmethod=indent :'|
                     \ 0put ='#!/usr/bin/env python' |
-                    \ set sw=4 sts=4 et tw=80
+                    \ set sw=4 sts=4 et tw=80 |
                     \ norm G
     augroup END
 endif
