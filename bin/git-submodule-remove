@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#Remove a module in a path
+
+if [ $# -lt 1 ];then
+    echo Usage:
+    echo "$0 <submodule-dir>"
+    exit 1
+fi
+
+if [ ! -d "$1" ];then
+    echo "$1 is not a directory of a git submodule"
+    exit 1
+fi
+
+if [ ! -d .git ];then
+    echo Please execute the script from a top level directory of a git repo
+    exit 1
+fi
+
+#Delete the relevant line from the .gitmodules file:
+git config -f .gitmodules --remove-section submodule."$1"
+#Delete the relevant section from .git/config
+git config -f .git/config --remove-section submodule."$1"
+
+#Unstage and remove only from the index (to prevent losing information)
+git rm --cached "$1"
+#Track changes made to .gitmodules
+git add .gitmodules
+
+#Delete the now untracked submodule files
+rm -rf "$1"
+rm -rf .git/modules/"$1"
+# Phew...
