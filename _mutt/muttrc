@@ -1,0 +1,8 @@
+# added by offlineimap
+source ~/.mutt/mailboxes
+
+set folder=~/Maildir
+
+set spoolfile=+INBOX
+
+set sort=threads
