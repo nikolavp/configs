@@ -5,4 +5,10 @@ set folder=~/Maildir
 
 set spoolfile=+INBOX
 
+#Sort messages by threads
 set sort=threads
+
+#View text/html automatically
+auto_view text/html
+#Split the screen to read the message body
+set pager_index_lines=10
