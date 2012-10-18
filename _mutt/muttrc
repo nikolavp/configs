@@ -12,3 +12,11 @@ set sort=threads
 auto_view text/html
 #Split the screen to read the message body
 set pager_index_lines=10
+
+set sidebar_width       = 30
+set sidebar_visible     = yes
+color sidebar_new yellow default
+
+macro index,pager A "<pipe-message>abook --add-email<return>" "add the sender address to abook"
+
+set query_command = "abook --mutt-query '%s'"
