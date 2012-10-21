@@ -8,7 +8,7 @@ set folder=~/Maildir
 # Move read messages from spool to mbox
 set move=yes
 
-set sort=threads #Sort messages by threads
+set sort=reverse-threads #Sort messages by threads
 set sort_aux=reverse-last-date-received  # then by date
 
 #View text/html automatically
