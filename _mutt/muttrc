@@ -31,7 +31,7 @@ macro index,pager A "<pipe-message>abook --add-email<return>" "add the sender ad
 #Use abook for query
 set query_command = "abook --mutt-query '%s'"
 
-unset edit_headers              # The defaults are ok
+set edit_headers              # The defaults are ok
 set pager_stop                # prevent pager from going to next message unlesss you say so
 set pager_index_lines=10      # make the pager 10 lines max - adds "preview" support for mutt
 set pager_context=5           # number of context lines to show

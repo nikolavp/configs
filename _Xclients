@@ -9,6 +9,7 @@ session_cmd=$(cat <<EOF
             gnome-power-manager& \
             gnome-sound-applet& \
             nm-applet& \
+            urxvtd & \
             dropboxd& \
             $BROWSER& \
             devmon --exec-on-drive "$FILE_MANAGER_APP %d" \

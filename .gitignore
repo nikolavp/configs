@@ -1,4 +1,4 @@
-./spell
-./vim/.netrwhist
-./_mutt/mailboxes
+/spell
+/vim/.netrwhist
+/_mutt/mailboxes
 *.pyc

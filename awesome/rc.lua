@@ -9,7 +9,7 @@ require("naughty")
 
 require("revelation")
 
-require("vicious")
+vicious = require("vicious")
 
 
 
@@ -22,6 +22,7 @@ local exec = function (s)
 end
 
 
+terminal = "urxvtc"
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init(home .. "/.config/awesome/zenburn.lua")
@@ -30,7 +31,6 @@ pomodoro.pre_text = ""
 pomodoro.init()
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
 filemanager_app = os.getenv("FILE_MANAGER_APP") or "thunar"
 video_app = os.getenv("VIDEO_APP") or "mplayer"
 editor = os.getenv("EDITOR") or "vim"
@@ -77,7 +77,7 @@ Tags = awful.util.table.join(
     Tags,
     {
         {screen = other_screen, name = "gvim", applications = { "Gvim", "Kate", "Gedit", "KWrite" }, layout = layouts[7]},
-        {screen = other_screen, name = "terms", applications = { "XTerm", "Konsole" }, layout = layouts[7]},
+        {screen = other_screen, name = "terms", applications = { "URxvt", "XTerm", "Konsole" }, layout = layouts[7]},
         {screen = other_screen, name = "dev", applications = {"Eclipse"}, layout = layouts[7]},
         {screen = other_screen, name = "irc", applications = { "Konversation", "Xchat"}, layout = layouts[7]},
     }
@@ -241,7 +241,7 @@ for s = 1, screen.count() do
 
     -- Create the wibox
     wibox[s] = awful.wibox({  screen = s,
-        fg = beautiful.fg_normal, height = 12,
+        fg = beautiful.fg_normal, height = 18,
         bg = beautiful.bg_normal, position = "top",
         border_color = beautiful.border_focus,
         border_width = beautiful.border_width
@@ -283,6 +283,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
+
     awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
@@ -309,7 +310,6 @@ globalkeys = awful.util.table.join(
             end
         end),
 
-    -- Standard program
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 

@@ -38,3 +38,33 @@ Xft.hinting: 1
 Xft.hintstyle: hintfull
 Xft.antialias: 1
 Xft.dpi: 96
+
+URxvt.perl-ext-common:  default,matcher
+URxvt.urlLauncher:      /usr/bin/firefox
+URxvt.matcher.button:   1
+
+URxvt.colorUL: #4682B4
+
+URxvt*termName: URxvt-256color
+URxvt*.color1: #3F3F3F
+URxvt*.color2: #705050
+URxvt*.color5: #9AB9D7
+URxvt*.color6: #DC8CC4
+URxvt*.color7: #8CD1D3
+URxvt*.color8: #DCDCCD
+
+URxvt*.toolBar: false
+URxvt*.foreground: white
+URxvt*.background: grey5
+URxvt*.color4: royalblue
+URxvt*.color11: gold
+URxvt*.color3: chocolate
+
+URxvt.font: xft:terminus:size=10
+URxvt*.multiScroll: true
+URxvt*metaSendsEscape: true
+URxvt*.saveLines: 10000
+URxvt*.showBlinkAsBold: false
+URxvt*scrollBar: false
+URxvt*.utf8: 1
+URxvt*.visualBell: false
