@@ -1,4 +1,7 @@
 export TERM=xterm-256color
+
+eval `dircolors ~/.dircolors`
+
 export PAGER=less
 export GIT_EDITOR=vim
 export GIT_PAGER=less
