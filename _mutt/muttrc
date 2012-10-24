@@ -10,6 +10,7 @@ set move=yes
 
 set sort=threads #Sort messages by threads
 set sort_aux=reverse-last-date-received  # then by date
+set wait_key=no
 
 #View text/html automatically
 auto_view text/html
