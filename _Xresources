@@ -58,7 +58,7 @@ Xft.dpi: 96
 !---- URxvt - General settings {
 URxvt*:borderLess:                    true
 URxvt*cursorBlink:                    true
-URxvt*font:                           terminus-14
+URxvt*font:                           xft:monospace-10
 URxvt*jumpScroll:                     true
 URxvt*scrollBar:                      false
 URxvt*scrollTtyOutput:                false
