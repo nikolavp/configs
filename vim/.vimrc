@@ -172,7 +172,7 @@ end
 if has("gui_running")
     " See ~/.gvimrc
     " I like the traditional Courier New fonts
-    set guifont=Monospace\ 10.5  " use this font
+    set guifont=Consolas\ 10.5  " use this font
     "Turn off that stupid blinking in all modes :(
     set guicursor=
     set guicursor+=n-v-c:block-Cursor/lCursor-blinkon0,
@@ -393,7 +393,6 @@ let java_highlight_java_io=1
 "autocmd Syntax * call AddQtSyntax();
 "autocmd CursorHold * call UpdateMocFiles()
 "autocmd BufNewFile,BufRead * call SetCodingStyle()
-"{{{Getchar function + Eathchar - a neat way for iabbrev that eat a space
 " Append modeline after last line in buffer.
 function! AppendModeline()
   let save_cursor = getpos('.')
@@ -402,6 +401,7 @@ function! AppendModeline()
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 "This deletes the space after the iabrev i don't like sometimes.
+"{{{Getchar function + Eathchar - a neat way for iabbrev that eat a space
 fun! Eatchar(pat)
    let c = Getchar()
    return (c =~ a:pat) ? '' : c
