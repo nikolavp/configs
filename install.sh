@@ -4,7 +4,7 @@
 #General installation of hidden files
 for x in _*;do
     actual_file=${x/_/.}
-    if [[ -h $HOME/$actual_file} ]];then
+    if [[ -h $HOME/$actual_file ]];then
         echo "Another version for $actual_file was found, skipping"
     else
         ln -sf $PWD/"${x}" $HOME/"${actual_file}"
