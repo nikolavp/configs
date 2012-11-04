@@ -1,6 +1,6 @@
 color status cyan default
 
-set from = 'nikolavp@gmail.com'
+set from = 'Nikola Petrov <nikolavp@gmail.com>'
 set spoolfile = '=GMail/INBOX'
 set sendmail = '/usr/bin/msmtp -a gmail'
 set mbox = '=GMail/Archive'

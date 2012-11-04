@@ -1,6 +1,6 @@
 color status green default
 
-set from = 'nikola.petrov@sirma.bg'
+set from = 'Nikola Petrov <nikola.petrov@sirma.bg>'
 set spoolfile = '=Sirma/INBOX'
 set sendmail = '/usr/bin/msmtp -a sirma'
 set mbox = '=Sirma/INBOX.Archive'

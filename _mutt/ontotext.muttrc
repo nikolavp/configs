@@ -1,6 +1,6 @@
 color status blue default
 
-set from = 'nikola.petrov@ontotext.com'
+set from = 'Nikola Petrov <nikola.petrov@ontotext.com>'
 set spoolfile = '=Ontotext/INBOX'
 set sendmail = '/usr/bin/msmtp -a ontotext'
 set mbox = '=Ontotext/INBOX.Archive'
