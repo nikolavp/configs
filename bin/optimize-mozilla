@@ -1,0 +1,14 @@
+#! /bin/bash
+
+
+optimize() {
+    if `pgrep -f $1 > /dev/null`;then
+        echo Skipping optimization of $1 as at is currently running
+    else 
+        echo Optimizing $1
+        for f in ~/$2/*/*.sqlite; do sqlite3 $f 'VACUUM;'; done
+    fi 
+}
+
+optimize firefox .mozilla/firefox
+optimize thunderbird .thunderbird

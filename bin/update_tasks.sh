@@ -16,7 +16,7 @@ function select_pane(){
     tmux select-pane -t "${window_name}.${pane_index}"
 }
 
-send_command "$tasks_session" 'task'
+send_command "$tasks_session" 'task -today'
 select_pane "$tasks_session" 1
 send_command "$tasks_session" 'task +today'
 select_pane "$tasks_session" 2

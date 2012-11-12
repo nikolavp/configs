@@ -7,10 +7,10 @@ echo "offlineimap ($pid): another instance running." >&2
 fi
 
 echo "Filtering email adrresses"
-imapfilter > ~/.imapfilter.log
+imapfilter &> ~/.imapfilter.log
 echo Synchronizing local - remote email
 offlineimap -o -u quiet > ~/.offlineimap.log
 echo Running the notmuch indexer
-notmuch new > ~/.notmuch.log
+notmuch new &> ~/.notmuch.log
 
 

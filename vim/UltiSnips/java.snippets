@@ -1,0 +1,8 @@
+snippet sleep "Call thread sleep" !b
+try {
+    Thread.sleep(${1});
+} catch (InterruptedException e) {
+    e.printStackTrace();
+}
+
+endsnippet

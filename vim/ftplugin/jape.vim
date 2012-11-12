@@ -1,3 +1,1 @@
-iabbrev <buffer> jas AnnotationSet
-iabbrev <buffer> jan Annotation
-iabbrev <buffer> jfm FeatureMap
+let tlist_jape_settings = 'jape;r:rule;m:macro'
