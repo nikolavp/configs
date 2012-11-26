@@ -98,3 +98,6 @@ bind index x quit
 source ~/.mutt/mailboxes
 # Ontotext is the default account I will be using
 source ~/.mutt/ontotext.muttrc
+
+#Tells mutt to determine the correct MIME type by looking up the file name extension in your mime.types file
+mime_lookup application/octet-stream
