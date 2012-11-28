@@ -50,7 +50,15 @@ terminal = "urxvtc"
 -- Themes define colours, icons, and wallpapers
 beautiful.init(home .. "/.config/awesome/zenburn.lua")
 local pomodoro = require("pomodoro")
+exec('xterm')
 pomodoro.pre_text = ""
+pomodoro.on_work_pomodoro_finish_callbacks = {
+    function()
+        exec('slock')
+    end
+}
+-- pomodoro.pause_duration = 10
+-- pomodoro.work_duration = 10
 pomodoro.init()
 
 -- This is used later as the default terminal and editor to run.
@@ -250,7 +258,7 @@ for s = 1, screen.count() do
     -- We need one layoutbox per screen.
     layoutbox[s] = awful.widget.layoutbox(s)
     layoutbox[s]:buttons(awful.util.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
+                            awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
@@ -259,7 +267,7 @@ for s = 1, screen.count() do
 
     -- Create a tasklist widget
     tasklist[s] = awful.widget.tasklist(function(c)
-                                              return awful.widget.tasklist.label.currenttags(c, s)
+                                               return awful.widget.tasklist.label.currenttags(c, s)
                                           end, tasklist.buttons)
 
     -- Create the wibox
