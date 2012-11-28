@@ -6,6 +6,14 @@ ${2}
 endsnippet
 
 
+snippet sql "Creates a sql snippet" !b
+{code:language=sql}
+${1:content}
+{code}
+${2}
+endsnippet
+
+
 snippet note "Note starting" !b
 {note}
 ${1:content}
@@ -18,4 +26,16 @@ snippet pre "Pre used for quoting only" !b
 ${1:content}
 {code}
 ${2}
+endsnippet
+
+snippet b "Bolds a text" !b
+*${1:text}*
+endsnippet
+
+snippet todo "Adds a todo and sets some styles i like" !b
+_*TODO*_: ${1:todoText}
+endsnippet
+
+snippet i "emphasis" !b
+_${1:text}_
 endsnippet
