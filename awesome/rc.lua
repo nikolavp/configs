@@ -50,7 +50,6 @@ terminal = "urxvtc"
 -- Themes define colours, icons, and wallpapers
 beautiful.init(home .. "/.config/awesome/zenburn.lua")
 local pomodoro = require("pomodoro")
-exec('xterm')
 pomodoro.pre_text = ""
 pomodoro.on_work_pomodoro_finish_callbacks = {
     function()
