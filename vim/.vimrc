@@ -100,6 +100,7 @@ colorscheme inkpot
 " Do clever indent things. Don't make a # force column zero.
 set autoindent
 set smartindent
+set foldlevel=2
 inoremap # X<BS>#
 "Enable folds
 if has("folding")
@@ -305,9 +306,8 @@ map <F2><F2> :on<cr>
 "More emacs like keystrokes - those move to the end/beginign of line"
 inoremap <C-e> <esc>$a
 inoremap <C-a> <esc>^i
-"This puts a semicolon at the end of the line and removes it with _;
-nnoremap ; mpA;<ESC>`p
-nnoremap _; mp$x`p
+"This puts a semicolon at the end of the line
+nnoremap <leader>; mpA;<ESC>`p
 imap lll <esc>
 imap hhh <esc>
 imap jj <esc>
