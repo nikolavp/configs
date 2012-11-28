@@ -38,3 +38,5 @@ source $ZSH/oh-my-zsh.sh
 source ~/.shell/aliases
 source ~/.shell/env
 source ~/.shell/fuctions
+
+export REPORTTIME=10
