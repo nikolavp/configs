@@ -1,0 +1,17 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+#Skype goes crazy sometimes :(
+
+killall skype
+# Wait for the kill
+sleep 1
+if [ `pidof skype` > /dev/null ];then 
+    # Ok skype hanged and didn't want to exit so lets wait it for some time(just give it a chance)
+    echo Waiting for 5 seconds for skype to die
+    sleep 5
+    # Check again and if it's already there go on a kill it!
+    [ `pidof skype` > /dev/null ] && { echo "Bored of waiting killing skype the hard way..."; killall -9 skype; }
+fi
+
+killall -9 skype;skype&!
