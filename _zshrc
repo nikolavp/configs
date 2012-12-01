@@ -29,7 +29,7 @@ ZSH_THEME="gentoo"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git autojump gpg-agent svn extract
+plugins=(git autojump gpg-agent svn extract vi-mode
     # Adds pyfind pyclean and pygrep
     python taskwarrior
 )
@@ -40,3 +40,14 @@ source ~/.shell/env
 source ~/.shell/fuctions
 
 export REPORTTIME=10
+
+#Enable editing of command line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd '^e' edit-command-line
+
+#Some emacs keybinding that I sometimes miss
+bindkey -M viins '^e' end-of-line
+bindkey -M viins '^a' beginning-of-line
+bindkey -M viins '^-x^-e' edit-command-line
+
