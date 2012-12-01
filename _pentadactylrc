@@ -1,0 +1,6 @@
+"I have a later keyword for my read later service
+:com! later :open later
+"Springpad integration
+:com! springit :open springit
+
+:set passkeys+=google.com/reader:jks
