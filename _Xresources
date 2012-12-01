@@ -58,7 +58,7 @@ Xft.dpi: 96
 !---- URxvt - General settings {
 URxvt*:borderLess:                    true
 URxvt*cursorBlink:                    true
-URxvt*font:                           xft:consolas-11
+URxvt*font:                           xft:consolas-10
 URxvt*jumpScroll:                     true
 URxvt*scrollBar:                      false
 URxvt*scrollTtyOutput:                false
@@ -68,6 +68,8 @@ URxvt*visualBell:                     false
 URxvt*perl-ext-common:                default,matcher
 URxvt*urlLauncher:                    firefox
 URxvt*matcher.button:                 1
+URxvt*letterSpace: -1
+URxvt.depth: 32
 
 !---- Light URxvt (Solarized Light, 11pt)
 LURxvt*font:                   xft:Anonymous Pro-10
