@@ -50,4 +50,7 @@ bindkey -M vicmd '^e' edit-command-line
 bindkey -M viins '^e' end-of-line
 bindkey -M viins '^a' beginning-of-line
 bindkey -M viins '^-x^-e' edit-command-line
+bindkey -M viins '^r' history-incremental-search-backward
 
+# More on this option here http://www.johnhawthorn.com/2012/09/vi-escape-delays/
+KEYTIMEOUT=1

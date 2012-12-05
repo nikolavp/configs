@@ -435,3 +435,6 @@ endif
 if has("autocmd")
 au VimLeave * mksession! ~/.vimsession
 endif
+
+"More on this option here http://www.johnhawthorn.com/2012/09/vi-escape-delays/
+set timeoutlen=1000 ttimeoutlen=0
