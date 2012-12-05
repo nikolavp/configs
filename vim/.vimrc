@@ -218,6 +218,7 @@ if has("autocmd")
     au BufNewFile,BufRead */itsalltext/*confluence* set ft=confluencewiki
     " Set notes filetype for tasknote and taskwarrior
     au BufNewFile,BufRead */*task*/notes* set ft=notes
+    au BufNewFile,BufRead */*diary* set ft=notes
 
     " Completion modes for the languages we are using
     autocmd FileType python set omnifunc=pythoncomplete#Complete

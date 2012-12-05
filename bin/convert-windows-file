@@ -1,0 +1,4 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+iconv -f windows-1251 $1 -t UTF8 -o $2
