@@ -9,4 +9,4 @@
 [core]
 	excludesfile = ~/.cvsignore
 [push]
-	default = simple
+	#default = simple
