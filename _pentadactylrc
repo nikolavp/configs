@@ -2,5 +2,7 @@
 :com! later :open later
 "Springpad integration
 :com! springit :open springit
+:com! issue-create :open issue-create
 
 :set passkeys+=google.com/reader:jks
+:set hintkeys=aoeuidhts
