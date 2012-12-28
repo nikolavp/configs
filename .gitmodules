@@ -58,3 +58,9 @@
 [submodule "vim/bundle/puppet"]
 	path = vim/bundle/puppet
 	url = git://github.com/rodjek/vim-puppet.git
+[submodule "vim/bundle/vim-preview"]
+	path = vim/bundle/vim-preview
+	url = git://github.com/greyblake/vim-preview.git
+[submodule "vim/bundle/autoclose"]
+	path = vim/bundle/autoclose
+	url = git://github.com/Townk/vim-autoclose.git
