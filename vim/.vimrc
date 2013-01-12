@@ -1,17 +1,14 @@
 " vim: fdm=marker sw=4
-" -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- 
-" Some of the stuff is coppied from the Vimrcs all over the net
-"####################################################################
+" Call pathogen to include modules
+call pathogen#infect()
+call pathogen#helptags()
 " Basic options
 "####################################################################
 ""{{{1 Basic options in vim
-"source ~/kdesdk.vim
-"source ~/bookmarks.vim
-call pathogen#infect()
-call pathogen#helptags()
 runtime ftplugin/man.vim
+" Source this abbs that I am creating with Abb
 source ~/.vim/abbs.vim
-set runtimepath+=~/myvimfiles
+
 scriptencoding utf-8
 set nocompatible    " use vim defaults
 set numberwidth=1   "Make it low so it doesn't get too much space.
@@ -22,16 +19,18 @@ filetype indent on
 "}}}
 syntax on
 set showfulltag     " Show the full tag when we are doing search completion
-set showcmd			" Show the command we are typing
+set showcmd         " Show the command we are typing
 set nowrap          " Make this default and switch it on if we need
 set linebreak       " This don't just cut our words but wraps nice
-set lazyredraw 		" speed up macros
+set lazyredraw      " speed up macros
 set tabstop=4       " numbers of spaces of tab character
 set softtabstop=4   " Really, really useful!
 set shiftwidth=4    " numbers of spaces to (auto)indent
+"{{{Searching options
 set hlsearch        " highlight searches
 set incsearch       " do incremental searching
-set ignorecase 		" No case sensitivity 
+set ignorecase      " No case sensitivity 
+"}}}
 set ruler           " show the cursor position all the time
 set scrolloff=3     " Keep 3 lines when we are scrolling
 set expandtab
@@ -42,11 +41,9 @@ set listchars=tab:·\ ,trail:·,nbsp:·
 "from IRC for that.)
 "let &lcs = "tab:\273\255,trail:\267,eol:\266,nbsp:\u23b5,precedes:\u2190,extends:\u2192"
 set list
-set autowrite
+set autowriteall
 "Don't select text in visual mode when dragging the mouse(i hate that.);
 set mouse=nic
-"set pastetoggle=<F1> "Set F1 to toggle the paste :)
-"Much better :)
 nmap <silent> <F1> :set paste<CR>"+p:set nopaste<CR> 
 "{{{2 No bad visual annoying and beeps
 set novisualbell
@@ -57,17 +54,16 @@ endif
 "}}}
 "Try to wrap on these
 set whichwrap+=<,>,[,]
-"Use the cool tab complete menu(ciaranm's vimrc)
+"Use the cool tab complete menu
 set wildmenu
 set wildignore+=*.o,*~,.lo
 set suffixes+=.in,.a
 set suffixes+=.lo,.o,.moc,.la,.closure,.loT
-"Make backspace delete lots of things(vim book)
+"Make backspace delete lots of things
 set backspace=indent,eol,start
-set backup        	" keep a backup file
+set backup " keep a backup file
 set backupdir=~/tmp/
 set number          " show line numbers
-set ignorecase      " ignore case when searching
 "Enable a nice big viminfo file
 set viminfo='1000,f1,:1000,/1000
 set history=500
@@ -75,38 +71,19 @@ set history=500
 set showmatch
 "Do spell checking for English
 set spell
-set spelllang=
 silent set spelllang+=en
-""{{{Try to load a nice colourscheme (ciaranm)
-"if has("eval")
-"    fun! LoadColourScheme(schemes)
-"        while a:schemes != ""
-"            let a:scheme = strpart(a:schemes, 0, stridx(a:schemes, ":"))
-"            try
-"                exec "colorscheme" a:scheme
-"                break
-"            catch
-"            endtry
-"        endwhile
-"    endfun
-"    if has('gui')
-"        let g:inkpot_black_background = 1
-"        call LoadColourScheme("inkpot:zenburn:night:rainbow_night:darkblue:elflord")
-"    endif
-"endif
 colorscheme inkpot
-"let g:inkpot_black_background = 1
-"}}}
 " Do clever indent things. Don't make a # force column zero.
 set autoindent
 set smartindent
-set foldlevel=2
 inoremap # X<BS>#
-"Enable folds
+"{{{Enable folds
 if has("folding")
     set foldenable
+    set foldlevel=2
     set foldmethod=indent
 endif
+"}}}
 "}}}
 if $TERM=='screen-256color-bce'
    exe "set title titlestring=vim:%f"
@@ -136,8 +113,8 @@ if has('title') && (has('gui_running') || &title)
 endif
 "}}}
 "{{{2 Completion
-"set dictionary+=/usr/share/dict/words
-"set complete+=k
+set dictionary+=/usr/share/dict/cracklib-small
+set complete+=k
 ""}}}
 ""{{{2 Extra terminal things
 if (&term =~ "xterm") && (&termencoding == "")
@@ -172,9 +149,7 @@ end
 ""{{{2
 if has("gui_running")
     " See ~/.gvimrc
-    " I like the traditional Courier New fonts
     set guifont=Consolas\ 10.5  " use this font
-    "Turn off that stupid blinking in all modes :(
     set guicursor=
     set guicursor+=n-v-c:block-Cursor/lCursor-blinkon0,
                 \ve:ver35-Cursor-blinkon0,
@@ -205,8 +180,6 @@ if has("autocmd")
     au FileType cpp,c,java,sh,pl,php,asp  set smartindent
     au FileType cpp,c,java,sh,pl,php,asp  set cindent
     au Filetype cpp,c,java,php,python call functions#FindTags()
-    " Nice imap for curly braces.
-    autocmd FileType c,cpp,java,perl,php imap <buffer> {{ {<esc>o}<esc>O
     " File formats
     au BufNewFile,BufRead  *.pls    set syntax=dosini
     au BufNewFile,BufRead  *.tex  set ft=tex
@@ -290,7 +263,7 @@ map <C-S-l> :bnext<CR>
 map <C-S-h> :bprevious<CR>
 map <C-S-Left> :bprevious<CR>
 "###Some really nice key strokes I stole or are put alone in work with the editor####"
-" Insert a single char (ciaranm :)) 
+" Insert a single char
 noremap <Leader>i i<Space><Esc>r
 " Delete all blank lines in a file
 noremap <Leader>dbl :g/^$/d<CR>:nohls<CR>
@@ -337,31 +310,22 @@ map <leader>brn mR:call functions#BuffersRenameVar("<C-R><C-W>", "nvname")
 cmap w!! %!sudo tee > /dev/null %
 
 imap <c-space> <C-x><C-o>
-map <F12> :TlistToggle<cr>
+map <F12> :TagbarToggle<CR>
 map <F6> :NERDTreeToggle<CR>
 "}}}
 "{{{ Options for the plugins
 let python_highlight_all=1
-" Settings for taglist.vim
-let Tlist_Process_File_Always=1
-let Tlist_Use_Right_Window=1
-let Tlist_Auto_Open=0
-let Tlist_Enable_Fold_Column=0
-let Tlist_Compact_Format=1
-let Tlist_WinWidth=28
-let Tlist_Exit_OnlyWindow=1
-if exists('loaded_taglist')
-    let Tlist_File_Fold_Auto_Close = 1
-    set statusline=%<%f:[\ %{Tlist_Get_Tag_Prototype_By_Line()}\ ]\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-endif
-" Settings for nopaste"
-let g:nickname = "nikolavp"
-" Settings for Autoclose.vim(really cool)
+" Settings for tagbar
+let g:tagbar_compact = 1
+let g:tagbar_width = 28
+let g:tagbar_autoclose = 1
+let g:tagbar_autofocus = 1
+" Autoclose
 let g:AutoCloseProtectedRegions = ["Comment", "String", "Character"] 
-"}}}
+
 "Close NERDTree if open after we open a new file
-"let g:NERDTreeQuitOnOpen=1
-"
+let g:NERDTreeQuitOnOpen=1
+"Doxygen
 let g:load_doxygen_syntax=1
 let g:doxygen_enhanced_color=1
 "Latex options
@@ -374,15 +338,16 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"}}}
 "-----------------------------------------------------------------------
 " final commands
 "-----------------------------------------------------------------------
 " turn off any existing search
 if has("autocmd")
-au VimEnter * nohls
+    au VimEnter * nohls
 endif
 command! -nargs=+ Abb :call functions#Abbreviate(<f-args>)
-"Spot any double word, which are really hard to find. Especially useful for latex :)
+"Spot any double word, which are really hard to find. Especially useful for latex and plain text
 au Syntax * syn match Error "\c\<\(\a\+\)\_s\+\1\>"
 "This will indent and close the brace when we are at the end of the line for a
 "function"
@@ -391,9 +356,6 @@ au Syntax * syn match Error "\c\<\(\a\+\)\_s\+\1\>"
 au Syntax * syn match Error /\s\+$\| \+\ze\t/  " highlight extra whitespace
 let java_highlight_java_lang_ids=1
 let java_highlight_java_io=1
-"autocmd Syntax * call AddQtSyntax();
-"autocmd CursorHold * call UpdateMocFiles()
-"autocmd BufNewFile,BufRead * call SetCodingStyle()
 " Append modeline after last line in buffer.
 function! AppendModeline()
   let save_cursor = getpos('.')
@@ -419,22 +381,15 @@ command! -nargs=+ Iabbr execute "iabbr" <q-args> . "<C-R>=Eatchar('\\s')<CR>"
 command! -nargs=0 FindTags :call functions#FindTags()
 " Bring us to the directory of the file we are editing
 command! CD :cd %:h
-"Deletes some warning from gcc"
-"let &errorformat = "%-G%f\:%l\:\ warning\:\ deprecated\ conversion\ from\ string%.%#\,".&errorformat
-"Use that if we are getting strange warning from gcc"
-"let &errorformat = "%-G%.%#warning:%.%#\,".&errorformat 
-"This deletes the line numbers from pasted text(super useful sometimes
-" '[,'] is used for a region of the last paste
-" :'[,']s/\s*\d\+\..//
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
 
-"Store the session from last time :)
+"Store the session on exit
 if has("autocmd")
-au VimLeave * mksession! ~/.vimsession
+    au VimLeave * mksession! ~/.vimsession
 endif
 
 "More on this option here http://www.johnhawthorn.com/2012/09/vi-escape-delays/
-set timeoutlen=1000 ttimeoutlen=0
+set ttimeoutlen=0

@@ -16,9 +16,6 @@
 [submodule "vim/bundle/NERD-Tree"]
 	path = vim/bundle/NERD-Tree
 	url = https://github.com/vim-scripts/The-NERD-tree.git
-[submodule "vim/bundle/taglist"]
-	path = vim/bundle/taglist
-	url = https://github.com/vim-scripts/taglist.vim.git
 [submodule "awesome/revelation"]
 	path = awesome/revelation
     url = git://github.com/bioe007/awesome-revelation.git
@@ -64,3 +61,6 @@
 [submodule "vim/bundle/autoclose"]
 	path = vim/bundle/autoclose
 	url = git://github.com/Townk/vim-autoclose.git
+[submodule "vim/bundle/tagbar"]
+	path = vim/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar.git
