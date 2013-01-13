@@ -112,10 +112,6 @@ if has('title') && (has('gui_running') || &title)
     set titlestring+=\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}  " working directory
 endif
 "}}}
-"{{{2 Completion
-set dictionary+=/usr/share/dict/cracklib-small
-set complete+=k
-""}}}
 ""{{{2 Extra terminal things
 if (&term =~ "xterm") && (&termencoding == "")
     set termencoding=utf-8
