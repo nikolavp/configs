@@ -44,7 +44,6 @@ set list
 set autowriteall
 "Don't select text in visual mode when dragging the mouse(i hate that.);
 set mouse=nic
-nmap <silent> <F1> :set paste<CR>"+p:set nopaste<CR> 
 "{{{2 No bad visual annoying and beeps
 set novisualbell
 set visualbell t_vb=   
@@ -73,10 +72,8 @@ set showmatch
 set spell
 silent set spelllang+=en
 colorscheme inkpot
-" Do clever indent things. Don't make a # force column zero.
 set autoindent
 set smartindent
-inoremap # X<BS>#
 "{{{Enable folds
 if has("folding")
     set foldenable
@@ -156,159 +153,12 @@ if has("gui_running")
     set lines=30      " height = 50 lines
     set columns=100        " width = 100 columns
     set keymodel=
-"else
-"    colorscheme elflord    " use this color scheme
-"    set background=dark        " adapt colors for background
 endif
 ""}}}
 "}}}
-"{{{Autocmd's for files"
-if has("autocmd")
-    " Restore cursor position
-    au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-    " Filetypes (au = autocmd)
-    au FileType helpfile set nonumber      " no line numbers when viewing help
-    au FileType helpfile nnoremap <buffer><cr> <c-]>   " Enter selects subject
-    au FileType helpfile nnoremap <buffer><bs> <c-T>   " Backspace to go back
-    " When using mutt, text width=72
-    au FileType mail,tex set textwidth=72
-    au FileType cpp,c,java,sh,pl,php,asp  set autoindent
-    au FileType cpp,c,java,sh,pl,php,asp  set smartindent
-    au FileType cpp,c,java,sh,pl,php,asp  set cindent
-    au Filetype cpp,c,java,php,python call functions#FindTags()
-    " File formats
-    au BufNewFile,BufRead  *.pls    set syntax=dosini
-    au BufNewFile,BufRead  *.tex  set ft=tex
-    au BufNewFile,BufRead  *.jape  set ft=jape
-    au BufNewFile,BufRead  *.forum  set ft=forum
-    au BufNewFile,BufRead  modprobe.conf    set syntax=modconf
-
-    " Set confluence syntax highlighting
-    au BufNewFile,BufRead */itsalltext/*confluence* set ft=confluencewiki
-    " Set notes filetype for tasknote and taskwarrior
-    au BufNewFile,BufRead */*task*/notes* set ft=notes
-    au BufNewFile,BufRead */*diary* set ft=notes
-
-    " Completion modes for the languages we are using
-    autocmd FileType python set omnifunc=pythoncomplete#Complete
-    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-    autocmd	FileType css set omnifunc=csscomplete#CompleteCSS
-    autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-    autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-    autocmd FileType c set omnifunc=ccomplete#Complete
-    " Taken from ciaranm, really useful - always open cwindow after :make
-    autocmd QuickFixCmdPost * botright cwindow 5
-    " Always do a full syntax refresh(that can be a litte slow if you
-    " don't have a fast machine)
-    "autocmd CursorHold * make
-endif
-"content creation - some of this is taken from ciaranm(thanks :D)
-if has("autocmd")
-    augroup content
-        autocmd!
-        autocmd BufNewFile *.rb 0put ='# vim: set sw=4 sts=4 et tw=80 :' |
-                    \ 0put ='#!/usr/bin/ruby' | set sw=4 sts=4 et tw=80 |
-                    \ norm G
-        autocmd BufNewFile *.hh 0put ='/* vim: set sw=4 sts=4 et foldmethod=syntax : */' |
-                    \ 1put ='/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */' |
-                    \ 2put ='' | call IncludeGuard() |
-                    \ set sw=4 sts=4 et tw=80 | norm G
-        autocmd BufNewFile *cpp 0put ='/* vim: set sw=4 sts=4 et foldmethod=syntax : */' |
-                    \ 1put ='/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */' |
-                    \ 2put ='' | 3put ='' | call setline(3, '#include "' .
-                    \ substitute(expand("%:t"), ".cc$", ".hh", "") . '"') |
-                    \ set sw=4 sts=4 et tw=80 | norm G
-        autocmd BufNewFile *.sh 0put ='#!/bin/bash' |
-                    \ 1put ='# vim: set sw=4 sts=4 et foldmethod=indent :' |
-                    \ set sw=4 sts=4 et tw=80 |
-                    \ norm G
-        autocmd BufNewFile *.py 0put ='# vim: set sw=4 sts=4 et foldmethod=indent :'|
-                    \ 0put ='#!/usr/bin/env python' |
-                    \ set sw=4 sts=4 et tw=80 |
-                    \ norm G
-    augroup END
-endif
-"}}}
-"{{{Common maps i use 
-"Those are REALLY REALLY annoying
-nmap :Q! :q!
-nmap :q1 :q!
-nmap :Q1 :q!
-nmap <leader>be :CtrlPBuffer<CR>
-"I don't use the q macro name :)
-nmap qq :bdelete<CR>
-nmap :W :w
-nmap ,e :e ~/.vimrc<cr>      " edit my .vimrc file
-nmap ,u :source ~/.vimrc<cr> " update the system settings from my vimrc file
-"Some mappings for quickfix
-"we don't need cc use C instead for changing a whole line
-vmap cc :cc<CR> 
-nmap cc :cc<CR>
-nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
-nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
-vnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
-vnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
-vmap cl :cl<CR> 
-nmap cl :cl<CR>
-nmap ccl :ccl<CR>
-vmap ccl :ccl<CR>
-"Those mappings are for the tabs(all modes)
-map <C-S-Right> :bnext<CR>
-map <C-S-l> :bnext<CR>
-map <C-S-h> :bprevious<CR>
-map <C-S-Left> :bprevious<CR>
-"###Some really nice key strokes I stole or are put alone in work with the editor####"
-" Insert a single char
-noremap <Leader>i i<Space><Esc>r
-" Delete all blank lines in a file
-noremap <Leader>dbl :g/^$/d<CR>:nohls<CR>
-"Edit the files in the current directory 
-noremap <Leader>ed :e <C-r>=expand("%:p:h")<CR>/<C-d>
-"Format the whole file with my rules :)
-map <F4> mpggVG=`p
-nmap <silent> <F7> :make<CR><CR>
-vmap <silent> <F7> :make<CR><CR>
-imap <silent> <F7> <esc>:make<CR><CR>
-map <F2> :nohl<ESC>
-map <F2><F2> :on<cr>
-
-"More emacs like keystrokes - those move to the end/beginign of line"
-inoremap <C-e> <esc>$a
-inoremap <C-a> <esc>^i
-"This puts a semicolon at the end of the line
-nnoremap <leader>; mpA;<ESC>`p
-imap lll <esc>
-imap hhh <esc>
-imap jj <esc>
-imap kk <esc>
-map <up> g<up>
-map <down> g<down>
-noremap <F3> <C-w>w
-
-map // /\V
-nnoremap % %zz
-nnoremap * *zn
-nnoremap <C-f> <C-f>zz
-nnoremap <C-b> <C-b>zz
-vnoremap * y/<C-R>"<CR>
-"map it to the K key which i don't use for man pages(it is even annoying)
-nnoremap <leader>k :call functions#FindInfo("<C-R><C-W>")<CR>
-"select some text and then ask google for it directly with M"
-vnoremap <leader>m y:call functions#FindInfo('<c-r>"')<cr><cr>
-vnoremap <leader>paste y:call Paste('<C-R>"')<cr><cr>
-"Rename the variable under cursor in all buffers. You should confirm to do
-"it. This also puts a mark with name R under the cursor we can go back
-" to the buffer we were after that. Replace nvname with the new variable name
-map <leader>brn mR:call functions#BuffersRenameVar("<C-R><C-W>", "nvname")
-"If we don't have permissions use that to filter
-"the save with sudoers
-cmap w!! %!sudo tee > /dev/null %
-
-imap <c-space> <C-x><C-o>
-map <F12> :TagbarToggle<CR>
-map <F6> :NERDTreeToggle<CR>
-"}}}
+source ~/.vim/filetypes.vim
+source ~/.vim/maps.vim
+source ~/.vim/contents.vim
 "{{{ Options for the plugins
 let python_highlight_all=1
 " Settings for tagbar

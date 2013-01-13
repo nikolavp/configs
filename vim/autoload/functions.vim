@@ -42,7 +42,7 @@ def appendAbb():
     import os
     import vim
     home = os.getenv("USERPROFILE") or os.getenv("HOME")
-    home += "/myvimfiles/abbs.vim"
+    home += "/.vim/abbs.vim"
     Abbs = open(home, "a")
     inputstr = vim.eval("a:input")
     outputstr = vim.eval("a:output")
