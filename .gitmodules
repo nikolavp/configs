@@ -64,3 +64,6 @@
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
+[submodule "vim/bundle/coffescript"]
+	path = vim/bundle/coffescript
+	url = https://github.com/kchmck/vim-coffee-script.git

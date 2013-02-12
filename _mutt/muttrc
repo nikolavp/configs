@@ -8,6 +8,10 @@ set folder=~/Maildir
 # Move read messages from spool to mbox
 set move=yes
 
+#Don't mark unread messages but seen as old
+set mark_old=no
+set mail_check_recent=no
+
 set sort=threads #Sort messages by threads
 set sort_aux=reverse-last-date-received  # then by date
 set wait_key=no
@@ -16,7 +20,7 @@ set wait_key=no
 auto_view text/html
 
 # proper next mailbox and message unread
-bind index,pager n next-new-then-unread
+bind index,pager n next-unread
 bind index,pager <TAB> next-unread-mailbox
 # some macros for showing the links in the pager
 macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
@@ -31,6 +35,10 @@ color sidebar_new yellow default
 macro index,pager A "<pipe-message>abook --add-email<return>" "add the sender address to abook"
 #Use abook for query
 set query_command = "abook --mutt-query '%s'"
+
+# forward everything
+set mime_forward=yes
+set mime_forward_rest=yes 
 
 set edit_headers              # The defaults are ok
 set pager_stop                # prevent pager from going to next message unlesss you say so
