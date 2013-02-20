@@ -79,4 +79,17 @@ cmap w!! %!sudo tee > /dev/null %
 imap <c-space> <C-x><C-o>
 map <F12> :TagbarToggle<CR>
 map <F6> :NERDTreeToggle<CR>
+
+" portable ctrl + space
+" taken from http://stackoverflow.com/questions/2269005/how-can-i-change-the-keybinding-used-to-autocomplete-in-vim
+if has("gui_running")
+    " C-Space seems to work under gVim on both Linux and win32
+    inoremap <C-Space> <C-x><C-o>
+else " no gui
+  if has("unix")
+    inoremap <Nul> <C-x><C-o>
+  else
+  " I have no idea of the name of Ctrl-Space elsewhere
+  endif
+endif
 "}}}
