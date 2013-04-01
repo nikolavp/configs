@@ -4,7 +4,7 @@
 
 if [[ $# = 0 ]];then
     echo No arguments
-    task +today or +OVERDUE or due:today
+    task +today or \(status:pending +OVERDUE\) or due:today
 else
     task $1 mod +today
 fi

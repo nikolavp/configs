@@ -3,6 +3,7 @@
 "Springpad integration
 :com! springit :open springit
 :com! issue-create :open issue-create
+:com! yarnit :open yarnit
 
 :set passkeys+=google.com/reader:jks
 :set hintkeys=aoeuidhts

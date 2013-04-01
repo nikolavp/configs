@@ -159,6 +159,8 @@ endif
 source ~/.vim/filetypes.vim
 source ~/.vim/maps.vim
 source ~/.vim/contents.vim
+" Added and stolen from Radev lately
+source ~/.vim/cyrillic.vim
 "{{{ Options for the plugins
 let python_highlight_all=1
 " Settings for tagbar
@@ -239,3 +241,8 @@ endif
 
 "More on this option here http://www.johnhawthorn.com/2012/09/vi-escape-delays/
 set ttimeoutlen=0
+
+map <Up> <NOP>
+map <Down> <NOP>
+map <Left> <NOP>
+map <Right> <NOP>

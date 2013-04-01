@@ -11,6 +11,7 @@ session_cmd=$(cat <<EOF
             nm-applet& \
             urxvtd & \
             dropboxd& \
+            gtk-redshift& \
             $BROWSER& \
             devmon --exec-on-drive "$FILE_MANAGER_APP %d" \
             --exec-on-disc  "$FILE_MANAGER_APP %d" \
