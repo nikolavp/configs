@@ -5,6 +5,7 @@
 	diff = auto
 	status = auto
 	branch = auto
+	ui = true
 # This one is reused by rsync and other tools
 [core]
 	excludesfile = ~/.cvsignore

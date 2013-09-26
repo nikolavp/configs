@@ -67,3 +67,6 @@
 [submodule "vim/bundle/coffescript"]
 	path = vim/bundle/coffescript
 	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "vim/bundle/go.vim"]
+	path = vim/bundle/go.vim
+	url = https://github.com/fsouza/go.vim.git

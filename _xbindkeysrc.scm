@@ -63,7 +63,7 @@
 
 
 ;; Examples of commands:
-(xbindkey '(Mod4 Return) "urxvtc")
+(xbindkey '(Mod4 Return) "xterm")
 (xbindkey '(XF86ScreenSaver) "lock")
 (xbindkey '(Mod4 F3) "lock")
 (xbindkey '(Mod4 s) "restartskype")

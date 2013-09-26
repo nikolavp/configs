@@ -242,6 +242,9 @@ endif
 "More on this option here http://www.johnhawthorn.com/2012/09/vi-escape-delays/
 set ttimeoutlen=0
 
+let g:loaded_syntastic_java_javac_checker=1
+let g:loaded_syntastic_java_checkstyle_checker=1
+
 map <Up> <NOP>
 map <Down> <NOP>
 map <Left> <NOP>

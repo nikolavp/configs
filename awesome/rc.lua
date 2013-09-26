@@ -49,16 +49,6 @@ terminal = "urxvtc"
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init(home .. "/.config/awesome/zenburn.lua")
-local pomodoro = require("pomodoro")
-pomodoro.pre_text = ""
-pomodoro.on_work_pomodoro_finish_callbacks = {
-    function()
-        exec('slock')
-    end
-}
--- pomodoro.pause_duration = 10
--- pomodoro.work_duration = 10
-pomodoro.init()
 
 -- This is used later as the default terminal and editor to run.
 filemanager_app = os.getenv("FILE_MANAGER_APP") or "thunar"
@@ -290,7 +280,7 @@ for s = 1, screen.count() do
         separator, membar.widget, memicon,
         separator, batwidget, baticon,
         separator, tzswidget, cpugraph.widget, cpuicon,
-        separator, pomodoro.widget, pomodoro.icon_widget,
+        separator,
         s == 1 and systray or nil,
         tasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
@@ -499,6 +489,8 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
+      properties = { floating = true } },
+    { rule = { name = "Screenkey", skip_taskbar = false },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },

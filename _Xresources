@@ -26,7 +26,7 @@ xterm*.color11: gold
 xterm*.color3: chocolate
 
 XTerm*faceName: consolas
-XTerm*faceSize: 10
+XTerm*faceSize: 11
 xterm*.multiScroll: true
 xterm*metaSendsEscape: true
 xterm*.saveLines: 10000
@@ -58,7 +58,7 @@ Xft.dpi: 96
 !---- URxvt - General settings {
 URxvt*:borderLess:                    true
 URxvt*cursorBlink:                    true
-URxvt*font:                           xft:consolas-10
+URxvt*font:                           xft:consolas-11
 URxvt*jumpScroll:                     true
 URxvt*scrollBar:                      false
 URxvt*scrollTtyOutput:                false

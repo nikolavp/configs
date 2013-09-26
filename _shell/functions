@@ -15,3 +15,8 @@ list()
 {
     tree -d -I "target*|[Bb]uild"
 }
+
+pls()
+{
+    echo `pwd`/$1
+}

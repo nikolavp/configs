@@ -38,6 +38,7 @@ noremap <Leader>dbl :g/^$/d<CR>:nohls<CR>
 noremap <Leader>ed :e <C-r>=expand("%:p:h")<CR>/<C-d>
 "Format the whole file with my rules :)
 map <F4> mpggVG=`p
+vnoremap <F4> =
 nmap <silent> <F7> :make<CR><CR>
 vmap <silent> <F7> :make<CR><CR>
 imap <silent> <F7> <esc>:make<CR><CR>

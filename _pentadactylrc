@@ -6,4 +6,5 @@
 :com! yarnit :open yarnit
 
 :set passkeys+=google.com/reader:jks
+:set passkeys+=cloud.feedly.com/:jks
 :set hintkeys=aoeuidhts
