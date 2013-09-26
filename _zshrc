@@ -35,7 +35,7 @@ source /etc/profile
 source $ZSH/oh-my-zsh.sh
 source ~/.shell/aliases
 source ~/.shell/env
-source ~/.shell/fuctions
+source ~/.shell/functions
 
 export REPORTTIME=10
 
