@@ -244,6 +244,11 @@ set ttimeoutlen=0
 
 let g:loaded_syntastic_java_javac_checker=1
 let g:loaded_syntastic_java_checkstyle_checker=1
+"turtle filetypes
+augroup filetypedetect
+    au BufNewFile,BufRead *.n3  setfiletype n3
+    au BufNewFile,BufRead *.ttl  setfiletype n3
+augroup END
 
 map <Up> <NOP>
 map <Down> <NOP>

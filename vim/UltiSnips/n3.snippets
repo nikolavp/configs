@@ -1,0 +1,15 @@
+snippet st "Statement" !b
+${2:predicate} ${3:object} ;
+endsnippet
+
+snippet inst "Instance" !b
+<http://data.emii.com/equity-markets/chn/${1:inst-name}> ${2:predicate} ${3:object} ;
+endsnippet
+
+snippet end "Ending statement" !b
+${2:predicate} ${3:object} .
+endsnippet
+
+snippet uri "Euromoney uri"
+<http://data.emii.com/equity-markets/chn/${1:inst-name}>
+endsnippet

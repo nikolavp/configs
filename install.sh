@@ -23,3 +23,9 @@ git submodule foreach git pull origin master
 
 #This is needed because of the bad directory structure of awesome-freedesktop
 ln -sf $PWD/awesome/awesome-freedesktop/freedesktop $PWD/awesome/freedesktop
+#cat bg-dvorak-phonetic >> /usr/share/X11/xkb/symbols/bg
+#apt-get install xbindkeys -y
+#apt-get install awesome awesome-extra zshell tmux gtk-redshift xscreensaver xscreensaver-data-extra xscreensaver-gl-extra parcellite
+
+#https://github.com/insanum/gcalcli
+
