@@ -25,7 +25,9 @@ git submodule foreach git pull origin master
 ln -sf $PWD/awesome/awesome-freedesktop/freedesktop $PWD/awesome/freedesktop
 #cat bg-dvorak-phonetic >> /usr/share/X11/xkb/symbols/bg
 #apt-get install xbindkeys -y
-#apt-get install awesome awesome-extra zshell tmux gtk-redshift xscreensaver xscreensaver-data-extra xscreensaver-gl-extra parcellite
+#apt-get install awesome awesome-extra zshell tmux gtk-redshift xscreensaver xscreensaver-data-extra xscreensaver-gl-extra parcellite mc
 
 #https://github.com/insanum/gcalcli
 
+#add newer awesome from this ppa
+#ppa:klaus-vormweg/awesome
