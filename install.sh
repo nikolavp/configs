@@ -16,6 +16,7 @@ test -h $HOME/.vim || ln -sf $PWD/vim $HOME/.vim
 test -h $HOME/.vimrc || ln -sf $PWD/vim/.vimrc $HOME/.vimrc
 test -h $HOME/bin || ln -sf $PWD/bin $HOME/bin
 
+git clone git://github.com/Shougo/neobundle.vim vim/bundle/neobundle.vim
 git submodule sync
 git submodule init
 git submodule update

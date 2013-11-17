@@ -1,7 +1,5 @@
+
 " vim: fdm=marker sw=4
-" Call pathogen to include modules
-call pathogen#infect()
-call pathogen#helptags()
 " Basic options
 "####################################################################
 ""{{{1 Basic options in vim
@@ -10,7 +8,73 @@ runtime ftplugin/man.vim
 source ~/.vim/abbs.vim
 
 scriptencoding utf-8
-set nocompatible    " use vim defaults
+" neobundle settings
+if has('vim_starting')
+    set nocompatible               " Be iMproved
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+
+NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'ciaranm/inkpot'
+NeoBundle 'kchmck/vim-coffee-script', {
+            \ 'autoload' : {
+            \   'filetypes': ['coffee'],
+            \ },
+            \}
+
+
+NeoBundle 'rosstimson/scala-vim-support', {
+            \ 'autoload' : {
+            \   'filetypes': ['scala'],
+            \ },
+            \}
+
+NeoBundle 'edsono/vim-matchit'
+NeoBundle 'vim-scripts/The-NERD-tree'
+NeoBundle 'plasticboy/vim-markdown', {
+            \ 'autoload' : {
+            \   'filetypes': ['mkd'],
+            \ },
+            \}
+"needed by vim-notes
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-notes'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'rodjek/vim-puppet', {
+            \ 'autoload' : {
+            \   'filetypes': ['puppet'],
+            \ },
+            \}
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'fsouza/go.vim', {
+            \ 'autoload' : {
+            \   'filetypes': ['go'],
+            \ },
+            \}
+
+NeoBundle 'vim-scripts/n3.vim', {
+            \ 'autoload' : {
+            \   'filetypes': ['n3'],
+            \ },
+            \}
+
+
+"not used enough... remove it for now NeoBundle 'tpope/abolish'
+
+
+
 set numberwidth=1   "Make it low so it doesn't get too much space.
 "{{{2 Filetype options
 filetype on
@@ -254,3 +318,4 @@ map <Up> <NOP>
 map <Down> <NOP>
 map <Left> <NOP>
 map <Right> <NOP>
+NeoBundleCheck

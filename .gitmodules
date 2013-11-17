@@ -1,21 +1,3 @@
-[submodule "vim/bundle/pathogen"]
-	path = vim/bundle/pathogen
-	url = https://github.com/tpope/vim-pathogen.git
-[submodule "vim/bundle/inkpot"]
-	path = vim/bundle/inkpot
-	url = https://github.com/ciaranm/inkpot.git
-[submodule "vim/bundle/scala-support"]
-	path = vim/bundle/scala-support
-	url = https://github.com/rosstimson/scala-vim-support.git
-[submodule "vim/bundle/matchit"]
-	path = vim/bundle/matchit
-	url = https://github.com/edsono/vim-matchit.git
-[submodule "vim/bundle/NERD-Commenter"]
-	path = vim/bundle/NERD-Commenter
-	url = https://github.com/vim-scripts/The-NERD-Commenter.git
-[submodule "vim/bundle/NERD-Tree"]
-	path = vim/bundle/NERD-Tree
-	url = https://github.com/vim-scripts/The-NERD-tree.git
 [submodule "awesome/revelation"]
 	path = awesome/revelation
     url = git://github.com/bioe007/awesome-revelation.git
@@ -25,51 +7,6 @@
 [submodule "awesome/awesome-freedesktop"]
 	path = awesome/awesome-freedesktop
 	url = git://github.com/terceiro/awesome-freedesktop.git
-[submodule "vim/bundle/markdown"]
-	path = vim/bundle/markdown
-	url = git://github.com/plasticboy/vim-markdown.git
-[submodule "vim/bundle/vim-notes"]
-	path = vim/bundle/vim-notes
-	url = https://github.com/xolox/vim-notes
-[submodule "vim/bundle/ctrlp"]
-	path = vim/bundle/ctrlp
-	url = git://github.com/kien/ctrlp.vim.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/endwise"]
-	path = vim/bundle/endwise
-	url = git://github.com/tpope/vim-endwise.git
-[submodule "vim/bundle/abolish"]
-	path = vim/bundle/abolish
-	url = git://github.com/tpope/vim-abolish.git
-[submodule "vim/bundle/surround"]
-	path = vim/bundle/surround
-	url = git://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/ultisnips"]
-	path = vim/bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips
-[submodule "vim/bundle/tabular"]
-	path = vim/bundle/tabular
-	url = git://github.com/godlygeek/tabular.git
-[submodule "vim/bundle/puppet"]
-	path = vim/bundle/puppet
-	url = git://github.com/rodjek/vim-puppet.git
-[submodule "vim/bundle/vim-preview"]
-	path = vim/bundle/vim-preview
-	url = git://github.com/greyblake/vim-preview.git
-[submodule "vim/bundle/autoclose"]
-	path = vim/bundle/autoclose
-	url = git://github.com/Townk/vim-autoclose.git
-[submodule "vim/bundle/tagbar"]
-	path = vim/bundle/tagbar
-	url = git://github.com/majutsushi/tagbar.git
-[submodule "vim/bundle/coffescript"]
-	path = vim/bundle/coffescript
-	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "vim/bundle/go.vim"]
-	path = vim/bundle/go.vim
-	url = https://github.com/fsouza/go.vim.git
-[submodule "vim/bundle/n3"]
-	path = vim/bundle/n3
-	url = https://github.com/vim-scripts/n3.vim.git
+[submodule "vim/bundle/neobundle.vim"]
+	path = vim/bundle/neobundle.vim
+	url = git://github.com/Shougo/neobundle.vim
