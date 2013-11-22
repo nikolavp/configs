@@ -1,0 +1,7 @@
+#!/bin/bash
+screenkey
+screenkey_pid=$!
+
+recordmydesktop --no-frame --fps=15 --no-sound
+
+kill $screenkey_pid

@@ -3,6 +3,9 @@
 
 #General installation of hidden files
 for x in _*;do
+    if [ "$x" = "_fonts.conf" ];then
+        continue
+    fi
     actual_file=${x/_/.}
     if [[ -h $HOME/$actual_file ]];then
         echo "Another version for $actual_file was found, skipping"
@@ -11,6 +14,8 @@ for x in _*;do
     fi
 done
 
+mkdir -p $HOME/.config/fontconfig
+test -h $HOME/.config/fontconfig/fonts.conf || ln -sf $PWD/_fonts.conf $HOME/.config/fontconfig/fonts.conf
 test -h $HOME/.config/awesome || ln -sf $PWD/awesome $HOME/.config/awesome
 test -h $HOME/.vim || ln -sf $PWD/vim $HOME/.vim
 test -h $HOME/.vimrc || ln -sf $PWD/vim/.vimrc $HOME/.vimrc
@@ -23,9 +28,3 @@ git submodule foreach git pull origin master
 
 #This is needed because of the bad directory structure of awesome-freedesktop
 ln -sf $PWD/awesome/awesome-freedesktop/freedesktop $PWD/awesome/freedesktop
-#cat bg-dvorak-phonetic >> /usr/share/X11/xkb/symbols/bg
-#apt-get install xbindkeys -y
-#apt-get install awesome awesome-extra zshell tmux gtk-redshift xscreensaver xscreensaver-data-extra xscreensaver-gl-extra parcellite
-
-#https://github.com/insanum/gcalcli
-

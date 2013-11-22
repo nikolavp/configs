@@ -1,0 +1,2 @@
+
+rm -rf $(svn status  | grep '^?' | cut -d ' ' -f  8)

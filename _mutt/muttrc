@@ -109,3 +109,9 @@ source ~/.mutt/ontotext.muttrc
 
 #Tells mutt to determine the correct MIME type by looking up the file name extension in your mime.types file
 mime_lookup application/octet-stream
+
+
+set header_cache="~/.mutt/.cache/"
+set tmpdir="~/.mutt/.tmp/"
+set message_cachedir="~/.mutt/.messages/"
+set message_cache_clean = no

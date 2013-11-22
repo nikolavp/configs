@@ -3,3 +3,4 @@
 /_mutt/mailboxes
 *.pyc
 /vim/spell
+/_mutt/.cache/

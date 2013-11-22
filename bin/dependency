@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+import sys
+
+dep_spec = None
+if len(sys.argv) > 1:
+    dep_spec = sys.argv[1]
+else:
+    dep_spec = sys.stdin.read().strip()
+
+dep_elements = dep_spec.split(':')
+
+if len(dep_elements) < 3:
+    raise 'Please specify a dependency spec in the form groupId:artifactId:version'
+
+output = '''
+<dependency>
+    <groupId>%s</groupId>
+    <artifactId>%s</artifactId>
+    <version>%s</version>
+</dependency>
+''' % (dep_elements[0], dep_elements[1], dep_elements[2])
+print(output)

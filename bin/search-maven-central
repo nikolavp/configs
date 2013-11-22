@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+
+from urllib import urlopen
+import json
+import sys
+import pprint
+
+url = 'http://search.maven.org/solrsearch/select?q=%s&rows=20&wt=json' % sys.argv[1]
+
+result = urlopen(url).read()
+json_result = json.loads(result)['response']['docs']
+
+#pp = pprint.PrettyPrinter(indent=4)
+#pp.pprint(json_result)
+
+def print_artifact(entry):
+        print("<dependency>")
+        print("\t<groupId>%s</groupId>" % entry['g'])
+        print("\t<artifactId>%s</artifactId>" % entry['a'])
+        print("\t<version>%s</version>" % entry['latestVersion'])
+        print("</dependency>")
+        print("\n")
+
+map(print_artifact, json_result)
+
+
+sys.exit(0)
+
+
+

@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+import re
+import sys
+
+jstack_output = sys.stdin.readlines()
+# first line is a date then follows a version of the jvm and then a blank line.
+# We skip that for now. Maybe we will want to 
+class stacktrace(object):
+    """Docstring for stacktrace """
+
+    def __init__(self):
+        self.lines = []
+        self.times_seen = 1
+        """@todo: to be defined1 """
+
+    def add_line(self, string):
+        self.lines.append(string)
+
+    def has_lines(self):
+        return len(self.lines) != 0
+
+    def __repr__(self):
+
+        return "Seen %d times\n%s" % (self.times_seen, "".join(self.lines))
+
+    def __eq__(self, other):
+        # Ignore the header of the stacktrace
+        return other.lines[1:] == self.lines[1:]
+
+def accumulate_occurences(stacktrace, st):
+    for tmp in stacktrace:
+        if tmp == st:
+            tmp.times_seen = tmp.times_seen + 1
+            return
+    # If not found add it to the list
+    stacktraces.append(st)
+
+stacktraces = []
+st = stacktrace()
+for line in jstack_output[3:]:
+    cleaned_line = re.sub("0x[\d\w]+", "", line) # remove hex context dependant
+    if not cleaned_line.strip():
+        accumulate_occurences(stacktraces, st)
+        st = stacktrace()
+        continue
+
+    st.add_line(cleaned_line)
+for t in stacktraces:
+    print(str(t))

@@ -26,4 +26,21 @@ ${cursor}</template><template autoinsert="true" context="java" deleted="false" d
 private static final Logger LOG =
        LoggerFactory.getLogger(${enclosing_type}.class);</template><template autoinsert="true" context="java" deleted="false" description="Instert logger info statement" enabled="true" name="logi">LOG.info(${word_selection}${});
 ${cursor}</template><template autoinsert="true" context="java" deleted="false" description="" enabled="true" name="logw">LOG.warn(${word_selection}${}, ${});
-${cursor}</template></templates>
+${cursor}</template><template autoinsert="true" context="java" deleted="false" description="Insert testing should pattern" enabled="true" name="should">${:import (org.junit.Test)}
+@Test
+public void should${method_name}() throws Exception{
+    ${cursor}
+}
+</template>
+<template autoinsert="true" context="java" deleted="false" description="New try finally idiom surround" enabled="true" name="tryfinally">try(${line_selection}) {
+    ${cursor}
+}
+</template>
+<template autoinsert="true" context="java" deleted="false" description="New try finally idiom surround" enabled="true" name="nonEmpty">${:import(com.google.common.base.Strings)}
+if (!Strings.isNullOrEmpty(${word_selection})) {
+    ${cursor}
+}
+</template>
+
+</templates>
+
