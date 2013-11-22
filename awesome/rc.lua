@@ -1,9 +1,10 @@
 -- Standard awesome library
-require("awful")
+awful = require("awful")
 require("awful.autofocus")
-require("awful.rules")
+awful.rules = require("awful.rules")
+wibox = require("wibox")
 -- Theme handling library
-require("beautiful")
+beautiful = require("beautiful")
 -- Notification library
 require("naughty")
 
@@ -23,7 +24,7 @@ end
 
 do
     local in_error = false
-    awesome.add_signal('debug::error', function(err)
+    awesome.connect_signal('debug::error', function(err)
         if in_error then return end
         in_error = true
         naughty.notify({
@@ -60,6 +61,7 @@ freedesktop.utils.terminal = terminal  -- default: "xterm"
 freedesktop.utils.icon_theme = 'gnome' -- look inside /usr/share/icons/, default: nil (don't use icon theme)
 require('freedesktop.menu')
 freedesktop_menu_items = freedesktop.menu.new()
+-- freedesktop_menu_items = {}
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -118,7 +120,7 @@ table.insert(freedesktop_menu_items, { "open terminal", terminal })
 
 mainmenu = awful.menu({ items = freedesktop_menu_items, width = 150})
 
-launcher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
+launcher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mainmenu })
 -- }}}
 
@@ -126,15 +128,15 @@ launcher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- Create a textclock widget
 
 -- {{{ Reusable separator
-separator = widget({ type = "imagebox" })
-separator.image = image(beautiful.widget_sep)
+separator = wibox.widget.imagebox()
+separator:set_image(beautiful.widget_sep)
 -- }}}
 
 -- {{{ Date and time
-dateicon = widget({ type = "imagebox" })
-dateicon.image = image(beautiful.widget_date)
+dateicon = wibox.widget.imagebox()
+dateicon:set_image(beautiful.widget_date)
 -- Initialize widget
-datewidget = widget({ type = "textbox" })
+datewidget = wibox.widget.textbox()
 -- Register widget
 vicious.register(datewidget, vicious.widgets.date, "%R", 61)
 -- Register buttons
@@ -145,12 +147,12 @@ datewidget:buttons(awful.util.table.join(
 
 
 -- {{{ Network usage
-dnicon = widget({ type = "imagebox" })
-upicon = widget({ type = "imagebox" })
-dnicon.image = image(beautiful.widget_net)
-upicon.image = image(beautiful.widget_netup)
+dnicon = wibox.widget.imagebox()
+upicon = wibox.widget.imagebox()
+dnicon:set_image(beautiful.widget_net)
+upicon:set_image(beautiful.widget_netup)
 -- Initialize widget
-netwidget = widget({ type = "textbox" })
+netwidget = wibox.widget.textbox()
 -- Register widget
 vicious.register(netwidget, vicious.widgets.net, '<span color="'
   .. beautiful.fg_netdn_widget ..'">${eth0 down_kb}</span> <span color="'
@@ -158,55 +160,52 @@ vicious.register(netwidget, vicious.widgets.net, '<span color="'
 -- }}}
 
 -- {{{ Memory usage
-memicon = widget({ type = "imagebox" })
-memicon.image = image(beautiful.widget_mem)
+memicon = wibox.widget.imagebox()
+memicon:set_image(beautiful.widget_mem)
 -- Initialize widget
 membar = awful.widget.progressbar()
 -- Pogressbar properties
 membar:set_vertical(true):set_ticks(true)
 membar:set_height(12):set_width(8):set_ticks_size(2)
 membar:set_background_color(beautiful.fg_off_widget)
-membar:set_gradient_colors({ beautiful.fg_widget,
-   beautiful.fg_center_widget, beautiful.fg_end_widget
-}) -- Register widget
+-- membar:set_gradient_colors({ beautiful.fg_widget,
+--    beautiful.fg_center_widget, beautiful.fg_end_widget
+-- }) -- Register widget
 vicious.register(membar, vicious.widgets.mem, "$1", 13)
 -- }}}
 
 -- {{{ CPU usage and temperature
-cpuicon = widget({ type = "imagebox" })
-cpuicon.image = image(beautiful.widget_cpu)
+cpuicon = wibox.widget.imagebox()
+cpuicon:set_image(beautiful.widget_cpu)
 -- Initialize widgets
 cpugraph  = awful.widget.graph()
-tzswidget = widget({ type = "textbox" })
+tzswidget = wibox.widget.textbox()
 -- Graph properties
 cpugraph:set_width(40):set_height(14)
 cpugraph:set_background_color(beautiful.fg_off_widget)
-cpugraph:set_gradient_angle(0):set_gradient_colors({
-   beautiful.fg_end_widget, beautiful.fg_center_widget, beautiful.fg_widget
-}) -- Register widgets
+-- cpugraph:set_gradient_angle(0):set_gradient_colors({
+--    beautiful.fg_end_widget, beautiful.fg_center_widget, beautiful.fg_widget
+-- }) -- Register widgets
 vicious.register(cpugraph,  vicious.widgets.cpu,      "$1")
 vicious.register(tzswidget, vicious.widgets.thermal, " $1C", 19, "thermal_zone0")
 -- }}}
 
 -- {{{ Battery state
-baticon = widget({ type = "imagebox" })
-baticon.image = image(beautiful.widget_bat)
+baticon = wibox.widget.imagebox()
+baticon:set_image(beautiful.widget_bat)
 -- Initialize widget
-batwidget = widget({ type = "textbox" })
+batwidget = wibox.widget.textbox()
 -- Register widget
 vicious.register(batwidget, vicious.widgets.bat, "$1$2%", 61, "BAT0")
 -- }}}
 
 
--- Create a systray
-systray = widget({ type = "systray" })
-
 -- Create a wibox for each screen and add it
-wibox = {}
+mywibox = {}
 promptbox = {}
 layoutbox = {}
-taglist = {}
-taglist.buttons = awful.util.table.join(
+mytaglist = {}
+mytaglist.buttons = awful.util.table.join(
                     awful.button({ }, 1, awful.tag.viewonly),
                     awful.button({ modkey }, 1, awful.client.movetotag),
                     awful.button({ }, 3, awful.tag.viewtoggle),
@@ -214,8 +213,8 @@ taglist.buttons = awful.util.table.join(
                     awful.button({ }, 4, awful.tag.viewnext),
                     awful.button({ }, 5, awful.tag.viewprev)
                     )
-tasklist = {}
-tasklist.buttons = awful.util.table.join(
+mytasklist = {}
+mytasklist.buttons = awful.util.table.join(
                      awful.button({ }, 1, function (c)
                                               if not c:isvisible() then
                                                   awful.tag.viewonly(c:tags()[1])
@@ -242,7 +241,7 @@ tasklist.buttons = awful.util.table.join(
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
-    promptbox[s] = awful.widget.prompt({ layout = awful.widget.layout.horizontal.leftright })
+    promptbox[s] = awful.widget.prompt({})
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     layoutbox[s] = awful.widget.layoutbox(s)
@@ -252,39 +251,59 @@ for s = 1, screen.count() do
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
     -- Create a taglist widget
-    taglist[s] = awful.widget.taglist(s, awful.widget.taglist.label.all, taglist.buttons)
+    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
     -- Create a tasklist widget
-    tasklist[s] = awful.widget.tasklist(function(c)
-                                               return awful.widget.tasklist.label.currenttags(c, s)
-                                          end, tasklist.buttons)
+    mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    wibox[s] = awful.wibox({  screen = s,
+    mywibox[s] = awful.wibox({  screen = s,
         fg = beautiful.fg_normal, height = 18,
         bg = beautiful.bg_normal, position = "top",
         border_color = beautiful.border_focus,
         border_width = beautiful.border_width
     })
     -- Add widgets to the wibox - order matters
-    wibox[s].widgets = {
-        {
-            launcher,
-            taglist[s],
-            promptbox[s],
-            layout = awful.widget.layout.horizontal.leftright
-        },
-        layoutbox[s],
-        separator, datewidget, dateicon,
-        separator, upicon,     netwidget, dnicon,
-        separator, membar.widget, memicon,
-        separator, batwidget, baticon,
-        separator, tzswidget, cpugraph.widget, cpuicon,
-        separator,
-        s == 1 and systray or nil,
-        tasklist[s],
-        layout = awful.widget.layout.horizontal.rightleft
-    }
+   -- mywibox[s].widgets = {
+   -- }
+
+    -- Widgets that are aligned to the left
+    local left_layout = wibox.layout.fixed.horizontal()
+    left_layout:add(launcher)
+    left_layout:add(mytaglist[s])
+    left_layout:add(promptbox[s])
+
+    -- Widgets that are aligned to the right
+    local right_layout = wibox.layout.fixed.horizontal()
+    if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(separator)
+    right_layout:add(datewidget)
+    right_layout:add(dateicon)
+    right_layout:add(separator)
+    right_layout:add(upicon)
+    right_layout:add(netwidget)
+    right_layout:add(dnicon)
+    right_layout:add(separator)
+    right_layout:add(membar)
+    right_layout:add(memicon)
+    right_layout:add(separator)
+    right_layout:add(batwidget)
+    right_layout:add(baticon)
+    right_layout:add(separator)
+    right_layout:add(tzswidget)
+    right_layout:add(cpugraph)
+    right_layout:add(cpuicon)
+    right_layout:add(separator)
+    right_layout:add(layoutbox[s])
+
+
+    -- Now bring it all together (with the tasklist in the middle)
+    local layout = wibox.layout.align.horizontal()
+    layout:set_left(left_layout)
+    layout:set_middle(mytasklist[s])
+    layout:set_right(right_layout)
+
+    mywibox[s]:set_widget(layout)
 end
 -- }}}
 
@@ -451,12 +470,12 @@ root.keys(globalkeys)
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
-client.add_signal("manage", function (c, startup)
+client.connect_signal("manage", function (c, startup)
     -- Add a titlebar
     -- awful.titlebar.add(c, { modkey = modkey })
 
     -- Enable sloppy focus
-    c:add_signal("mouse::enter", function(c)
+    c:connect_signal("mouse::enter", function(c)
         if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
             and awful.client.focus.filter(c) then
             client.focus = c
