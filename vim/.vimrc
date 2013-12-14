@@ -18,6 +18,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'Lokaltog/vim-easymotion'
 
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'scrooloose/nerdcommenter'
@@ -28,6 +29,14 @@ NeoBundle 'kchmck/vim-coffee-script', {
             \   'filetypes': ['coffee'],
             \ },
             \}
+
+NeoBundle 'tpope/vim-cucumber', {
+            \ 'autoload' : {
+            \   'filetypes': ['cucumber'],
+            \ },
+            \}
+
+NeoBundle 'Valloric/YouCompleteMe'
 
 
 NeoBundle 'rosstimson/scala-vim-support', {
@@ -313,6 +322,12 @@ augroup filetypedetect
     au BufNewFile,BufRead *.n3  setfiletype n3
     au BufNewFile,BufRead *.ttl  setfiletype n3
 augroup END
+
+
+let g:UltiSnipsExpandTrigger="<C-e>"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-e>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Space>"
 
 map <Up> <NOP>
 map <Down> <NOP>

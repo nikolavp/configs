@@ -15,3 +15,7 @@ export PYTHONSTARTUP=~/.pystartup
 #Prefer vim for everything. Some strange distros like ubuntu have bad defaults like ed -.-
 export EDITOR=vim
 export MAVEN_OPTS="-XX:PermSize=512m -XX:MaxPermSize=512m -XX:MaxHeapSize=1024m"
+
+export PATH="/home/nikolavp/Downloads/play-2.1.0:$PATH"
+export PATH="/opt/vagrant/bin:$PATH"
+export PATH="/opt/mysql/server-5.6/bin/:$PATH"

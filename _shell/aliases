@@ -5,8 +5,12 @@ alias t=task
 alias m=mvn
 alias mci='mvn clean install'
 alias mcp='mvn clean package'
+alias mcpr='mvn clean package -DperformRelease=true'
 alias a=ls
 alias eclipsejava='~/Genuitec/Profiles/Eclipse\ 3.7\ Java/eclipse'
 alias radioenergy='mplayer http://80.72.68.217:80/nrj.ogg'
 #Ignore whitespace in svn
 alias svndiff='svn diff --diff-cmd diff -x -uw'
+alias fastmvn='mvn -T 10C'
+alias clean_joci='mysql joci2 < /home/nikolavp/Projects_resources/JOCI/clean_joci2.sql'
+alias check_jobboards='mysql joci2 < ~/Projects_resources/JOCI/check-jobboard.sql'
