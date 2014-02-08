@@ -58,6 +58,10 @@ map <up> g<up>
 map <down> g<down>
 noremap <F3> <C-w>w
 
+" Mark the last selection with < and >
+vnoremap > >gv
+vnoremap < <gv
+
 map // /\V
 nnoremap % %zz
 nnoremap * *zn
@@ -81,6 +85,13 @@ imap <c-space> <C-x><C-o>
 map <F12> :TagbarToggle<CR>
 map <F6> :NERDTreeToggle<CR>
 
+
+" Needed by syntastics
+nnoremap <silent> en :lnext<CR>
+nnoremap <silent> ep :lprev<CR>
+vnoremap <silent> en :lnext<CR>
+vnoremap <silent> ep :lprev<CR>
+
 " portable ctrl + space
 " taken from http://stackoverflow.com/questions/2269005/how-can-i-change-the-keybinding-used-to-autocomplete-in-vim
 if has("gui_running")
@@ -94,3 +105,4 @@ else " no gui
   endif
 endif
 "}}}
+
