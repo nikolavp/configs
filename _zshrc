@@ -52,3 +52,5 @@ bindkey -M viins '^r' history-incremental-search-backward
 
 # More on this option here http://www.johnhawthorn.com/2012/09/vi-escape-delays/
 KEYTIMEOUT=1
+
+echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)

@@ -333,4 +333,7 @@ map <Up> <NOP>
 map <Down> <NOP>
 map <Left> <NOP>
 map <Right> <NOP>
+
+noremap ; :
+
 NeoBundleCheck
