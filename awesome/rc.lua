@@ -100,7 +100,7 @@ Tags = awful.util.table.join(
     {
         {screen = other_screen, name = "gvim", applications = { "Gvim", "Kate", "Gedit", "KWrite" }, layout = layouts[7]},
         {screen = other_screen, name = "terms", applications = { "URxvt", "XTerm", "Konsole" }, layout = layouts[7]},
-        {screen = other_screen, name = "dev", applications = {"Eclipse"}, layout = layouts[7]},
+        {screen = other_screen, name = "dev", applications = {"Eclipse", "jetbrains-idea-ce" }, layout = layouts[7]},
         {screen = other_screen, name = "irc", applications = { "Konversation", "Xchat"}, layout = layouts[7]},
     }
 )
@@ -343,7 +343,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
     awful.key({ modkey,           }, "Tab",
         function ()
-            awful.client.focus.history.previous()
+            -- awful.client.focus.history.previous()
+            -- Alt + Tab like in other wms
+            awful.client.focus.byidx(-1)
             if client.focus then
                 client.focus:raise()
             end
