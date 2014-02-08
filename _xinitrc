@@ -28,6 +28,12 @@ export EDITOR=`which gvim`
 export FILE_MANAGER_APP=`which nautilus`
 export VIDEO_APP=`which mplayer`
 
+#java sane options in 21 century...
+export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true'
+# use -Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true in your applications
+# if the above doesn't work - on some distros it doesn't
+
 #use syndaemon to disable touchpad while typing if it is installed!
 syndaemon=`which syndaemon`
 if [[ ! -z "${syndaemon}" ]];then
