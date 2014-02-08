@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+# vim: set sw=4 sts=4 et foldmethod=indent :
+# Shows you which submodules have a version specified in their dependencies section.
+# It is a good idea to set those in your parent pom only. 
+# TODO: When I have time i might write this as an enforcer plugin
+
+import xml.etree.ElementTree as xml
+import re
+
+def x(xpath):
+    return re.sub(r'(/+)', r'\1{http://maven.apache.org/POM/4.0.0}', xpath)
+
+
+def root(filename):
+    pom = xml.parse(filename)
+    root = pom.getroot()
+    return root
+
+def check_submodule(module):
+    pom = root(module.text + '/pom.xml')
+    if pom.findall(x('./dependencies//version')):
+        print(module.text)
+
+    if pom.findall(x('./dependencyManagement//version')):
+        print(module.text)
+
+
+
+
+for module in root('pom.xml').findall(x('.//module')):
+    check_submodule(module)
