@@ -1,0 +1,12 @@
+snippet source "Description" !b
+source => 'puppet:///modules/${1:module}/${2:file}'
+endsnippet
+
+snippet p "Parameter documentation"
+# +*${1:name}*+
+# ${2:description}
+endsnippet
+
+snippet reqnodef "Sentence for parameter is required and there is no default"
+This parameter is required and there is no default value.
+endsnippet
