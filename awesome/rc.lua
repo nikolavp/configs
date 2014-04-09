@@ -51,6 +51,9 @@ terminal = "urxvtc"
 -- Themes define colours, icons, and wallpapers
 beautiful.init(home .. "/.config/awesome/zenburn.lua")
 
+local pomodoro = require("pomodoro")
+pomodoro.init()
+
 -- This is used later as the default terminal and editor to run.
 filemanager_app = os.getenv("FILE_MANAGER_APP") or "thunar"
 video_app = os.getenv("VIDEO_APP") or "mplayer"
@@ -90,7 +93,7 @@ layouts =
 
 Tags = {
     {screen = 1, name = "www", applications = {"Firefox", "Chromium", "Konqueror", "Google-chrome"}, layout = layouts[7]},
-    {screen = 1, name = "email", applications = { "Kontact", "Kmail", "Evolution", "Thunderbird" }, layout = layouts[7]},
+    {screen = 1, name = "email", applications = { "Kontact", "Kmail", "Evolution", "Thunderbird"}, layout = layouts[7]},
     {screen = 1, name = "im", applications = { "Skype", "Kopete", "Empathy" }, layout = layouts[7]},
 }
 -- This will handle 2 screens. When more come, write it with a loop.
@@ -100,7 +103,7 @@ Tags = awful.util.table.join(
     {
         {screen = other_screen, name = "gvim", applications = { "Gvim", "Kate", "Gedit", "KWrite" }, layout = layouts[7]},
         {screen = other_screen, name = "terms", applications = { "URxvt", "XTerm", "Konsole" }, layout = layouts[7]},
-        {screen = other_screen, name = "dev", applications = {"Eclipse", "jetbrains-idea-ce" }, layout = layouts[7]},
+        {screen = other_screen, name = "dev", applications = {"Eclipse", "jetbrains-idea-ce" }, layout = layouts[0]},
         {screen = other_screen, name = "irc", applications = { "Konversation", "Xchat"}, layout = layouts[7]},
     }
 )
@@ -277,6 +280,7 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(separator)
+    right_layout:add(pomodoro.icon_widget)
     right_layout:add(datewidget)
     right_layout:add(dateicon)
     right_layout:add(separator)
@@ -509,6 +513,8 @@ awful.rules.rules = {
                      size_hints_honor = false,
                      keys = clientkeys,
                      buttons = clientbuttons } },
+    { rule = {class = "jetbrains-idea-ce"},
+      properties = { floating = true } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { name = "Screenkey", skip_taskbar = false },
@@ -531,4 +537,9 @@ for i, v in pairs(Tags) do
     Tags[i]["tag"] = result
     setTags(v.applications, result)
 end
+
+
+table.insert(awful.rules.rules, {rule = {name = 'mutt'}, properties = {tag = Tags[2]['tag']} })
+table.insert(awful.rules.rules, {rule = {name = 'taskwarrior'}, properties = {tag = Tags[7]['tag']} })
+
 -- }}}
