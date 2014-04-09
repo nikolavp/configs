@@ -69,6 +69,11 @@
 (xbindkey '(Mod4 s) "restartskype")
 (xbindkey '(Mod4 F12) "xcalib -i -a")
 
+(xbindkey '(XF86AudioPrev) "mpc prev")
+(xbindkey '(XF86AudioStop) "mpc stop")
+(xbindkey '(XF86AudioPlay) "mpc toggle")
+(xbindkey '(XF86AudioNext) "mpc next")
+
 
 
 ;;(xbindkey '(control shift q) "xbindkeys_show")
