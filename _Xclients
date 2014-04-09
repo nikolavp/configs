@@ -13,6 +13,7 @@ session_cmd=$(cat <<EOF
             dropboxd& \
             gtk-redshift& \
             $BROWSER& \
+            feh --randomize --bg-fill ~/Dropbox/wallpapers/*& \
             devmon --exec-on-drive "$FILE_MANAGER_APP %d" \
             --exec-on-disc  "$FILE_MANAGER_APP %d" \
             --exec-on-video "$VIDEO_APP dvd://%f" \
