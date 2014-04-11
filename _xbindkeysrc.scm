@@ -73,6 +73,7 @@
 (xbindkey '(XF86AudioStop) "mpc stop")
 (xbindkey '(XF86AudioPlay) "mpc toggle")
 (xbindkey '(XF86AudioNext) "mpc next")
+(xbindkey '(Mod4 Shift t) "open-selection-url")
 
 
 
