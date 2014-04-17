@@ -1,0 +1,16 @@
+snippet it "It from busted lua testing" !b
+it('${1:what}', function()
+	${2:asserts}
+end)
+endsnippet
+
+snippet eq "Equality assert" !b
+assert.are.equal(${1:expected}, ${2:actual})
+endsnippet
+
+snippet desc "Describe from busted lua testing" !b
+describe('${1:what}', function()
+	${2:its}
+end)
+
+endsnippet
