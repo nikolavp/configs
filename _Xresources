@@ -18,21 +18,21 @@ XTerm*.saveLines: 10000
 XTerm*.showBlinkAsBold: false
 XTerm*.utf8: 1
 
-xterm*.toolBar: false
-xterm*.foreground: white
-xterm*.background: grey5
-xterm*.color4: royalblue
-xterm*.color11: gold
-xterm*.color3: chocolate
+XTerm*.toolBar: false
+XTerm*.foreground: white
+XTerm*.background: grey5
+XTerm*.color4: royalblue
+XTerm*.color11: gold
+XTerm*.color3: chocolate
 
 XTerm*faceName: consolas
 XTerm*faceSize: 11
-xterm*.multiScroll: true
-xterm*metaSendsEscape: true
-xterm*.saveLines: 10000
-xterm*.showBlinkAsBold: false
-xterm*.utf8: 1
-xterm*.visualBell: false
+XTerm*.multiScroll: true
+XTerm*metaSendsEscape: true
+XTerm*.saveLines: 10000
+XTerm*.showBlinkAsBold: false
+XTerm*.utf8: 1
+XTerm*.visualBell: false
 
 Xft.hinting: 1
 Xft.hintstyle: hintfull
