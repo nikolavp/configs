@@ -104,7 +104,7 @@ Tags = awful.util.table.join(
         {screen = other_screen, name = "gvim", applications = { "Gvim", "Kate", "Gedit", "KWrite" }, layout = layouts[7]},
         {screen = other_screen, name = "terms", applications = { "URxvt", "XTerm", "Konsole" }, layout = layouts[7]},
         {screen = other_screen, name = "dev", applications = {"Eclipse", "jetbrains-idea-ce" }, layout = layouts[0]},
-        {screen = other_screen, name = "irc", applications = { "Konversation", "Xchat"}, layout = layouts[7]},
+        {screen = other_screen, name = "tasks", applications = { "Konversation", "Xchat"}, layout = layouts[7]},
     }
 )
 
