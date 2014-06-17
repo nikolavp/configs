@@ -13,3 +13,5 @@
 	#default = simple
 [alias]
     st = status
+[credential]
+	helper = cache --timeout=3600
