@@ -1,6 +1,7 @@
-/spell
-/vim/.netrwhist
+configuration/spell
+6vim/.netrwhist
 /_mutt/mailboxes
 *.pyc
 /vim/spell
 vim/bundle/
+_mutt/.cache
