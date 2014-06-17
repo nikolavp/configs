@@ -48,4 +48,5 @@ destination_file = destination.replace('::', '_')
 print("Creating %s" % destination_file)
 
 with open(destination_file, 'x') as d:
-    print(template % matched_type, file=d)
+    content = template % (matched_type, matched_type)
+    print(content, file=d)
