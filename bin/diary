@@ -1,6 +1,0 @@
-#!/bin/bash
-# vim: set sw=4 sts=4 et foldmethod=indent :
-
-DIARY_DIR="${HOME}/Dropbox/diary"
-
-vim "${DIARY_DIR}"/$(date +%F).txt

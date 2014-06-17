@@ -1,6 +1,0 @@
-#!/bin/bash
-# vim: set sw=4 sts=4 et foldmethod=indent :
-
-for x;do
-    avconv -i "${x}" -ab 192k -y "${x/\.flv/.mp3}"
-done
