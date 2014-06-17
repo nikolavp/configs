@@ -515,13 +515,17 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = {class = "jetbrains-idea-ce"},
       properties = { floating = true } },
+    { rule = {instance = "sun-awt-X11-XWindowPeer"},
+      properties = { floating = true } },
+    { rule = {instance = "sun-awt-X11-XFramePeer"},
+      properties = { floating = true } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { name = "Screenkey", skip_taskbar = false },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
-    { rule = { class = "gimp" },
+    { rule = { class = "Gimp" },
       properties = { floating = true } },
 }
 -- }}}
