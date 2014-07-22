@@ -60,6 +60,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'rodjek/vim-puppet', {
             \ 'autoload' : {
