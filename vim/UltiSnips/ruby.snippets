@@ -11,3 +11,8 @@ endsnippet
 snippet params "Parameters definition" !b
 let (:params) { {'${1:name}' => '${2:value}'} }
 endsnippet
+
+snippet pre "Pre block in rspec tests for puppet" !b
+let(:pre_condition) { '${1:code}' }
+
+endsnippet
