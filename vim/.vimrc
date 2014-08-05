@@ -322,6 +322,7 @@ let g:loaded_syntastic_java_checkstyle_checker=1
 augroup filetypedetect
     au BufNewFile,BufRead *.n3  setfiletype n3
     au BufNewFile,BufRead *.ttl  setfiletype n3
+    au BufNewFile,BufRead *.confluence  setfiletype confluencewiki
 augroup END
 
 

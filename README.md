@@ -31,7 +31,26 @@ My awesome config files are compatible with awesome 3.5. If your distribution do
 
 Software that is needed can be required with the following on an Ubuntu system
 
-    sudo apt-get install -y subversion vim-gtk awesome awesome-extra zsh tmux gtk-redshift xscreensaver xscreensaver-data-extra xscreensaver-gl-extra parcellite xbindkeys
+    sudo apt-get install -y subversion vim-gtk awesome awesome-extra zsh tmux gtk-redshift xscreensaver xscreensaver-data-extra xscreensaver-gl-extra parcellite xbindkeys links
 
-You can also check out gcalci(https://github.com/insanum/gcalcli) to see my calendar application :)
 
+# Personal stuff that you may or may not use
+
+    sudo apt-get install keepassx mpd mplayer mutt-patched weechat-curses imapfilter
+
+Other thigs:
+
+* Integration for keepassx with firefox browser https://addons.mozilla.org/en-US/firefox/addon/hostname-in-titlebar/
+* Install skype from their site
+* On ubuntu only
+```
+sudo apt-get install consolekit ubuntu-restricted-extras
+```
+* Install dropboxd from their site
+* Install oh-my-zshell https://github.com/robbyrussell/oh-my-zsh and chsh to /bin/zsh
+
+# Journaling
+I keep a journal, do you? I found jrnl to be exactly what I want :)
+```
+sudo pip install jrnl
+```

@@ -1,0 +1,10 @@
+snippet usage "Description" b
+if [[ $# -ne ${1:number_of_arguments} ]]; then
+    cat <<EOF
+Usage \$0 ${2:arugments_description}
+${3:usage_text}
+EOF
+    exit 1
+fi
+
+endsnippet
