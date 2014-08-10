@@ -22,5 +22,8 @@ session_cmd=$(cat <<EOF
 EOF
 )
 
-
-exec ck-launch-session dbus-launch bash -c "$session_cmd"
+if which ck-launch-session > /dev/null; then
+    exec ck-launch-session dbus-launch bash -c "$session_cmd"
+else
+    exec dbus-launch bash -c "$session_cmd"
+fi
