@@ -1,0 +1,17 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+# A script to get the current svn ignore from another directory in your
+# repository. Especially useful if you are creating a new submodule and want to
+# reuse the same ignores
+
+[[ $# -ne 2 ]] && {
+    cat <<EOF
+Usage: $0 <from-dir> <to-dir> 
+
+<from-dir> - the directory from which to copy the svn:ignore property
+<to-dir> - the directory on which to apply the new svn:ignore property
+EOF
+    exit 1
+}
+
+svn pg svn:ignore $1 | svn propset svn:ignore $2 -F -

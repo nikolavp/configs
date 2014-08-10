@@ -61,6 +61,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'rodjek/vim-puppet', {
             \ 'autoload' : {
@@ -322,6 +323,7 @@ let g:loaded_syntastic_java_checkstyle_checker=1
 augroup filetypedetect
     au BufNewFile,BufRead *.n3  setfiletype n3
     au BufNewFile,BufRead *.ttl  setfiletype n3
+    au BufNewFile,BufRead *.confluence  setfiletype confluencewiki
 augroup END
 
 
