@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # vim: set sw=4 sts=4 et foldmethod=indent :
+# A script to bootstrap a spec file for a define or class in puppet. Given a
+# puppet file, this will create a skeleton .rb spec file
 
 
 import sys

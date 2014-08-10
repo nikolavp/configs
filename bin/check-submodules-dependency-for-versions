@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 # vim: set sw=4 sts=4 et foldmethod=indent :
-# Shows you which submodules have a version specified in their dependencies section.
-# It is a good idea to set those in your parent pom only. 
-# TODO: When I have time i might write this as an enforcer plugin
+# Shows you which submodules have a version specified in their dependencies
+# section.  It is a good idea to set those in your parent pom only.  If you
+# want to enforce that in the pom, you can try
+# https://github.com/ferstl/pedantic-pom-enforcers. For some projects, there is
+# just no such choice..
+
 
 import xml.etree.ElementTree as xml
 import re

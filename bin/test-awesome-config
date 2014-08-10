@@ -1,5 +1,6 @@
 #!/bin/bash
 # vim: set sw=4 sts=4 et foldmethod=indent :
+# Check if the latest changes that were made to awesome configuration will break it
 
 Xephyr -ac -br -noreset :1.0 &
 sleep 1

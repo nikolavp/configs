@@ -1,9 +1,0 @@
-#!/bin/bash
-
-tmp=$(mktemp)
-
-cat > $tmp
-exec < /dev/tty
-vim --cmd 'let &efm=&gfm' -q $tmp "$@"
-rm $tmp
-

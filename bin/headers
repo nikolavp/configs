@@ -1,3 +1,4 @@
 #!/bin/sh
+#Show me only the returned headers from an url without the content
 
 curl -s -D - $@ -o /dev/null

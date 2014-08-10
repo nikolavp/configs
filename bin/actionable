@@ -1,4 +1,5 @@
 #!/bin/bash
 # vim: set sw=4 sts=4 et foldmethod=indent :
+# Show tasks that I are actionable and are not already in today's list
 
 task -today -waiting
