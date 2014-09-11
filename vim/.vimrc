@@ -14,6 +14,7 @@ if has('vim_starting')
     set nocompatible               " Be iMproved
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
+let mapleader = "\<Space>"
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 

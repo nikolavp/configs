@@ -1,12 +1,20 @@
 #!/usr/bin/env python
 # vim: set sw=4 sts=4 et foldmethod=indent :
+# A script that groups stacktraces together and gives you the totals amount of
+# threads that are at the same position. I find this script valuable when
+# debugging systems with thousand of threads. I can see at glance things like:
+# 1) Number of threads waiting on a lock
+# 2) A method that is clearly a hotspot
+# 3) Network contention - If I see many threads waiting on Socket.read
+# In simple usage is
+#       jstack <pid> | group-stacktraces
 
 import re
 import sys
 
 jstack_output = sys.stdin.readlines()
 # first line is a date then follows a version of the jvm and then a blank line.
-# We skip that for now. Maybe we will want to 
+# We skip that for now. Maybe we will want to have that in the future but not for now
 class stacktrace(object):
     """Docstring for stacktrace """
 

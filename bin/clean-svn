@@ -1,2 +1,6 @@
+#!/usr/bin/env python
+# vim: set sw=4 sts=4 et foldmethod=indent :
+# Removes ?(not added or modified) files and directories in svn. Sometimes you
+# just want to clean the mess
 
 rm -rf $(svn status  | grep '^?' | cut -d ' ' -f  8)

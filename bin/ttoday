@@ -1,5 +1,6 @@
 #!/bin/bash
 # vim: set sw=4 sts=4 et foldmethod=indent :
+# Show tasks that are scheduled for today or are urgent
 
 
 if [[ $# = 0 ]];then

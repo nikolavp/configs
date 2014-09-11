@@ -1,4 +1,16 @@
 #!/bin/bash
 # vim: set sw=4 sts=4 et foldmethod=indent :
+# Some people in bulgaria continue to use 1251 for mesages. Emails and what not...
+
+
+if [[ $# -ne 2 ]]; then
+    cat <<EOF
+Usage $0 <source-file> <destination-file>
+<source-file> the source file in windows-1251 that you want to convert
+<destination-file> the file to write the destinanion in UTF-8
+EOF
+    exit 1
+fi
+
 
 iconv -f windows-1251 $1 -t UTF8 -o $2

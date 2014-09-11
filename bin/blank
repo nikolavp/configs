@@ -1,3 +1,0 @@
-#!/bin/bash
-# vim: set sw=4 sts=4 et foldmethod=indent :
-wodim -blank=fast -v dev=/dev/scd0
