@@ -3,6 +3,7 @@
 " Basic options
 "####################################################################
 ""{{{1 Basic options in vim
+let mapleader = "\<Space>"
 runtime ftplugin/man.vim
 " Source this abbs that I am creating with Abb
 source ~/.vim/abbs.vim
@@ -27,6 +28,12 @@ NeoBundle 'ciaranm/inkpot'
 NeoBundle 'kchmck/vim-coffee-script', {
             \ 'autoload' : {
             \   'filetypes': ['coffee'],
+            \ },
+            \}
+
+NeoBundle 'nikolavp/sparql.vim', {
+            \ 'autoload' : {
+            \   'filetypes': ['sparql'],
             \ },
             \}
 
