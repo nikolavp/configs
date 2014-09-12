@@ -58,3 +58,12 @@ I keep a journal, do you? I found jrnl to be exactly what I want :)
 ```
 sudo pip install jrnl
 ```
+
+# Presentation
+I use dspdfviewer with pdfs built with beamer + latex
+
+```
+sudo add-apt-repository ppa:dannyedel/dspdfviewer
+sudo apt-get update
+sudo apt-get install dspdfviewer
+```
