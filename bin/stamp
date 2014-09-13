@@ -1,0 +1,6 @@
+#!/bin/bash
+#Use this script to give you a timestamp of an output if it isn't provided. I am looking at you vagrant
+#An example would be
+# command-with-long-output | this-script
+
+perl -pe 's/^/localtime().": "/e'
