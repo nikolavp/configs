@@ -35,7 +35,7 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true'
 
 #use syndaemon to disable touchpad while typing if it is installed!
 syndaemon=`which syndaemon`
-if [[ ! -z "${syndaemon}" ]];then
+if [ ! -z "${syndaemon}" ];then
     $syndaemon -t -k -i 1 -d
 fi
 
