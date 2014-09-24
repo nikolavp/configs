@@ -3,7 +3,7 @@
 import os
 import sys
 
-MPD_LIBRARY_LOCATION = "/home/nikolavp/music/"
+MPD_LIBRARY_LOCATION = "/home/nikolavp/Dropbox/music/"
 
 print "Deleting the song"
 mpcProcess = os.popen("mpc -f %file%")

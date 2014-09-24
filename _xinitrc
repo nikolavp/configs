@@ -11,8 +11,10 @@ xset r rate 150 30
 setxkbmap -model pc104 -option "grp:alt_shift_toggle" -layout "us,bg" -variant "dvorak,dvorak_phonetic"
 
 #some fonts on arch are installed in local
-xset +fp /usr/share/fonts/local
-xset fp rehash
+if [ -d /usr/share/fonts/local ]; then
+    xset +fp /usr/share/fonts/local
+    xset fp rehash
+fi
 
 # merge in defaults and keymaps
 if [ -f $userresources ]; then
