@@ -67,6 +67,8 @@
 (xbindkey '(XF86ScreenSaver) "lock")
 (xbindkey '(Mod4 F3) "lock")
 (xbindkey '(Mod4 s) "restartskype")
+(xbindkey '(Mod4 Shift d) "dmenu_dict")
+(xbindkey '(Mod4 Shift l) "dmenu_locate")
 (xbindkey '(Mod4 F12) "xcalib -i -a")
 
 (xbindkey '(XF86AudioPrev) "mpc prev")

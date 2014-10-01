@@ -1,0 +1,7 @@
+#!/bin/bash
+tmpfile="/tmp/ddict.lookup"
+
+word=$(xclip -o | dmenu -p 'Dict Lookup:') || exit
+if [ -n $word ]; then
+    $BROWSER "https://www.wordnik.com/words/${word}"
+fi

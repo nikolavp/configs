@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ -f $HOME/.dmenurc ]; then
+    . $HOME/.dmenurc
+else
+    DMENU='dmenu -i'
+fi
+
+input="$(xclip -o | $DMENU -p "file search:")" || exit 1
+
+result="$(echo "$input" | locate -e -i -r "$input" | fgrep -v '/.' | $DMENU -l 8 -p "search result:")"
+
+if [[ -n "${result}" ]]; then
+    xdg-open "${result}"&
+fi
