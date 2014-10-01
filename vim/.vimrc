@@ -38,6 +38,12 @@ NeoBundle 'nikolavp/sparql.vim', {
             \ },
             \}
 
+NeoBundle 'nikolavp/vim-jape', {
+            \ 'autoload' : {
+            \   'filetypes': ['jape'],
+            \ },
+            \}
+
 NeoBundle 'tpope/vim-cucumber', {
             \ 'autoload' : {
             \   'filetypes': ['cucumber'],

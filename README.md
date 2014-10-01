@@ -31,7 +31,7 @@ My awesome config files are compatible with awesome 3.5. If your distribution do
 
 Software that is needed can be required with the following on an Ubuntu system
 
-    sudo apt-get install -y subversion vim-gtk awesome awesome-extra zsh tmux gtk-redshift xscreensaver xscreensaver-data-extra xscreensaver-gl-extra parcellite xbindkeys links compton
+    sudo apt-get install -y subversion vim-gtk awesome awesome-extra zsh tmux gtk-redshift xscreensaver xscreensaver-data-extra xscreensaver-gl-extra parcellite xbindkeys links compton devmon
 
 
 # Personal stuff that you may or may not use
