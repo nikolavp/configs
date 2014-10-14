@@ -26,6 +26,3 @@ git submodule sync
 git submodule init
 git submodule update
 git submodule foreach git pull origin master
-
-#This is needed because of the bad directory structure of awesome-freedesktop
-ln -sf $PWD/awesome/awesome-freedesktop/freedesktop $PWD/awesome/freedesktop

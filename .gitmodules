@@ -4,9 +4,6 @@
 [submodule "awesome/pomodoro"]
 	path = awesome/pomodoro
 	url = git://github.com/nikolavp/awesome-pomodoro.git
-[submodule "awesome/awesome-freedesktop"]
-	path = awesome/awesome-freedesktop
-	url = git://github.com/terceiro/awesome-freedesktop.git
 [submodule "vim/bundle/neobundle.vim"]
 	path = vim/bundle/neobundle.vim
 	url = git://github.com/Shougo/neobundle.vim

@@ -64,12 +64,7 @@ filemanager_app = os.getenv("FILE_MANAGER_APP") or "thunar"
 video_app = os.getenv("VIDEO_APP") or "mplayer"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
-require('freedesktop.utils')
-freedesktop.utils.terminal = terminal  -- default: "xterm"
-freedesktop.utils.icon_theme = 'gnome' -- look inside /usr/share/icons/, default: nil (don't use icon theme)
-require('freedesktop.menu')
-freedesktop_menu_items = freedesktop.menu.new()
--- freedesktop_menu_items = {}
+menu_items = require('menugen').build_menu()
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -123,11 +118,11 @@ awesomemenu = {
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
-table.insert(freedesktop_menu_items, { "awesome", awesomemenu, beautiful.awesome_icon })
-table.insert(freedesktop_menu_items, { "open terminal", terminal })
+table.insert(menu_items, { "awesome", awesomemenu, beautiful.awesome_icon })
+table.insert(menu_items, { "open terminal", terminal })
 
 
-mainmenu = awful.menu({ items = freedesktop_menu_items, width = 150})
+mainmenu = awful.menu({ items = menu_items, width = 150})
 
 launcher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mainmenu })
