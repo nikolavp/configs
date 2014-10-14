@@ -8,10 +8,11 @@ beautiful = require("beautiful")
 -- Notification library
 require("naughty")
 
+
+
 require("revelation")
 
 vicious = require("vicious")
-
 
 -- Code for debugging errors
 if awesome.startup_errors then
@@ -47,6 +48,10 @@ end
 
 
 terminal = "urxvtc"
+
+local menubar = require("menubar")
+menubar.utils.terminal = terminal
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init(home .. "/.config/awesome/zenburn.lua")
@@ -91,13 +96,14 @@ layouts =
 }
 -- }}}
 
+first_screen = screen.count()
 Tags = {
-    {screen = 1, name = "www", applications = {"Firefox", "Chromium", "Konqueror", "Google-chrome"}, layout = layouts[7]},
-    {screen = 1, name = "email", applications = { "Kontact", "Kmail", "Evolution", "Thunderbird"}, layout = layouts[7]},
-    {screen = 1, name = "im", applications = { "Skype", "Kopete", "Empathy" }, layout = layouts[7]},
+    {screen = first_screen, name = "www", applications = {"Firefox", "Chromium", "Konqueror", "Google-chrome"}, layout = layouts[7]},
+    {screen = first_screen, name = "email", applications = { "Kontact", "Kmail", "Evolution", "Thunderbird"}, layout = layouts[7]},
+    {screen = first_screen, name = "im", applications = { "Skype", "Kopete", "Empathy" }, layout = layouts[7]},
 }
 -- This will handle 2 screens. When more come, write it with a loop.
-other_screen = screen.count()
+other_screen = 1
 Tags = awful.util.table.join(
     Tags,
     {
@@ -326,7 +332,6 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
-
     awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
@@ -377,7 +382,9 @@ globalkeys = awful.util.table.join(
                   promptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end)
+              end),
+
+    awful.key({ modkey }, "p", function() menubar.show() end)
 )
 
 function fullscreens(c)
@@ -513,12 +520,6 @@ awful.rules.rules = {
                      size_hints_honor = false,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = {class = "jetbrains-idea-ce"},
-      properties = { floating = true } },
-    { rule = {instance = "sun-awt-X11-XWindowPeer"},
-      properties = { floating = true } },
-    { rule = {instance = "sun-awt-X11-XFramePeer"},
-      properties = { floating = true } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { name = "Screenkey", skip_taskbar = false },
