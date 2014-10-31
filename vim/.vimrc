@@ -339,6 +339,11 @@ augroup filetypedetect
     au BufNewFile,BufRead *.confluence  setfiletype confluencewiki
 augroup END
 
+" Save folds as described here
+" http://vimrc-dissection.blogspot.com/2014/10/save-state-of-folds-mkview.html
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview 
+
 
 let g:UltiSnipsExpandTrigger="<C-e>"
 let g:UltiSnipsListSnippets="<c-tab>"
