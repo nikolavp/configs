@@ -1,0 +1,9 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+
+setxkbmap -model pc104 -option "grp:alt_shift_toggle" -layout "us,bg" -variant ",phonetic"
+synclient TouchpadOff=1
+playonlinux
+synclient TouchpadOff=0
+source ~/.xsettingsrc

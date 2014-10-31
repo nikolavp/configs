@@ -9,3 +9,4 @@ vim/bundle/
 /_mutt/new
 /vim/.netrwhist
 /_shell/env.local
+/vim/view
