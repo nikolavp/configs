@@ -1,0 +1,9 @@
+plugins: fromfilename info web
+directory: ~/Dropbox/new-music
+library: ~/Dropbox/musiclibrary.blb
+
+
+import:
+    move: yes
+match:
+    strong_rec_thresh: 0.10

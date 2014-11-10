@@ -18,6 +18,7 @@ mkdir -p $HOME/.config/fontconfig
 test -h $HOME/.config/fontconfig/fonts.conf || ln -sf $PWD/_fonts.conf $HOME/.config/fontconfig/fonts.conf
 test -h $HOME/.config/awesome || ln -sf $PWD/awesome $HOME/.config/awesome
 test -h $HOME/.config/compton.conf || ln -sf $PWD/_compton.conf $HOME/.config/compton.conf
+test -h $HOME/.config/beets/config.yaml || ln -sf $PWD/_beet_config.yaml $HOME/.config/beets/config.yaml
 test -h $HOME/.vim || ln -sf $PWD/vim $HOME/.vim
 test -h $HOME/.vimrc || ln -sf $PWD/vim/.vimrc $HOME/.vimrc
 test -h $HOME/bin || ln -sf $PWD/bin $HOME/bin
