@@ -1,0 +1,9 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+# Have ever been to a directory and you want to start a reactor build that
+# includes only the current module and be able to specify -am or -amd. Well
+# that's a simple script that does this for you
+# NB: The current module artifactId should be the first one specified(almost
+# always the case)
+
+mvn -pl :`grep -oPm2 "(?<=<artifactId>)[^<]+" pom.xml | tail -1` -f ../ $@

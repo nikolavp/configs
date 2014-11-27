@@ -3,7 +3,7 @@
 
 
 setxkbmap -model pc104 -option "grp:alt_shift_toggle" -layout "us,bg" -variant ",phonetic"
-synclient TouchpadOff=1
+toggle-touchpad
 playonlinux
-synclient TouchpadOff=0
+toggle-touchpad
 source ~/.xsettingsrc

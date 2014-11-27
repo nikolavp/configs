@@ -31,7 +31,7 @@ My awesome config files are compatible with awesome 3.5. If your distribution do
 
 Software that is needed can be required with the following on an Ubuntu system
 
-    sudo apt-get install -y subversion vim-gtk awesome awesome-extra zsh tmux gtk-redshift xscreensaver xscreensaver-data-extra xscreensaver-gl-extra parcellite xbindkeys links compton devmon
+    sudo apt-get install -y subversion vim-gtk awesome awesome-extra zsh tmux gtk-redshift xscreensaver xscreensaver-data-extra xscreensaver-gl-extra parcellite xbindkeys links compton devmon jq
 
 
 # Personal stuff that you may or may not use
@@ -66,4 +66,12 @@ I use dspdfviewer with pdfs built with beamer + latex
 sudo add-apt-repository ppa:dannyedel/dspdfviewer
 sudo apt-get update
 sudo apt-get install dspdfviewer
+```
+
+
+# Beets setup
+
+```
+sudo apt-get install python-dev python-pip libyaml-dev
+sudo pip install beets
 ```
