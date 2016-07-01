@@ -20,3 +20,8 @@ pls()
 {
     echo `pwd`/$1
 }
+
+cdl()
+{
+    cd $1;ls
+}
