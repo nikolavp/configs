@@ -20,15 +20,18 @@ def root(filename):
     return root
 
 def check_submodule(module):
-    pom = root(module.text + '/pom.xml')
+    pom = root(module + '/pom.xml')
     if pom.findall(x('./dependencies//version')):
-        print(module.text)
+        print(module)
 
     if pom.findall(x('./dependencyManagement//version')):
-        print(module.text)
+        print(module)
+
+    for subsubmodule in pom.findall(x('.//module')):
+        check_submodule(module + "/" + subsubmodule.text)
 
 
 
 
 for module in root('pom.xml').findall(x('.//module')):
-    check_submodule(module)
+    check_submodule(module.text)

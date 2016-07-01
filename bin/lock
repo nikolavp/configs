@@ -5,6 +5,7 @@ xset dpms force off
 #mark us away in the chat clients
 skype_status.py away
 empathy_status.py away
+mpc pause
 #actual lock
 slock
 #mark us available in the chat clients
