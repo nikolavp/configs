@@ -83,6 +83,7 @@
 
 ;; set directly keycode (here control + f with my keyboard)
 ;;(xbindkey '("m:0x4" "c:41") "xterm")
+;;
 
 ;; specify a mouse button
 ;;(xbindkey '(control "b:2") "xterm")
@@ -177,6 +178,14 @@
 ;;  "gv" "xpdf" "xterm" "xterm")
 
 
+;; Mouse Buttons for evoluent mouse
+;;"xvkbd -xsendevent -text "\[XF86Back]""
+;;m:0x0 + b:8 
+;;"xvkbd -xsendevent -text "\[XF86Forward]""
+;;m:0x0 + b:9
+(xbindkey '("m:0x0" "b:10") "xvkbd -xsendevent -text \"\\[XF86Forward]\"")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; End of xbindkeys guile configuration ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
