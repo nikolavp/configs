@@ -192,22 +192,6 @@ if has('title') && (has('gui_running') || &title)
     set titlestring+=\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}  " working directory
 endif
 "}}}
-""{{{2 Extra terminal things
-if (&term =~ "xterm") && (&termencoding == "")
-    set termencoding=utf-8
-endif
-if &term =~ "xterm"
-    " use xterm titles
-    if has('title')
-        set title
-    endif
-    " change cursor colour depending upon mode
-    if exists('&t_SI')
-        let &t_SI = "\<Esc>]12;lightgoldenrod\x7"
-        let &t_EI = "\<Esc>]12;grey80\x7"
-    endif
-endif
-"}}}
 "}}}
 ""{{{1
 "Gui options 
