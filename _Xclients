@@ -11,6 +11,7 @@ session_cmd=$(cat <<EOF
             nm-applet& \
             urxvtd & \
             dropboxd& \
+            kbdd& \
             gtk-redshift& \
             $BROWSER& \
             compton& \

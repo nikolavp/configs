@@ -1,0 +1,5 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+# A convenient script to screenshot me the currently selected window, so I can create a bugreport with it.
+
+scrot -c -s

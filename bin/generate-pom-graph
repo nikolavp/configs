@@ -1,0 +1,1 @@
+mvn org.fusesource.mvnplugins:maven-graph-plugin:reactor -Dhide-external=true

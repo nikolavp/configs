@@ -4,7 +4,6 @@
 "####################################################################
 ""{{{1 Basic options in vim
 let mapleader = "\<Space>"
-runtime ftplugin/man.vim
 " Source this abbs that I am creating with Abb
 source ~/.vim/abbs.vim
 
@@ -16,15 +15,12 @@ if has('vim_starting')
 endif
 let mapleader = "\<Space>"
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Lokaltog/vim-easymotion'
 
-NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'ciaranm/inkpot'
 NeoBundle 'kchmck/vim-coffee-script', {
             \ 'autoload' : {
@@ -50,38 +46,17 @@ NeoBundle 'tpope/vim-cucumber', {
             \ },
             \}
 
-NeoBundle 'Valloric/YouCompleteMe'
-
-
 NeoBundle 'rosstimson/scala-vim-support', {
             \ 'autoload' : {
             \   'filetypes': ['scala'],
             \ },
             \}
 
-NeoBundle 'edsono/vim-matchit'
-NeoBundle 'vim-scripts/The-NERD-tree'
 NeoBundle 'plasticboy/vim-markdown', {
             \ 'autoload' : {
             \   'filetypes': ['mkd'],
             \ },
             \}
-"needed by vim-notes
-NeoBundle 'xolox/vim-misc'
-NeoBundle 'xolox/vim-notes'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'rodjek/vim-puppet', {
-            \ 'autoload' : {
-            \   'filetypes': ['puppet'],
-            \ },
-            \}
-NeoBundle 'majutsushi/tagbar'
 NeoBundle 'fsouza/go.vim', {
             \ 'autoload' : {
             \   'filetypes': ['go'],
@@ -93,9 +68,29 @@ NeoBundle 'vim-scripts/n3.vim', {
             \   'filetypes': ['n3'],
             \ },
             \}
+" Helpful for puppet development
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'rodjek/vim-puppet', {
+            \ 'autoload' : {
+            \   'filetypes': ['puppet'],
+            \ },
+            \}
+
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/nerdtree'
+
+call neobundle#end()
+NeoBundleCheck
 
 
-"not used enough... remove it for now NeoBundle 'tpope/abolish'
+"not used enough... remove it for now 
+"NeoBundle 'tpope/abolish'
+"NeoBundle 'tpope/vim-surround'
+"NeoBundle 'majutsushi/tagbar'
 
 
 
@@ -195,22 +190,6 @@ if has('title') && (has('gui_running') || &title)
     set titlestring+=%h%m%r%w                                         " flags
     set titlestring+=\ -\ %{v:progname}                               " program name
     set titlestring+=\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}  " working directory
-endif
-"}}}
-""{{{2 Extra terminal things
-if (&term =~ "xterm") && (&termencoding == "")
-    set termencoding=utf-8
-endif
-if &term =~ "xterm"
-    " use xterm titles
-    if has('title')
-        set title
-    endif
-    " change cursor colour depending upon mode
-    if exists('&t_SI')
-        let &t_SI = "\<Esc>]12;lightgoldenrod\x7"
-        let &t_EI = "\<Esc>]12;grey80\x7"
-    endif
 endif
 "}}}
 "}}}
@@ -342,7 +321,7 @@ augroup END
 " Save folds as described here
 " http://vimrc-dissection.blogspot.com/2014/10/save-state-of-folds-mkview.html
 autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview 
+autocmd BufWinEnter *.* silent! loadview 
 
 
 let g:UltiSnipsExpandTrigger="<C-e>"
