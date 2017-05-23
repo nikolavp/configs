@@ -26,7 +26,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(fabric git autojump ssh-agent svn extract vi-mode
+plugins=(fabric git autojump svn extract vi-mode
     # Adds pyfind pyclean and pygrep
     python taskwarrior
 )
@@ -53,4 +53,21 @@ bindkey -M viins '^r' history-incremental-search-backward
 # More on this option here http://www.johnhawthorn.com/2012/09/vi-escape-delays/
 KEYTIMEOUT=1
 
-echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
+if which shuf &> /dev/null;then
+    echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
+
+fi
+
+export PATH="/usr/local/opt/gettext/bin:$PATH"
+
+if which direnv &> /dev/null;then
+    eval "$(direnv hook zsh)"
+fi
+
+show_virtual_env() {
+    if [ -n "$VIRTUAL_ENV" ]; then
+        echo "($(basename $VIRTUAL_ENV))"
+    fi
+}
+
+export PS1='$(show_virtual_env)'$PS1
