@@ -43,6 +43,7 @@ Other thigs:
 * Integration for keepassx with firefox browser https://addons.mozilla.org/en-US/firefox/addon/hostname-in-titlebar/
 * Install skype from their site
 * Install taskn for tasknotes in taskwarrior 
+* Install git-standup from https://github.com/kamranahmedse/git-standup
 ```
 sudo pip install taskn
 ```
