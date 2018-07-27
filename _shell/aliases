@@ -1,6 +1,8 @@
 alias rm='rm -i'
 alias mv='mv -i'
-alias open=xdg-open
+if ! which open &> /dev/null;then
+    alias open=xdg-open
+fi
 alias t=task
 alias m=mvn
 alias mci='mvn clean install'
