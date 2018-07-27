@@ -18,8 +18,8 @@ vmap cc :cc<CR>
 nmap cc :cc<CR>
 nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
 nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
-vnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
-vnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
+nnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
+nnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
 vmap cl :cl<CR>
 nmap cl :cl<CR>
 nmap ccl :ccl<CR>
@@ -106,3 +106,27 @@ else " no gui
 endif
 "}}}
 
+
+command! Buffers call fzf#run(fzf#wrap(
+    \ {'source': map(range(1, bufnr('$')), 'bufname(v:val)')}))
+
+nnoremap <leader>ss :Rg<CR>
+nnoremap <leader>fe :FZF<CR>
+
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+nnoremap <silent> <Leader>be :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })<CR>

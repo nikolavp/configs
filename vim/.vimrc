@@ -78,10 +78,14 @@ NeoBundle 'rodjek/vim-puppet', {
 
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'tpope/vim-endwise'
-NeoBundle 'SirVer/ultisnips'
+"NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
+
+NeoBundle 'jremmen/vim-ripgrep'
+
+NeoBundle 'w0rp/ale'
 
 call neobundle#end()
 NeoBundleCheck
@@ -133,6 +137,11 @@ set visualbell t_vb=
 if has("autocmd")
     autocmd GUIEnter * set visualbell t_vb=
 endif
+
+if has("nvim")
+    set inccommand=nosplit
+endif
+
 "}}}
 "Try to wrap on these
 set whichwrap+=<,>,[,]
@@ -160,7 +169,7 @@ set smartindent
 "{{{Enable folds
 if has("folding")
     set foldenable
-    set foldlevel=2
+    set foldlevel=4
     set foldmethod=indent
 endif
 "}}}
@@ -336,4 +345,4 @@ map <Right> <NOP>
 
 noremap ; :
 
-NeoBundleCheck
+set rtp+=/usr/local/opt/fzf
