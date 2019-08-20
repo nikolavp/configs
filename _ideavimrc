@@ -1,1 +1,22 @@
-source ~/.vimrc
+" For some reason this is slowing the plugin a lot.
+" source ~/.vim/maps.vim 
+"
+nnoremap ,u :source ~/.ideavimrc<cr>
+
+let mapleader = ' '
+
+set number
+set incsearch hlsearch
+set ignorecase smartcase
+set clipboard=unnamed
+set scrolloff=5
+set showmode
+set surround
+
+
+nnoremap <leader>r :action RenameElement<cr>
+nnoremap <leader>u :action ShowUsages<cr>
+nnoremap <leader>n :action GotoNextError<cr>
+nnoremap <leader>p :action GotoPreviousError<cr>
+nnoremap <leader>i :action Inline<cr>
+nnoremap <leader>a :action GotoAction<cr>
