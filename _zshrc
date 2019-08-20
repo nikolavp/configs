@@ -71,3 +71,6 @@ show_virtual_env() {
 }
 
 export PS1='$(show_virtual_env)'$PS1
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export HOMEBREW_NO_ANALYTICS=1
