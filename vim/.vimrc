@@ -57,11 +57,6 @@ NeoBundle 'plasticboy/vim-markdown', {
             \   'filetypes': ['mkd'],
             \ },
             \}
-NeoBundle 'fsouza/go.vim', {
-            \ 'autoload' : {
-            \   'filetypes': ['go'],
-            \ },
-            \}
 
 NeoBundle 'vim-scripts/n3.vim', {
             \ 'autoload' : {
@@ -76,9 +71,11 @@ NeoBundle 'rodjek/vim-puppet', {
             \ },
             \}
 
+NeoBundle 'fatih/vim-go'
+
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'tpope/vim-endwise'
-"NeoBundle 'SirVer/ultisnips'
+NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
@@ -87,14 +84,27 @@ NeoBundle 'jremmen/vim-ripgrep'
 
 NeoBundle 'w0rp/ale'
 
-call neobundle#end()
-NeoBundleCheck
-
 
 "not used enough... remove it for now 
 "NeoBundle 'tpope/abolish'
 "NeoBundle 'tpope/vim-surround'
-"NeoBundle 'majutsushi/tagbar'
+NeoBundle 'majutsushi/tagbar'
+
+NeoBundle 'Shougo/deoplete.nvim'
+NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'roxma/vim-hug-neovim-rpc'
+
+NeoBundle 'zchee/deoplete-go', {'build': {'unix': 'make'}}
+
+
+call neobundle#end()
+NeoBundleCheck
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#gocode_binary = '/Users/nikolavp/gocode/bin/gocode'
+let g:go_auto_type_info = 1
+set updatetime=100
+
 
 
 
@@ -346,3 +356,11 @@ map <Right> <NOP>
 noremap ; :
 
 set rtp+=/usr/local/opt/fzf
+
+" Make uppercase behave in a sane way like D and C. You can use yy for whole
+" line
+noremap Y y$
+
+" Make the overwriting paste in visual mode keep the last yank
+xnoremap p "_dP
+
