@@ -11,9 +11,13 @@ Note that some things require particular version of software to be presented(vim
 
 
 ### Dvorak
-I am using dvorak and because I am from Bulgaria, I needed a dvorak mapping for my language. You can install it with the following
+I am using dvorak and because I am from Bulgaria, I needed a dvorak mapping for my language. You can install it with the following on Linux
 
     cat bg-dvorak-phonetic >> /usr/share/X11/xkb/symbols/bg
+
+On Macos, you need to copy the layout files
+
+    cp dvorak-macos/* ~/Library/Keyboard\ Layouts/
 
 # Newer version of vim needed
 One of the plugins(YouCompleteMe) in the vim configuration needs a newer version of vim(at least from the one distributed with Ubuntu). Here is how to get a newer package:
