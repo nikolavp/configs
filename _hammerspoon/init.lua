@@ -11,8 +11,8 @@ clipboard:bindHotkeys({
 clipboard.show_in_menubar = false
 clipboard:start()
 
-hs.loadSpoon('MiroWindowsManager')
-spoon.MiroWindowsManager:bindHotkeys({
+miromanager = hs.loadSpoon('MiroWindowsManager')
+miromanager:bindHotkeys({
   up = {hyper, "up"},
   right = {hyper, "right"},
   down = {hyper, "down"},
@@ -46,6 +46,10 @@ hs.hotkey.bind({'ctrl', 'alt'}, 'right', function()
     spoon.WinWin:moveToScreen('right')
     spoon.WinWin:moveAndResize('fullscreen')
     spoon.WinWin:centerCursor()
+end)
+
+hs.hotkey.bind(hyper, 't', function()
+    hs.execute('todo', true)
 end)
 
 function ssidChangedCallback()
