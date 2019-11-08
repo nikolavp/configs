@@ -1,0 +1,3 @@
+
+
+echo "thread backtrace all" | lldb -p $1

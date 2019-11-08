@@ -1,0 +1,16 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+
+echo "Fetching from origin"
+git fetch origin
+current_branch=$(git symbolic-ref --short HEAD)
+result=$(git branch "$current_branch" --contains origin/master)
+
+if [ -z "$result" ];then
+    echo "\033[0;31mYour branch dosen\'t have the origin/master commit, you will need to rebase"
+    exit 1
+fi
+
+echo "\033[0;32mLanding change in master branch"
+arc land

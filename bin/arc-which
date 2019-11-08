@@ -1,0 +1,11 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+diff=$(arc which | grep -oE 'D\d+')
+
+if [ -z $diff ];then
+    echo "No diff associated with current branch"
+    exit 1
+fi
+
+arc browse $diff

@@ -1,0 +1,15 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+
+if [ $# -lt 1 ];then
+    echo "usage $0 [list-of-reviewers]"
+    exit 1
+fi
+
+reviewers=( "$@" )
+reviewer=${reviewers[$RANDOM % ${#reviewers[@]} ]}
+
+echo "Picked up $reviewer as a reviewer"
+
+arc diff --reviewers "$reviewer"

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo New uuid copied to clipboard
+uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy
