@@ -1,5 +1,6 @@
 -- remove that shit
 hs.window.animationDuration = 0
+require "string"
 local hyper = {"ctrl", "alt", "cmd"}
 
 hs.loadSpoon('WinWin')
@@ -27,7 +28,8 @@ apps = {
     v = 'Viber',
     m = 'uChat',
     t = 'iTerm',
-    n = 'Notes'
+    n = 'Notes',
+    j = 'IntelliJ IDEA',
 }
 
 for k, v in pairs(apps) do
@@ -68,6 +70,34 @@ function ssidChangedCallback()
 end
 wifiWatcher = hs.wifi.watcher.new(ssidChangedCallback)
 wifiWatcher:start()
+
+-- Disable bluetooth when going to sleep. Taken from https://gist.github.com/ysimonson/fea48ee8a68ed2cbac12473e87134f58
+-- This makes some bluetooth devices like headphones to be able to disconnect othrewise they stay connected
+-- when the lid is closed
+
+function checkBluetoothResult(rc, stderr, stderr)
+    if rc ~= 0 then
+        print(string.format("Unexpected result executing `blueutil`: rc=%d stderr=%s stdout=%s", rc, stderr, stdout))
+    end
+end
+
+function bluetooth(power)
+    print("Setting bluetooth to " .. power)
+    local t = hs.task.new("/usr/local/bin/blueutil", checkBluetoothResult, {"--power", power})
+    t:start()
+end
+
+function f(event)
+    if event == hs.caffeinate.watcher.systemWillSleep then
+        bluetooth("off")
+    elseif event == hs.caffeinate.watcher.screensDidWake then
+        bluetooth("on")
+    end
+end
+
+watcher = hs.caffeinate.watcher.new(f)
+watcher:start()
+-- End of bluetooth snippet
 
 -- call this explicitly if we are starting up
 ssidChangedCallback()
