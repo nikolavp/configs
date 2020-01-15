@@ -80,3 +80,7 @@ sudo apt-get install dspdfviewer
 sudo apt-get install python-dev python-pip libyaml-dev
 sudo pip install beets
 ```
+
+# Karabiner setup
+
+On MacOS I am remapping the caps lock to esc and using it as a functional modifier key when pressed. Also I am remapping fn+htcn for the dvorak arrow keys. You can look into karabiner directory which contains complex modification assets for the above.
