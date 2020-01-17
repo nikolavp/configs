@@ -7,12 +7,11 @@
                 {
                     "type": "basic",
                     "from": {
-                        "key_code": "h",
+                        "key_code": "caps_lock",
                         "modifiers": {
-                            "mandatory": [
-                                "fn"
-                            ]
-                        }
+                            "optional": [
+                                "any"
+                            ]}
                     },
                     "to": [
                         {
