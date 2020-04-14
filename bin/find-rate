@@ -1,0 +1,14 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+
+DATE=$1
+CURRENCY_CODE=$2
+if [[ -z $CURRENCY_CODE ]];then
+    CURRENCY_CODE='USD'
+    echo Assuming USD currency
+fi
+
+query_params=$(date -jf '%F' '+periodStartDays=%d&periodStartMonths=%m&periodStartYear=%Y&periodEndDays=%d&periodEndMonths=%m&periodEndYear=%Y' "$DATE")
+
+curl "https://www.bnb.bg/Statistics/StExternalSector/StExchangeRates/StERForeignCurrencies/index.htm?downloadOper=true&group1=second&${query_params}&valutes=${CURRENCY_CODE}&search=true&showChart=false&showChartButton=true&type=XML"
