@@ -1,14 +1,37 @@
-#!/bin/bash
+#!/usr/bin/env python
 # vim: set sw=4 sts=4 et foldmethod=indent :
 
+from dateutil import parser as dateparser
+from datetime import timedelta
+import argparse
+from urllib import urlopen
 
-DATE=$1
-CURRENCY_CODE=$2
-if [[ -z $CURRENCY_CODE ]];then
-    CURRENCY_CODE='USD'
-    echo Assuming USD currency
-fi
+parser = argparse.ArgumentParser(description="Find a rate in bnb's database")
+parser.add_argument('--currency-code', '-c', default='USD')
+parser.add_argument('dates', nargs='+')
 
-query_params=$(date -jf '%F' '+periodStartDays=%d&periodStartMonths=%m&periodStartYear=%Y&periodEndDays=%d&periodEndMonths=%m&periodEndYear=%Y' "$DATE")
+args = parser.parse_args()
 
-curl "https://www.bnb.bg/Statistics/StExternalSector/StExchangeRates/StERForeignCurrencies/index.htm?downloadOper=true&group1=second&${query_params}&valutes=${CURRENCY_CODE}&search=true&showChart=false&showChartButton=true&type=XML"
+URL = 'https://www.bnb.bg/Statistics/StExternalSector/StExchangeRates/StERForeignCurrencies/index.htm?downloadOper=true&group1=second&%(period_param)s&valutes=%(currency_code)s&search=true&showChart=false&showChartButton=true&type=XML'
+
+
+def get_bnb_rate(date, currency_code):
+    dates_param = 'periodStartDays=%(day)d&periodStartMonths=%(month)d&periodStartYear=%(year)d&periodEndDays=%(day)d&periodEndMonths=%(month)d&periodEndYear=%(year)d' % {
+        'day': date.day,
+        'month': date.month,
+        'year': date.year,
+    }
+    rate_url = URL % {'period_param': dates_param, 'currency_code': currency_code}
+    rates = urlopen(rate_url)
+    print(rates.read())
+
+
+for d in args.dates:
+    date = dateparser.parse(d)
+    if date.isoweekday() in (6, 7):
+        date += timedelta(-(date.isoweekday() - 5))
+        day_of_week_str = 'Saturday' if date.isoweekday() == 6 else 'Sunday'
+        print("Date %s is %s, using the Friday's rate from: %s" % (d, day_of_week_str, date))
+
+
+    print(get_bnb_rate(date, args.currency_code))
