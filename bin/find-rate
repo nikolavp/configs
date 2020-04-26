@@ -41,6 +41,9 @@ def parse_rate(content):
     return date, rate
 
 
+if args.currency_code == 'EUR':
+    print("The rate for EUR is always 1.95583 reverse 0.511292")
+
 for d in args.dates:
     date = dateparser.parse(d)
     if date.isoweekday() in (6, 7):
