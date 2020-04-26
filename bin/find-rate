@@ -3,6 +3,7 @@
 
 from dateutil import parser as dateparser
 from datetime import timedelta
+import xml.etree.ElementTree as ET
 import argparse
 from urllib import urlopen
 
@@ -23,7 +24,21 @@ def get_bnb_rate(date, currency_code):
     }
     rate_url = URL % {'period_param': dates_param, 'currency_code': currency_code}
     rates = urlopen(rate_url)
-    print(rates.read())
+    return rates.read()
+
+
+def get_single_child(element, tag_name):
+    for tag in element.iter(tag_name):
+        return tag
+    raise ValueError("Couldn't find %s in %s" %(tag_name, element))
+
+
+def parse_rate(content):
+    root = ET.fromstring(content)
+    rate_row = root[1]
+    date = get_single_child(rate_row, 'CURR_DATE')
+    rate = get_single_child(rate_row, 'RATE')
+    return date, rate
 
 
 for d in args.dates:
@@ -33,5 +48,6 @@ for d in args.dates:
         day_of_week_str = 'Saturday' if date.isoweekday() == 6 else 'Sunday'
         print("Date %s is %s, using the Friday's rate from: %s" % (d, day_of_week_str, date))
 
-
-    print(get_bnb_rate(date, args.currency_code))
+    xml_rate = get_bnb_rate(date, args.currency_code)
+    rate_date, rate = parse_rate(xml_rate)
+    print("Rate for date %s is %s" % (rate_date.text, rate.text))
