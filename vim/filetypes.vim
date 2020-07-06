@@ -25,14 +25,6 @@ if has("autocmd")
     au BufNewFile,BufRead */*task*/notes* set ft=notes
     au BufNewFile,BufRead */*diary* set ft=notes
 
-    " Completion modes for the languages we are using
-    autocmd FileType python set omnifunc=pythoncomplete#Complete
-    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-    autocmd	FileType css set omnifunc=csscomplete#CompleteCSS
-    autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-    autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-    autocmd FileType c set omnifunc=ccomplete#Complete
     " Taken from ciaranm, really useful - always open cwindow after :make
     autocmd QuickFixCmdPost * botright cwindow 5
     " Always do a full syntax refresh(that can be a litte slow if you
