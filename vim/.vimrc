@@ -71,31 +71,35 @@ NeoBundle 'rodjek/vim-puppet', {
             \ },
             \}
 
-NeoBundle 'fatih/vim-go'
+NeoBundle 'fatih/vim-go', {
+            \ 'autoload' : {
+            \   'filetypes': ['go'],
+            \ },
+            \}
 
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'tpope/vim-endwise'
 "NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
+"NeoBundle 'honza/vim-snippets'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 
 NeoBundle 'jremmen/vim-ripgrep'
-
-NeoBundle 'w0rp/ale'
-
+" NeoBundle 'w0rp/ale'
+NeoBundle 'majutsushi/tagbar'
 
 "not used enough... remove it for now 
 "NeoBundle 'tpope/abolish'
 "NeoBundle 'tpope/vim-surround'
-NeoBundle 'majutsushi/tagbar'
 
-NeoBundle 'Shougo/deoplete.nvim'
-NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'roxma/vim-hug-neovim-rpc'
+" LSP vim support
+NeoBundle 'prabirshrestha/async.vim'
+NeoBundle 'prabirshrestha/vim-lsp'
+NeoBundle 'mattn/vim-lsp-settings'
 
-NeoBundle 'zchee/deoplete-go', {'build': {'unix': 'make'}}
-
+NeoBundle 'prabirshrestha/asyncomplete.vim'
+NeoBundle 'prabirshrestha/asyncomplete-lsp.vim'
+NeoBundle 'tmsvg/pear-tree'
 
 call neobundle#end()
 NeoBundleCheck
@@ -104,6 +108,11 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = '/Users/nikolavp/gocode/bin/gocode'
 let g:go_auto_type_info = 1
 set updatetime=100
+
+
+" Max line length to be readable
+set colorcolumn=120
+
 
 
 
@@ -363,4 +372,3 @@ noremap Y y$
 
 " Make the overwriting paste in visual mode keep the last yank
 xnoremap p "_dP
-
