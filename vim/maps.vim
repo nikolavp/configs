@@ -130,3 +130,6 @@ nnoremap <silent> <Leader>be :call fzf#run({
 \   'options': '+m',
 \   'down':    len(<sid>buflist()) + 2
 \ })<CR>
+
+nnoremap <leader>r :LspRename<CR>
+nnoremap <leader>d :LspDefinition<CR>
