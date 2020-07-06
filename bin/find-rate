@@ -5,6 +5,7 @@ from dateutil import parser as dateparser
 from datetime import timedelta
 import xml.etree.ElementTree as ET
 import argparse
+import sys
 from urllib import urlopen
 
 parser = argparse.ArgumentParser(description="Find a rate in bnb's database")
@@ -24,6 +25,7 @@ def get_bnb_rate(date, currency_code):
     }
     rate_url = URL % {'period_param': dates_param, 'currency_code': currency_code}
     rates = urlopen(rate_url)
+    print(rate_url)
     return rates.read()
 
 
@@ -43,6 +45,7 @@ def parse_rate(content):
 
 if args.currency_code == 'EUR':
     print("The rate for EUR is always 1.95583 reverse 0.511292")
+    sys.exit(0)
 
 for d in args.dates:
     date = dateparser.parse(d)
