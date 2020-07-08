@@ -8,10 +8,8 @@ let mapleader = "\<Space>"
 source ~/.vim/abbs.vim
 
 scriptencoding utf-8
-" neobundle settings
 if has('vim_starting')
     set nocompatible               " Be iMproved
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 let mapleader = "\<Space>"
 
@@ -40,8 +38,10 @@ Plug 'tpope/vim-endwise'
 Plug 'scrooloose/nerdcommenter', {'on': 'NERDCommenterComment'}
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 
-Plug 'jremmen/vim-ripgrep', {'on': 'Rg'}
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " LSP vim support
 Plug 'prabirshrestha/async.vim'
@@ -313,8 +313,6 @@ map <Left> <NOP>
 map <Right> <NOP>
 
 noremap ; :
-
-set rtp+=/usr/local/opt/fzf
 
 " Make uppercase behave in a sane way like D and C. You can use yy for whole
 " line
