@@ -1,5 +1,3 @@
-alias rm='rm -i'
-alias mv='mv -i'
 if ! which open &> /dev/null;then
     alias open=xdg-open
 fi
@@ -20,3 +18,4 @@ alias ruslan='kill -9'
 alias gc='git checkout'
 alias vim=nvim
 alias fmake='make -j8'
+alias gs='git status'
