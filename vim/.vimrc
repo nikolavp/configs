@@ -16,93 +16,43 @@ endif
 let mapleader = "\<Space>"
 
 " Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/bundle')
 
 
-NeoBundle 'ciaranm/inkpot'
-NeoBundle 'kchmck/vim-coffee-script', {
-            \ 'autoload' : {
-            \   'filetypes': ['coffee'],
-            \ },
-            \}
+Plug 'ciaranm/inkpot'
 
-NeoBundle 'nikolavp/sparql.vim', {
-            \ 'autoload' : {
-            \   'filetypes': ['sparql'],
-            \ },
-            \}
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+Plug 'nikolavp/sparql.vim', { 'for': 'sparql' }
+Plug 'nikolavp/vim-jape', { 'for': 'jape' }
+Plug 'tpope/vim-cucumber', { 'for': 'cucumber' }
+Plug 'rosstimson/scala-vim-support', { 'for': 'scala' }
+Plug 'plasticboy/vim-markdown', { 'for': 'mkd' }
+Plug 'vim-scripts/n3.vim', { 'for': 'n3' }
 
-NeoBundle 'nikolavp/vim-jape', {
-            \ 'autoload' : {
-            \   'filetypes': ['jape'],
-            \ },
-            \}
+Plug 'godlygeek/tabular', {'for': 'puppet'}
+Plug 'rodjek/vim-puppet', { 'for': 'puppet'}
+Plug 'fatih/vim-go', { 'for': 'go' }
 
-NeoBundle 'tpope/vim-cucumber', {
-            \ 'autoload' : {
-            \   'filetypes': ['cucumber'],
-            \ },
-            \}
-
-NeoBundle 'rosstimson/scala-vim-support', {
-            \ 'autoload' : {
-            \   'filetypes': ['scala'],
-            \ },
-            \}
-
-NeoBundle 'plasticboy/vim-markdown', {
-            \ 'autoload' : {
-            \   'filetypes': ['mkd'],
-            \ },
-            \}
-
-NeoBundle 'vim-scripts/n3.vim', {
-            \ 'autoload' : {
-            \   'filetypes': ['n3'],
-            \ },
-            \}
-" Helpful for puppet development
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'rodjek/vim-puppet', {
-            \ 'autoload' : {
-            \   'filetypes': ['puppet'],
-            \ },
-            \}
-
-NeoBundle 'fatih/vim-go', {
-            \ 'autoload' : {
-            \   'filetypes': ['go'],
-            \ },
-            \}
-
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'tpope/vim-endwise'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'tpope/vim-endwise'
 "NeoBundle 'SirVer/ultisnips'
 "NeoBundle 'honza/vim-snippets'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter', {'on': 'NERDCommenterComment'}
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 
-NeoBundle 'jremmen/vim-ripgrep'
-" NeoBundle 'w0rp/ale'
-NeoBundle 'majutsushi/tagbar'
-
-"not used enough... remove it for now 
-"NeoBundle 'tpope/abolish'
-"NeoBundle 'tpope/vim-surround'
+Plug 'jremmen/vim-ripgrep', {'on': 'Rg'}
+Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 
 " LSP vim support
-NeoBundle 'prabirshrestha/async.vim'
-NeoBundle 'prabirshrestha/vim-lsp'
-NeoBundle 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
 
-NeoBundle 'prabirshrestha/asyncomplete.vim'
-NeoBundle 'prabirshrestha/asyncomplete-lsp.vim'
-NeoBundle 'tmsvg/pear-tree'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'tmsvg/pear-tree'
 
-call neobundle#end()
-NeoBundleCheck
+call plug#end()
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = '/Users/nikolavp/gocode/bin/gocode'
