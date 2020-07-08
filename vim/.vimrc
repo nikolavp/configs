@@ -372,3 +372,16 @@ noremap Y y$
 
 " Make the overwriting paste in visual mode keep the last yank
 xnoremap p "_dP
+
+
+" Debugging of language server support
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
+
+" for asyncomplete.vim log
+" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
+" Use the system go. Some repositories have a direnv setup where
+" the go toolchain is replaced. We should always use the system toolchain
+" for vim-go
+let $USE_SYSTEM_GO=1
