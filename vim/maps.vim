@@ -112,4 +112,12 @@ nnoremap <leader>fe :FZF<CR>
 nnoremap <silent> <Leader>be :Buffers<CR>
 
 nnoremap <leader>r :LspRename<CR>
-nnoremap <leader>d :LspDefinition<CR>
+nmap gd :LspDefinition<CR>
+nmap gr :LspReferences<CR>
+
+" Move between splits much faster
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
+
