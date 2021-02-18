@@ -19,3 +19,4 @@ alias gc='git checkout'
 alias vim=nvim
 alias fmake='make -j8'
 alias gs='git status'
+alias gc='git checkout'
