@@ -26,9 +26,8 @@ apps = {
     p = 'Pycharm',
     g = 'Goland',
     v = 'Viber',
-    m = 'uChat',
+    m = 'Slack',
     t = 'iTerm',
-    n = 'Notes',
     j = 'IntelliJ IDEA',
 }
 
@@ -62,7 +61,7 @@ function ssidChangedCallback()
         hs.alert.show('Detected home network (' .. ssid .. ') unmuting audio ')
         hs.audiodevice.defaultOutputDevice():setMuted(false)
         hs.audiodevice.defaultOutputDevice():setVolume(25)
-    else
+    elseif ssid ~= nil then
         hs.alert.show('Detected non home (' .. ssid .. ') network muting audio')
         hs.audiodevice.defaultOutputDevice():setVolume(0)
     end
