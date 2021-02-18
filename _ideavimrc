@@ -1,6 +1,7 @@
 " For some reason this is slowing the plugin a lot.
 " source ~/.vim/maps.vim 
-"
+" Plugins that I use
+" https://plugins.jetbrains.com/plugin/9792-key-promoter-x
 nnoremap ,u :source ~/.ideavimrc<cr>
 
 let mapleader = ' '
@@ -14,9 +15,21 @@ set showmode
 set surround
 
 
-nnoremap <leader>r :action RenameElement<cr>
-nnoremap <leader>u :action ShowUsages<cr>
-nnoremap <leader>n :action GotoNextError<cr>
-nnoremap <leader>p :action GotoPreviousError<cr>
-nnoremap <leader>i :action Inline<cr>
-nnoremap <leader>a :action GotoAction<cr>
+map <leader>r :action RenameElement<cr>
+map gr :action ShowUsages<cr>
+map <leader>cc :action GotoNextError<cr>
+map <leader>i :action Inline<cr>
+map <leader>a :action GotoAction<cr>
+map <leader>fe :action GotoFile<cr>
+map <leader>se :action GotoSymbol<CR>
+map <leader>be :action RecentFiles<CR>
+map <leader>ff :action FileStructurePopup<CR>
+map <leader>te :action GotoTest<CR>
+map <C-t> :action Back<CR>
+map <S-j> :action EditorJoinLines<CR>
+
+" Move between splits much faster
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
