@@ -13,6 +13,9 @@ if has('vim_starting')
 endif
 let mapleader = "\<Space>"
 
+" Disable vim-go's GoDef since we use language server support
+let g:go_def_mapping_enabled = 0
+
 " Required:
 call plug#begin('~/.vim/bundle')
 
@@ -35,7 +38,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-endwise'
 "NeoBundle 'SirVer/ultisnips'
 "NeoBundle 'honza/vim-snippets'
-Plug 'scrooloose/nerdcommenter', {'on': 'NERDCommenterComment'}
+Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
@@ -333,3 +336,8 @@ xnoremap p "_dP
 " the go toolchain is replaced. We should always use the system toolchain
 " for vim-go
 let $USE_SYSTEM_GO=1
+
+" Open new split panes to right and bottom, which feels more natural than Vim’s default:
+set splitbelow
+set splitright
+
