@@ -8,4 +8,4 @@ export GIT_PAGER=less
 export PYTHONSTARTUP=~/.pystartup
 #Prefer vim for everything. Some strange distros like ubuntu have bad defaults like ed -.-
 export EDITOR=vim
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/configs/bin:$PATH"
