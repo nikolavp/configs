@@ -21,6 +21,9 @@ test -h $HOME/.config/compton.conf || ln -sf $PWD/_compton.conf $HOME/.config/co
 test -h $HOME/.config/beets/config.yaml || ln -sf $PWD/_beet_config.yaml $HOME/.config/beets/config.yaml
 test -h $HOME/.vim || ln -sf $PWD/vim $HOME/.vim
 test -h $HOME/.vimrc || ln -sf $PWD/vim/.vimrc $HOME/.vimrc
+mkdir -p $HOME/.config
+test -h $HOME/.vim || ln -sf $PWD/vim $HOME/.config/nvim
+ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 
 git submodule sync
 git submodule init
