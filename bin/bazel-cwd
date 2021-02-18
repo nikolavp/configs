@@ -1,0 +1,6 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+current_dir=$(pwd)
+current_dir=${current_dir##$GOPATH}
+(set -x; bazel $@ "/${current_dir}/...")
