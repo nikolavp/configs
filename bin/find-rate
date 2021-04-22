@@ -11,11 +11,17 @@ from urllib import urlopen
 parser = argparse.ArgumentParser(description="Find a rate in bnb's database")
 parser.add_argument('--currency-code', '-c', default='USD')
 parser.add_argument('dates', nargs='+')
+parser.add_argument('--debug', '-d', action='store_true', default=False)
 
 args = parser.parse_args()
 
 URL = 'https://www.bnb.bg/Statistics/StExternalSector/StExchangeRates/StERForeignCurrencies/index.htm?downloadOper=true&group1=second&%(period_param)s&valutes=%(currency_code)s&search=true&showChart=false&showChartButton=true&type=XML'
 
+
+def debug(msg):
+    if not args.debug:
+        return
+    print(msg)
 
 def get_bnb_rate(date, currency_code):
     dates_param = 'periodStartDays=%(day)d&periodStartMonths=%(month)d&periodStartYear=%(year)d&periodEndDays=%(day)d&periodEndMonths=%(month)d&periodEndYear=%(year)d' % {
@@ -25,8 +31,10 @@ def get_bnb_rate(date, currency_code):
     }
     rate_url = URL % {'period_param': dates_param, 'currency_code': currency_code}
     rates = urlopen(rate_url)
-    print(rate_url)
-    return rates.read()
+    debug("Downloading url %s" % rate_url)
+    content = rates.read()
+    debug("Got response\n%s" % content)
+    return content
 
 
 def get_single_child(element, tag_name):
@@ -52,8 +60,9 @@ for d in args.dates:
     if date.isoweekday() in (6, 7):
         date += timedelta(-(date.isoweekday() - 5))
         day_of_week_str = 'Saturday' if date.isoweekday() == 6 else 'Sunday'
-        print("Date %s is %s, using the Friday's rate from: %s" % (d, day_of_week_str, date))
+        debug("Date %s is %s, using the Friday's rate from: %s" % (d, day_of_week_str, date))
 
     xml_rate = get_bnb_rate(date, args.currency_code)
     rate_date, rate = parse_rate(xml_rate)
-    print("Rate for date %s is %s" % (rate_date.text, rate.text))
+    debug("Rate for date %s is %s" % (rate_date.text, rate.text))
+    print(rate.text)
