@@ -89,5 +89,5 @@ On MacOS I am remapping the caps lock to esc and using it as a functional modifi
 
 brew install --cask karabiner-elements
 brew install --cask hammerspoon
-brew install autojump nvim direnv
+brew install autojump nvim direnv fzf
 
