@@ -1,6 +1,9 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+# Disable comp permission check to speed up loading times considerably
+ZSH_DISABLE_COMPFIX=true
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -74,3 +77,10 @@ export PS1='$(show_virtual_env)'$PS1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export HOMEBREW_NO_ANALYTICS=1
+
+# Put in /etc/zshenv
+# setopt SOURCE_TRACE
+# zmodload zsh/zprof
+# and then uncomment here
+# zprof
+#here
