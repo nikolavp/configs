@@ -16,7 +16,9 @@ alias clean_joci='mysql joci2 < /home/nikolavp/Projects_resources/JOCI/clean_joc
 alias check_jobboards='mysql joci2 < ~/Projects_resources/JOCI/check-jobboard.sql'
 alias ruslan='kill -9'
 alias gc='git checkout'
-alias vim=nvim
 alias fmake='make -j8'
 alias gs='git status'
 alias gc='git checkout'
+# see https://unix.stackexchange.com/a/244516
+alias xargs='xargs '
+alias sudo='sudo '
