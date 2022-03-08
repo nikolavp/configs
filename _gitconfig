@@ -13,5 +13,6 @@
 	#default = simple
 [alias]
     st = status
+    amend = commit --amend --no-edit -a
 [credential]
 	helper = cache --timeout=3600
