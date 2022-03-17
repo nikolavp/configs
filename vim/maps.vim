@@ -56,7 +56,6 @@ imap jj <esc>
 imap kk <esc>
 map <up> g<up>
 map <down> g<down>
-noremap <F3> <C-w>w
 
 " Mark the last selection with < and >
 vnoremap > >gv
@@ -72,7 +71,7 @@ vnoremap * y/<C-R>"<CR>
 nnoremap <leader>k :call functions#FindInfo("<C-R><C-W>")<CR>
 "select some text and then ask google for it directly with M"
 vnoremap <leader>m y:call functions#FindInfo('<c-r>"')<cr><cr>
-vnoremap <leader>paste y:call Paste('<C-R>"')<cr><cr>
+vnoremap <leader>papaste y:callste y:call Paste('<C-R>"')<cr><cr>
 "Rename the variable under cursor in all buffers. You should confirm to do
 "it. This also puts a mark with name R under the cursor we can go back
 " to the buffer we were after that. Replace nvname with the new variable name
@@ -84,13 +83,6 @@ cmap w!! %!sudo tee > /dev/null %
 imap <c-space> <C-x><C-o>
 map <F12> :TagbarToggle<CR>
 map <F6> :NERDTreeToggle<CR>
-
-
-" Needed by syntastics
-nnoremap <silent> en :lnext<CR>
-nnoremap <silent> ep :lprev<CR>
-vnoremap <silent> en :lnext<CR>
-vnoremap <silent> ep :lprev<CR>
 
 " portable ctrl + space
 " taken from http://stackoverflow.com/questions/2269005/how-can-i-change-the-keybinding-used-to-autocomplete-in-vim
@@ -111,9 +103,16 @@ nnoremap <leader>ss :Rg<CR>
 nnoremap <leader>fe :FZF<CR>
 nnoremap <silent> <Leader>be :Buffers<CR>
 
-nnoremap <leader>r :LspRename<CR>
-nmap gd :LspDefinition<CR>
-nmap gr :LspReferences<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <CR> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
 " Move between splits much faster
 nnoremap <C-J> <C-W>j

@@ -13,9 +13,6 @@ if has('vim_starting')
 endif
 let mapleader = "\<Space>"
 
-" Disable vim-go's GoDef since we use language server support
-let g:go_def_mapping_enabled = 0
-
 " Required:
 call plug#begin('~/.vim/bundle')
 
@@ -32,7 +29,10 @@ Plug 'vim-scripts/n3.vim', { 'for': 'n3' }
 
 Plug 'godlygeek/tabular', {'for': 'puppet'}
 Plug 'rodjek/vim-puppet', { 'for': 'puppet'}
-Plug 'fatih/vim-go', { 'for': 'go' }
+
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/personal/content', 'syntax': 'markdown', 'ext': '.md'}]
+
 
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-endwise'
@@ -46,13 +46,8 @@ Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" LSP vim support
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+Plug 'neovim/nvim-lspconfig'
 
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'tmsvg/pear-tree'
 
 call plug#end()
@@ -290,8 +285,6 @@ endif
 "More on this option here http://www.johnhawthorn.com/2012/09/vi-escape-delays/
 set ttimeoutlen=0
 
-let g:loaded_syntastic_java_javac_checker=1
-let g:loaded_syntastic_java_checkstyle_checker=1
 "turtle filetypes
 augroup filetypedetect
     au BufNewFile,BufRead *.n3  setfiletype n3
@@ -329,15 +322,25 @@ xnoremap p "_dP
 " let g:lsp_log_verbose = 1
 " let g:lsp_log_file = expand('~/vim-lsp.log')
 
-" for asyncomplete.vim log
-" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
-
-" Use the system go. Some repositories have a direnv setup where
-" the go toolchain is replaced. We should always use the system toolchain
-" for vim-go
-let $USE_SYSTEM_GO=1
-
 " Open new split panes to right and bottom, which feels more natural than Vim’s default:
 set splitbelow
 set splitright
+
+
+" Added for lsp python neovim configuration
+lua << EOF
+local lsp_config = require('lspconfig')
+
+lsp_config.pylsp.setup{}
+lsp_config.gopls.setup{
+    root_dir = lsp_config.util.root_pattern("itea.setup.yaml", "main.go", "go.mod", ".git")
+}
+EOF
+
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
 
