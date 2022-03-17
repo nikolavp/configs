@@ -15,11 +15,7 @@ ZSH_DISABLE_COMPFIX=true
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-if [[ ! -f ~/.p10k.zsh ]];then
-    ZSH_THEME="powerlevel10k/powerlevel10k"
-else
-    ZSH_THEME="gentoo"
-fi
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
