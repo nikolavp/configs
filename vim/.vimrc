@@ -36,8 +36,6 @@ let g:vimwiki_list = [{'path': '~/personal/content', 'syntax': 'markdown', 'ext'
 
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-endwise'
-"NeoBundle 'SirVer/ultisnips'
-"NeoBundle 'honza/vim-snippets'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 
@@ -50,6 +48,17 @@ Plug 'neovim/nvim-lspconfig'
 
 Plug 'tmsvg/pear-tree'
 
+" Snippet support
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Autocomplete with different sources
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'hrsh7th/cmp-nvim-lsp'
+
+
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
@@ -60,10 +69,6 @@ set updatetime=100
 
 " Max line length to be readable
 set colorcolumn=120
-
-
-
-
 
 set numberwidth=1   "Make it low so it doesn't get too much space.
 "{{{2 Filetype options
@@ -211,8 +216,6 @@ let g:tagbar_compact = 1
 let g:tagbar_width = 28
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
-" Autoclose
-let g:AutoCloseProtectedRegions = ["Comment", "String", "Character"] 
 
 "Close NERDTree if open after we open a new file
 let g:NERDTreeQuitOnOpen=1
@@ -223,12 +226,6 @@ let g:doxygen_enhanced_color=1
 let g:Tex_DefaultTargetFormat="pdf"
 let g:Tex_ViewRule_pdf="kpdf"
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "}}}
 "-----------------------------------------------------------------------
 " final commands
@@ -297,12 +294,6 @@ augroup END
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent! loadview 
 
-
-let g:UltiSnipsExpandTrigger="<C-e>"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<C-e>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Space>"
-
 map <Up> <NOP>
 map <Down> <NOP>
 map <Left> <NOP>
@@ -326,21 +317,89 @@ xnoremap p "_dP
 set splitbelow
 set splitright
 
-
-" Added for lsp python neovim configuration
-lua << EOF
-local lsp_config = require('lspconfig')
-
-lsp_config.pylsp.setup{}
-lsp_config.gopls.setup{
-    root_dir = lsp_config.util.root_pattern("itea.setup.yaml", "main.go", "go.mod", ".git")
-}
-EOF
-
-
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert
-
 " Avoid showing message extra message when using completion
 set shortmess+=c
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" Set completeopt to have a better completion experience
+set completeopt=menu,menuone,noselect
+
+" Autocomplete configuration
+lua <<EOF
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
+    mapping = {
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      -- { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Set configuration for specific filetype.
+  -- cmp.setup.filetype('gitcommit', {
+  --   sources = cmp.config.sources({
+  --     { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+  --   }, {
+  --     { name = 'buffer' },
+  --   })
+  -- })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  -- cmp.setup.cmdline('/', {
+  --   sources = {
+  --     { name = 'buffer' }
+  --   }
+  -- })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  -- cmp.setup.cmdline(':', {
+  --   sources = cmp.config.sources({
+  --     { name = 'path' }
+  --   }, {
+  --     { name = 'cmdline' }
+  --   })
+  -- })
+
+  -- Setup lspconfig and cmp-nvim-lsp
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local lsp_config = require('lspconfig')
+
+  lsp_config.pylsp.setup{
+    capabilities = capabilities
+  }
+  lsp_config.gopls.setup{
+    root_dir = lsp_config.util.root_pattern("itea.setup.yaml", "main.go", "go.mod", ".git"),
+    capabilities = capabilities,
+  }
+
+EOF
 
