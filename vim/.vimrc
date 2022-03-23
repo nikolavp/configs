@@ -60,6 +60,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'hrsh7th/cmp-nvim-lsp'
 
+Plug 'ray-x/lsp_signature.nvim'
 
 call plug#end()
 
@@ -411,5 +412,7 @@ lua <<EOF
   cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
   -- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
   cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
+  require'lsp_signature'.setup({})
 EOF
+
 
