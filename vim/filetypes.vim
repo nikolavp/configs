@@ -27,10 +27,5 @@ if has("autocmd")
 
     " Taken from ciaranm, really useful - always open cwindow after :make
     autocmd QuickFixCmdPost * botright cwindow 5
-    " Always do a full syntax refresh(that can be a litte slow if you
-    " don't have a fast machine)
-    " autocmd CursorHold * make
-    "
-    autocmd FileType python setlocal omnifunc=python3complete#Complete
 endif
 

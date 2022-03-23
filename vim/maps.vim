@@ -24,11 +24,6 @@ vmap cl :cl<CR>
 nmap cl :cl<CR>
 nmap ccl :ccl<CR>
 vmap ccl :ccl<CR>
-"Those mappings are for the tabs(all modes)
-map <C-S-Right> :bnext<CR>
-map <C-S-l> :bnext<CR>
-map <C-S-h> :bprevious<CR>
-map <C-S-Left> :bprevious<CR>
 "###Some really nice key strokes I stole or are put alone in work with the editor####"
 " Insert a single char
 noremap <Leader>i i<Space><Esc>r
@@ -36,8 +31,6 @@ noremap <Leader>i i<Space><Esc>r
 noremap <Leader>dbl :g/^$/d<CR>:nohls<CR>
 "Edit the files in the current directory
 noremap <Leader>ed :e <C-r>=expand("%:p:h")<CR>/<C-d>
-"Format the whole file with my rules :)
-map <F4> mpggVG=`p
 vnoremap <F4> =
 nmap <silent> <F7> :make<CR><CR>
 vmap <silent> <F7> :make<CR><CR>
@@ -48,8 +41,6 @@ map <F2><F2> :on<cr>
 "More emacs like keystrokes - those move to the end/beginign of line"
 inoremap <C-e> <esc>$a
 inoremap <C-a> <esc>^i
-"This puts a semicolon at the end of the line
-nnoremap <leader>; mpA;<ESC>`p
 imap lll <esc>
 imap hhh <esc>
 imap jj <esc>
