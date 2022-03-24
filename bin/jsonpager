@@ -1,4 +1,4 @@
 #!/bin/bash
 # vim: set sw=4 sts=4 et foldmethod=indent :
 
-jq . | vim -c 'filetype=json' -
+jq . | vim -c 'set filetype=json' -
