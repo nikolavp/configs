@@ -23,12 +23,8 @@ miromanager:bindHotkeys({
 
 apps = {
     b = 'Google Chrome',
-    p = 'Pycharm',
-    g = 'Goland',
-    v = 'Viber',
     m = 'Slack',
     t = 'iTerm',
-    j = 'IntelliJ IDEA',
 }
 
 for k, v in pairs(apps) do
