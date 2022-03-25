@@ -6,32 +6,18 @@ nmap <silent> <F1> :set paste<CR>"+p:set nopaste<CR>
 nmap :Q! :q!
 nmap :q1 :q!
 nmap :Q1 :q!
-nmap <leader>be :CtrlPBuffer<CR>
-"I don't use the q macro name :)
-nmap qq :bdelete<CR>
 nmap :W :w
+
+nmap qq :bdelete<CR>
 nmap ,e :e ~/.vimrc<cr>      " edit my .vimrc file
 nmap ,u :source ~/.vimrc<cr> " update the system settings from my vimrc file
-"Some mappings for quickfix
-"we don't need cc use C instead for changing a whole line
-vmap cc :cc<CR>
-nmap cc :cc<CR>
-nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
-nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
-nnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
-nnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
-vmap cl :cl<CR>
-nmap cl :cl<CR>
-nmap ccl :ccl<CR>
-vmap ccl :ccl<CR>
-"###Some really nice key strokes I stole or are put alone in work with the editor####"
 " Insert a single char
 noremap <Leader>i i<Space><Esc>r
 " Delete all blank lines in a file
 noremap <Leader>dbl :g/^$/d<CR>:nohls<CR>
 "Edit the files in the current directory
 noremap <Leader>ed :e <C-r>=expand("%:p:h")<CR>/<C-d>
-vnoremap <F4> =
+
 nmap <silent> <F7> :make<CR><CR>
 vmap <silent> <F7> :make<CR><CR>
 imap <silent> <F7> <esc>:make<CR><CR>
@@ -41,10 +27,14 @@ map <F2><F2> :on<cr>
 "More emacs like keystrokes - those move to the end/beginign of line"
 inoremap <C-e> <esc>$a
 inoremap <C-a> <esc>^i
+
+"Go into normal with movement keys in insert mode
 imap lll <esc>
 imap hhh <esc>
 imap jj <esc>
 imap kk <esc>
+
+" Don't go to the end of the file to start scrolling
 map <up> g<up>
 map <down> g<down>
 
@@ -57,6 +47,7 @@ nnoremap % %zz
 nnoremap * *zn
 nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
+" Make * find the occurrence of the visually marked text
 vnoremap * y/<C-R>"<CR>
 "map it to the K key which i don't use for man pages(it is even annoying)
 nnoremap <leader>k :call functions#FindInfo("<C-R><C-W>")<CR>

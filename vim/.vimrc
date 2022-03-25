@@ -62,6 +62,8 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 
 Plug 'ray-x/lsp_signature.nvim'
 
+Plug 'gfanto/fzf-lsp.nvim'
+
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
