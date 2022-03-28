@@ -52,7 +52,8 @@ def parse_rate(content):
 
 
 if args.currency_code == 'EUR':
-    print("The rate for EUR is always 1.95583 reverse 0.511292")
+    debug("The rate for EUR is always 1.95583 reverse 0.511292")
+    print("1.95583")
     sys.exit(0)
 
 for d in args.dates:
