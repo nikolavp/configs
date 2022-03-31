@@ -242,20 +242,10 @@ endif
 command! -nargs=+ Abb :call functions#Abbreviate(<f-args>)
 "Spot any double word, which are really hard to find. Especially useful for latex and plain text
 au Syntax * syn match Error "\c\<\(\a\+\)\_s\+\1\>"
-"This will indent and close the brace when we are at the end of the line for a
-"function"
-"inoremap <expr> <CR> (col("$")==col(".") ? "\<ESC>=a{\<C-O>o" : "\<CR>")
 "Highlight extra whitespace
 au Syntax * syn match Error /\s\+$\| \+\ze\t/  " highlight extra whitespace
 let java_highlight_java_lang_ids=1
 let java_highlight_java_io=1
-" Append modeline after last line in buffer.
-function! AppendModeline()
-  let save_cursor = getpos('.')
-  $put =printf(&commentstring, ' vim: set ts='.&tabstop.' sw='.&shiftwidth.' tw='.&textwidth.': ')
-  call setpos('.', save_cursor)
-endfunction
-nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 "This deletes the space after the iabrev i don't like sometimes.
 "{{{Getchar function + Eathchar - a neat way for iabbrev that eat a space
 fun! Eatchar(pat)
@@ -298,21 +288,6 @@ augroup END
 " http://vimrc-dissection.blogspot.com/2014/10/save-state-of-folds-mkview.html
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent! loadview 
-
-map <Up> <NOP>
-map <Down> <NOP>
-map <Left> <NOP>
-map <Right> <NOP>
-
-noremap ; :
-
-" Make uppercase behave in a sane way like D and C. You can use yy for whole
-" line
-noremap Y y$
-
-" Make the overwriting paste in visual mode keep the last yank
-xnoremap p "_dP
-
 
 " Debugging of language server support
 " let g:lsp_log_verbose = 1

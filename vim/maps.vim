@@ -102,4 +102,17 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
+map <Up> <C-W>k
+map <Down> <C-W>j
+map <Left> <C-W>h
+map <Right> <C-W>l
 
+noremap ; :
+vnoremap ; :
+
+" Make uppercase behave in a sane way like D and C. You can use yy for whole
+" line
+noremap Y y$
+
+" Make the overwriting paste in visual mode keep the last yank
+xnoremap p "_dP
