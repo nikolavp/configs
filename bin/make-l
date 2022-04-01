@@ -1,0 +1,14 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+# Same as fab -l but without the documentation see  to make your makefiles
+# self documenting
+
+# If this is a self documenting makefile as described indent
+# https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
+# use it
+if [[ -n $(grep 'help:' Makefile) ]];then
+    make help
+    exit
+fi
+
+grep -o '^\w\+:' Makefile

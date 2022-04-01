@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if [[ $# > 0 ]];then
-	/usr/bin/gvim --remote-tab "$@"
-else
-	/usr/bin/gvim
-fi
-
