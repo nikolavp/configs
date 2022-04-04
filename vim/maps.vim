@@ -110,6 +110,9 @@ map <Right> <C-W>l
 noremap ; :
 vnoremap ; :
 
+nmap ,p "0p
+nmap ,P "0P
+
 " Make uppercase behave in a sane way like D and C. You can use yy for whole
 " line
 noremap Y y$
