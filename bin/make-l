@@ -1,11 +1,12 @@
 #!/bin/bash
 # vim: set sw=4 sts=4 et foldmethod=indent :
 # Same as fab -l but without the documentation see  to make your makefiles
-# self documenting
-
+# self documenting.
 # If this is a self documenting makefile as described indent
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 # use it
+# Note that both of these don't work for Makefiles which source other
+# makefiles
 if [[ -n $(grep 'help:' Makefile) ]];then
     make help
     exit
