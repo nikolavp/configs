@@ -36,6 +36,7 @@ let g:vimwiki_list = [{'path': '~/personal/content', 'syntax': 'markdown', 'ext'
 
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 
