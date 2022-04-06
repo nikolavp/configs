@@ -10,6 +10,7 @@ clipboard:bindHotkeys({
     toggle_clipboard = {hyper, "v"}
 })
 clipboard.show_in_menubar = false
+clipboard.paste_on_select = true
 clipboard:start()
 
 miromanager = hs.loadSpoon('MiroWindowsManager')
