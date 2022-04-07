@@ -106,6 +106,9 @@ map <Down> <C-W>j
 map <Left> <C-W>h
 map <Right> <C-W>l
 
+" Disable ex mode from Q
+nnoremap Q <Nop>
+
 noremap ; :
 vnoremap ; :
 
