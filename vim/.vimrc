@@ -65,13 +65,15 @@ Plug 'ray-x/lsp_signature.nvim'
 
 Plug 'gfanto/fzf-lsp.nvim'
 
+" Better matchit
+Plug 'andymass/vim-matchup'
+
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = '/Users/nikolavp/gocode/bin/gocode'
 let g:go_auto_type_info = 1
 set updatetime=100
-
 
 " Max line length to be readable
 set colorcolumn=120
@@ -394,3 +396,8 @@ lua <<EOF
 EOF
 
 
+" Use terminal background for performance.
+highlight Normal ctermbg=NONE guibg=NONE
+
+" Line numbers in terminal
+highlight LineNr ctermfg=245
