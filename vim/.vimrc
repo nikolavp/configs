@@ -67,6 +67,8 @@ Plug 'gfanto/fzf-lsp.nvim'
 
 " Better matchit
 Plug 'andymass/vim-matchup'
+" Copy paste from remote machines
+Plug 'ojroques/vim-oscyank'
 
 call plug#end()
 
