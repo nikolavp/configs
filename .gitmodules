@@ -1,9 +1,9 @@
 [submodule "awesome/revelation"]
 	path = awesome/revelation
-    url = git://github.com/bioe007/awesome-revelation.git
+    url = https://github.com/bioe007/awesome-revelation.git
 [submodule "awesome/pomodoro"]
 	path = awesome/pomodoro
-	url = git://github.com/nikolavp/awesome-pomodoro.git
+	url = https://github.com/nikolavp/awesome-pomodoro.git
 [submodule "vim/bundle/neobundle.vim"]
 	path = vim/bundle/neobundle.vim
-	url = git://github.com/Shougo/neobundle.vim
+	url = https://github.com/Shougo/neobundle.vim.git
