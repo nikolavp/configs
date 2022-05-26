@@ -4,9 +4,6 @@
 [submodule "awesome/pomodoro"]
 	path = awesome/pomodoro
 	url = https://github.com/nikolavp/awesome-pomodoro.git
-[submodule "vim/bundle/neobundle.vim"]
-	path = vim/bundle/neobundle.vim
-	url = https://github.com/Shougo/neobundle.vim.git
 [submodule "_tmux/plugins/tmux-fastcopy"]
 	path = _tmux/plugins/tmux-fastcopy
 	url = https://github.com/abhinav/tmux-fastcopy
