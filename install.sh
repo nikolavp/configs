@@ -28,7 +28,7 @@ ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 git submodule sync
 git submodule init
 git submodule update
-git submodule foreach git pull origin master
+# git submodule foreach git pull origin master
 
 git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
