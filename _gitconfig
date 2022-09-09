@@ -14,5 +14,6 @@
 [alias]
     st = status
     amend = commit --amend --no-edit -a
+    cob = !git checkout $(git branch | fzf)
 [credential]
 	helper = cache --timeout=3600
