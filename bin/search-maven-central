@@ -1,13 +1,14 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # vim: set sw=4 sts=4 et foldmethod=indent :
 
 
-from urllib import urlopen
+from urllib.request import urlopen
+from urllib.parse import urlencode
 import json
 import sys
 import pprint
-
-url = 'http://search.maven.org/solrsearch/select?q=%s&rows=20&wt=json' % sys.argv[1]
+query = sys.argv[1].replace(':', ' ')
+url = 'https://search.maven.org/solrsearch/select?%s&rows=20&wt=json' % urlencode({'q': query})
 
 result = urlopen(url).read()
 json_result = json.loads(result)['response']['docs']
@@ -16,15 +17,16 @@ json_result = json.loads(result)['response']['docs']
 #pp.pprint(json_result)
 
 def print_artifact(entry):
-        print("<dependency>")
-        print("\t<groupId>%s</groupId>" % entry['g'])
-        print("\t<artifactId>%s</artifactId>" % entry['a'])
-        print("\t<version>%s</version>" % entry['latestVersion'])
-        print("</dependency>")
-        print("\n")
+    print('https://search.maven.org/artifact/%s/%s' % (entry['g'], entry['a']))
+    print("<dependency>")
+    print("\t<groupId>%s</groupId>" % entry['g'])
+    print("\t<artifactId>%s</artifactId>" % entry['a'])
+    print("\t<version>%s</version>" % entry['latestVersion'])
+    print("</dependency>")
+    print("\n")
 
-map(print_artifact, json_result)
-
+for entry in json_result:
+    print_artifact(entry)
 
 sys.exit(0)
 
