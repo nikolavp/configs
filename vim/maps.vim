@@ -13,6 +13,9 @@ nmap ,e :e ~/.vimrc<cr>      " edit my .vimrc file
 nmap ,u :source ~/.vimrc<cr> " update the system settings from my vimrc file
 " Insert a single char
 noremap <Leader>i i<Space><Esc>r
+" Insert a new line before or after current line
+noremap <leader>o o<Esc>
+noremap <leader>O O<Esc>
 " Delete all blank lines in a file
 noremap <Leader>dbl :g/^$/d<CR>:nohls<CR>
 "Edit the files in the current directory
