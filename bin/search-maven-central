@@ -7,7 +7,13 @@ from urllib.parse import urlencode
 import json
 import sys
 import pprint
-query = sys.argv[1].replace(':', ' ')
+
+
+query = sys.argv[1]
+if ':' in query:
+    parts = query.split(':')
+    query = 'g:%s a:%s' % (parts[0], parts[1])
+
 url = 'https://search.maven.org/solrsearch/select?%s&rows=20&wt=json' % urlencode({'q': query})
 
 result = urlopen(url).read()
