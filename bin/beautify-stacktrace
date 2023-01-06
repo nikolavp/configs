@@ -1,0 +1,10 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+# Remove the log prefix
+sed -e 's|.*STDOUT:||' | 
+# Join multiple lines together because stdout will emit them as separate lines
+tr -d '\n' |
+# Beautify the stacktrace by making \n into real new lines and
+# \t into real tabs
+sed -e 's|\\n|\n|g' | sed -e 's|\\t|\t|g'
