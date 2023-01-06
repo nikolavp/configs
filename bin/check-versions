@@ -1,0 +1,8 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+# A simple script/pattern to check for versions in a specific project.
+
+rg --hidden '\d+\.\d+' \
+    -g '!CHANGELOG.md' \
+    -g '!README.md' \
+    -g '!.git'
