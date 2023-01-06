@@ -321,16 +321,16 @@ lua <<EOF
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
         vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
     },
+
     mapping = {
       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
       ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ["<Up>"] = cmp.mapping.select_prev_item(),
+      ["<Down>"] = cmp.mapping.select_next_item(),
       ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
       ['<C-e>'] = cmp.mapping({
         i = cmp.mapping.abort(),
@@ -340,10 +340,7 @@ lua <<EOF
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      -- { name = 'vsnip' }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
-      { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
+      { name = 'ultisnips' },
     }, {
       { name = 'buffer' },
     })
@@ -375,7 +372,7 @@ lua <<EOF
   -- })
 
   -- Setup lspconfig and cmp-nvim-lsp
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
   local lsp_config = require('lspconfig')
 
   lsp_config.pylsp.setup{
@@ -386,19 +383,24 @@ lua <<EOF
     capabilities = capabilities,
   }
 
+  lsp_config.tsserver.setup{
+    capabilities = capabilities
+  }
+
   -- Setup nvim-autopairs
   require('nvim-autopairs').setup{}
 
   local cmp_autopairs = require('nvim-autopairs.completion.cmp')
   local cmp = require('cmp')
   cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
-  -- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
   require'lsp_signature'.setup({})
 EOF
 
-
 " Use terminal background for performance.
 highlight Normal ctermbg=NONE guibg=NONE
+
+" vim-matchup non-distracting-config
+hi MatchWord ctermfg=red guifg=blue cterm=underline gui=underline
 
 " Line numbers in terminal
 highlight LineNr ctermfg=245

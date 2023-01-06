@@ -84,7 +84,7 @@ endif
 "}}}
 
 
-nnoremap <leader>ss :Rg<CR>
+nnoremap <leader>ss :execute "Rg " . expand('<cword>')<CR>
 nnoremap <leader>fe :FZF<CR>
 nnoremap <silent> <Leader>be :Buffers<CR>
 
