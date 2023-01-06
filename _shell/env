@@ -3,9 +3,10 @@ if which dircolors &> /dev/null;then
 fi
 
 export PAGER=less
-export GIT_EDITOR=vim
+export GIT_EDITOR=nvim
 export GIT_PAGER=less
 export PYTHONSTARTUP=~/.pystartup
 #Prefer vim for everything. Some strange distros like ubuntu have bad defaults like ed -.-
-export EDITOR=vim
+export EDITOR=nvim
 export PATH="$HOME/bin:$HOME/configs/bin:$PATH"
+export PATH="node_modules/.bin:$PATH"

@@ -2,6 +2,7 @@ if ! which open &> /dev/null;then
     alias open=xdg-open
 fi
 alias t=task
+alias vim=nvim
 alias m=mvn
 alias mci='mvn clean install'
 alias mcp='mvn clean package'
