@@ -16,10 +16,12 @@ set surround
 
 
 map <leader>r :action RenameElement<cr>
-map gr :action ShowUsages<cr>
-map <leader>cc :action GotoNextError<cr>
 map <leader>i :action Inline<cr>
 map <leader>a :action GotoAction<cr>
+map <leader>m :action GotoImplementation<cr>
+
+map gr :action ShowUsages<cr>
+map <leader>cc :action GotoNextError<cr>
 map <leader>fe :action GotoFile<cr>
 map <leader>se :action GotoSymbol<CR>
 map <leader>be :action RecentFiles<CR>
@@ -27,7 +29,8 @@ map <leader>ff :action FileStructurePopup<CR>
 map <leader>te :action GotoTest<CR>
 map <C-t> :action Back<CR>
 map <S-j> :action EditorJoinLines<CR>
-map <leader>rr :action Rerun<CR>
+map <leader>u :action Rerun<CR>
+map <leader><leader>c :action ContextRun<CR>
 
 " Move between splits much faster
 nnoremap <C-J> <C-W>j
