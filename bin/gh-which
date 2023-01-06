@@ -1,0 +1,5 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+url=$(gh pr view --json url | jq -r .url)
+open $url
