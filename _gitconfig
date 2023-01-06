@@ -15,5 +15,10 @@
     st = status
     amend = commit --amend --no-edit -a
     cob = !git checkout $(git branch | fzf)
+    bd = !git branch -D $(git branch | fzf)
+    up= !git push origin $(git rev-parse --abbrev-ref HEAD)
+    # Fetch and fast forward merge master https://superuser.com/a/1382791
+    # Check why do you need the -u flag https://stackoverflow.com/a/19205680
+    up-master=fetch -u origin master:master
 [credential]
 	helper = cache --timeout=3600
