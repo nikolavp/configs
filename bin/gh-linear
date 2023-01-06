@@ -1,0 +1,14 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+# Just copy the whole addressbar in the browser, execute this and it will
+# create a new branch based on the issue using your master branch
+
+linear_url=$(pbpaste)
+branch_name=$(echo $linear_url | sed -e 's|.*ENG|ENG|g' | tr '/' '-')
+
+if [[ -z $(echo $branch_name | grep 'ENG-') ]];then
+    echo "Couldn't extract branch name. Clipboard contained '$linear_url'"
+    exit 1
+fi
+
+git checkout -b $branch_name master
