@@ -54,10 +54,10 @@ function ssidChangedCallback()
     ssid = hs.wifi.currentNetwork()
 
     -- We just joined our home WiFi network
-    if ssid == 'gini' or ssid == 'gini_5' then
+    if ssid == 'gini' or ssid == 'gini_5G' then
         hs.alert.show('Detected home network (' .. ssid .. ') unmuting audio ')
         hs.audiodevice.defaultOutputDevice():setMuted(false)
-        hs.audiodevice.defaultOutputDevice():setVolume(25)
+        hs.audiodevice.defaultOutputDevice():setVolume(50)
     elseif ssid ~= nil then
         hs.alert.show('Detected non home (' .. ssid .. ') network muting audio')
         hs.audiodevice.defaultOutputDevice():setVolume(0)
