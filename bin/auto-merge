@@ -8,10 +8,10 @@ if [ $# -lt 1 ];then
 fi
 
 while [[ $(gh pr view --json mergeStateStatus $1 | jq -r .mergeStateStatus) != 'CLEAN' ]];do
-    echo "PR $1 is still not ready for merging"
+    echo "[$(date +%FT%T)] PR $1 is still not ready for merging"
     sleep 5
 done
 
-echo "PR $1 is ready.... merging"
+echo "[$(date +%FT%T)] PR $1 is ready.... merging"
 
 gh pr merge -s $1
