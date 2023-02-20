@@ -387,6 +387,10 @@ lua <<EOF
     capabilities = capabilities
   }
 
+  lsp_config.jsonls.setup{
+    capabilities = capabilities
+  }
+
   -- Setup nvim-autopairs
   require('nvim-autopairs').setup{}
 
