@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # vim: set sw=4 sts=4 et foldmethod=indent :
 
 from dateutil import parser as dateparser
@@ -6,7 +6,7 @@ from datetime import timedelta
 import xml.etree.ElementTree as ET
 import argparse
 import sys
-from urllib import urlopen
+from urllib.request import urlopen
 
 parser = argparse.ArgumentParser(description="Find a rate in bnb's database")
 parser.add_argument('--currency-code', '-c', default='USD')
