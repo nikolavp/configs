@@ -1,0 +1,31 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+#
+# A script to mark a draft PR as ready if it was able to pass all the checks
+# successfully. This is used in flows where you are opening your PRs in draft
+# mode and then after a preliminary review from you and all the checks have
+# passed, you want to mark it as ready for review by others. This prevents
+# notifications from github to reviewers before you are sure that the PR is
+# ready for review.
+# If only github provided that functionality out of the box.
+
+if [ $# -lt 1 ];then
+    echo Usage:
+    echo "$0 <pr-number>"
+    exit
+fi
+
+conclusions=$(gh pr view --json statusCheckRollup $1 | jq '.statusCheckRollup' | jq '.[].conclusion')
+
+while [[ ! -z $(echo $conclusions | grep -v 'SUCCESS') ]];do
+    if [[ -n $(echo $conclusions | grep FAILURE ) ]];then
+        echo "[$(date +%FT%T)] PR $1 failed to build"
+        osascript -e 'display notification "There was a failure to build the PR" with title "Failure"'
+        exit 1
+    fi
+    echo "[$(date +%FT%T)] PR $1 is still not ready"
+    sleep 5
+done
+
+echo "[$(date +%FT%T)] Marking PR $1 as ready"
+gh pr ready $1
