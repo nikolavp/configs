@@ -6,6 +6,8 @@
 let mapleader = "\<Space>"
 " Source this abbs that I am creating with Abb
 source ~/.vim/abbs.vim
+" Put customer ftdetect and
+set runtimepath+=~/.vim/
 
 scriptencoding utf-8
 if has('vim_starting')
