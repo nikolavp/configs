@@ -26,6 +26,10 @@ apps = {
     b = 'Google Chrome',
     m = 'Slack',
     t = 'iTerm',
+    -- change this depending on the distribution that you use (i.e. CE vs Enterprise)
+    j = 'IntelliJ IDEA CE',
+    s = 'Safari',
+    v = 'Viber'
 }
 
 for k, v in pairs(apps) do
