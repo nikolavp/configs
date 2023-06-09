@@ -102,5 +102,16 @@ watcher:start()
 -- call this explicitly if we are starting up
 ssidChangedCallback()
 
-hs.alert.show("Config reloaded")
+hs.audiodevice.watcher.setCallback(function(event)
+    if event == 'dIn ' then -- input device changed
+        for k, audioDevice in pairs(hs.audiodevice.allInputDevices()) do
+            if audioDevice:name() == "MacBook Pro Microphone" then
+                hs.alert.show('Setting MacBook Pro Microphone as the default input device')
+                audioDevice:setDefaultInputDevice()
+            end
+        end
+    end
+end)
+hs.audiodevice.watcher.start()
 
+hs.alert.show("Config reloaded")
