@@ -4,9 +4,9 @@
 # create a new branch based on the issue using your master branch
 
 linear_url=$(pbpaste)
-branch_name=$(echo $linear_url | sed -e 's|.*ARR|ARR|g' | tr '/' '-')
+branch_name=$(echo $linear_url | sed -e 's|.*/bound/issue/\(\.*\)|\1|g' | tr '/' '-')
 
-if [[ -z $(echo $branch_name | grep 'ARR-') ]];then
+if [[ "$linear_url" = "$branch_name" ]];then
     echo "Couldn't extract branch name. Clipboard contained '$linear_url'"
     exit 1
 fi
