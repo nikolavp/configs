@@ -124,3 +124,7 @@ noremap Y y$
 
 " Make the overwriting paste in visual mode keep the last yank
 xnoremap p "_dP
+
+" fix the last spelling mistake and continue at the same insert mode position
+" with ctrl-l
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
