@@ -9,6 +9,9 @@
 # ready for review.
 # If only github provided that functionality out of the box.
 
+set -o nounset
+set -o errexit
+
 if [ $# -lt 1 ];then
     echo Usage:
     echo "$0 <pr-number>"
