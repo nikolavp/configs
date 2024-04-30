@@ -25,6 +25,7 @@ while [[ ! -z $conclusions ]];do
     fi
     echo "[$(date +%FT%T)] PR $1 is still not ready"
     sleep 5
+    conclusions=$(gh pr view --json statusCheckRollup $1 | jq '.statusCheckRollup' | jq '.[].conclusion' | grep -v 'SUCCESS')
 done
 
 echo "[$(date +%FT%T)] Marking PR $1 as ready"
