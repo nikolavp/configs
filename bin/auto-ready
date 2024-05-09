@@ -10,7 +10,6 @@
 # If only github provided that functionality out of the box.
 
 set -o nounset
-set -o errexit
 
 if [ $# -lt 1 ];then
     echo Usage:
@@ -18,18 +17,33 @@ if [ $# -lt 1 ];then
     exit
 fi
 
-conclusions=$(gh pr view --json statusCheckRollup $1 | jq '.statusCheckRollup' | jq '.[].conclusion' | grep -v 'SUCCESS')
+
+# Handle cases where I am just providing the full link of the PR from browser
+# i.e. https://github.com/<org>/<repo>/pull/4711
+pr_arg=$1
+if [[ $pr_arg == *"/pull/"* ]]; then
+    pr_arg=$(basename $pr_arg)
+    echo "Extracted PR number $pr_arg from url"
+fi
+
+number_regex='^[0-9]+$'
+if ! [[ $pr_arg =~ $number_regex ]] ; then
+   echo "PR is not a number" >&2; 
+   exit 1
+fi
+
+conclusions=$(gh pr view --json statusCheckRollup $pr_arg | jq '.statusCheckRollup' | jq '.[].conclusion' | grep -v 'SUCCESS')
 
 while [[ ! -z $conclusions ]];do
     if [[ -n $(echo $conclusions | grep FAILURE ) ]];then
-        echo "[$(date +%FT%T)] PR $1 failed to build"
+        echo "[$(date +%FT%T)] PR $pr_arg failed to build"
         osascript -e 'display notification "There was a failure to build the PR" with title "Failure"'
         exit 1
     fi
-    echo "[$(date +%FT%T)] PR $1 is still not ready"
+    echo "[$(date +%FT%T)] PR $pr_arg is still not ready"
     sleep 5
-    conclusions=$(gh pr view --json statusCheckRollup $1 | jq '.statusCheckRollup' | jq '.[].conclusion' | grep -v 'SUCCESS')
+    conclusions=$(gh pr view --json statusCheckRollup $pr_arg | jq '.statusCheckRollup' | jq '.[].conclusion' | grep -v 'SUCCESS')
 done
 
-echo "[$(date +%FT%T)] Marking PR $1 as ready"
-gh pr ready $1
+echo "[$(date +%FT%T)] Marking PR $pr_arg as ready"
+gh pr ready $pr_arg
