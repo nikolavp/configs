@@ -10,3 +10,5 @@ vim/bundle/
 /vim/.netrwhist
 /_shell/env.local
 /vim/view
+__MACOSX
+.DS_Store
