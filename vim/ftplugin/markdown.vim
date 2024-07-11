@@ -1,1 +1,1 @@
-nmap <buffer> <leader>` ysiw`
+nmap <buffer> <leader>` ysiW`
