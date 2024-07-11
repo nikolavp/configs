@@ -8,6 +8,13 @@ let mapleader = "\<Space>"
 source ~/.vim/abbs.vim
 " Put customer ftdetect and
 set runtimepath+=~/.vim/
+" Use ripgrep instad of the builtin grep
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepformat+=%f:%l:%c:%m
+" Define a command to skip the "Press any key to continue"" when executing the
+" normal :grep
+command! -nargs=+ Grep silent! grep! <args>
+
 
 scriptencoding utf-8
 if has('vim_starting')
@@ -384,6 +391,11 @@ lua <<EOF
     root_dir = lsp_config.util.root_pattern("itea.setup.yaml", "main.go", "go.mod", ".git"),
     capabilities = capabilities,
   }
+
+  lsp_config.pylsp.setup {
+    capabilities = capabilities,
+  }
+
 
   lsp_config.tsserver.setup{
     capabilities = capabilities
