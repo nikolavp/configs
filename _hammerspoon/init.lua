@@ -27,7 +27,7 @@ apps = {
     m = 'Slack',
     t = 'iTerm',
     -- change this depending on the distribution that you use (i.e. CE vs Enterprise)
-    j = 'IntelliJ IDEA CE',
+    j = 'IntelliJ IDEA Community Edition',
     s = 'Safari',
     v = 'Viber'
 }
