@@ -42,4 +42,6 @@ nnoremap <CR> :action GotoDeclaration<CR>
 nnoremap <BS> :action Back<CR>
 
 Plug 'machakann/vim-highlightedyank'
-
+" Changelist is not implemented by ideavim. Let's bring the mappings here.
+nnoremap g; :action JumpToLastChange<Enter>
+nnoremap g, :action JumpToNextChange<Enter>
