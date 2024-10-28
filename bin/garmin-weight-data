@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+from datetime import date
+from argparse import RawTextHelpFormatter
+import argparse
+
+
+def calculate_bmi(height, weight):
+    return round(weight / (height * height), 2)
+
+
+def main():
+
+    parser = argparse.ArgumentParser(
+            prog='garmin-weight-data',
+            formatter_class=RawTextHelpFormatter,
+            description='''Generates a fitbit format that's accepted by
+garmin connect. This is used to input body fat data from my
+third party scale into garmin connect. Sample usage:\n\n
+
+garmin-weight-data -w 98.6 -f 34.7 --height 1.79\n\n
+
+you can pipe the output to a csv file that can then be imported into garmin
+connect as fitbit data.
+            ''',
+            epilog='Have fun')
+    parser.add_argument('--height', default='1.79', type=float)
+    parser.add_argument('-w', '--weight', required=True, type=float)
+    parser.add_argument('-f', '--fat', required=True, type=float)
+    args = parser.parse_args()
+
+    weight = args.weight
+    height = args.height
+    fat = args.fat
+    bmi = calculate_bmi(height, weight)
+
+    print('Body')
+    print('date,time,weight,bmi,fat')
+    print(f'{date.today()},8:00:00,{weight},{bmi},{fat}')
+
+
+if __name__ == '__main__':
+    main()
