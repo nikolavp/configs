@@ -1,6 +1,23 @@
 #!/bin/bash
 # vim: set sw=4 sts=4 et foldmethod=indent :
+#
 
+find_workspace() {
+    local dir="$1"
+    local parent_dir="$(dirname "$dir")"
+    while [ "$dir" != "/" ]; do
+        if [ -f "$dir/WORKSPACE" ]; then
+            echo "$dir"
+            return
+        fi
+        dir="$parent_dir"
+        parent_dir="$(dirname "$dir")"
+    done
+    echo "WORKSPACE file not found in parent directories."
+    exit
+}
+
+workspace_dir=$(find_workspace $(pwd))
 current_dir=$(pwd)
-current_dir=${current_dir##$GOPATH}
+current_dir=${current_dir##$workspace_dir}
 (set -x; bazel $@ "/${current_dir}/...")

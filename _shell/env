@@ -10,3 +10,5 @@ export PYTHONSTARTUP=~/.pystartup
 export EDITOR=nvim
 export PATH="$HOME/bin:$HOME/configs/bin:$PATH"
 export PATH="node_modules/.bin:$PATH"
+export PATH=$HOME/go/bin:$PATH
+export PATH=$HOME/Library/Python/3.9/bin:$PATH

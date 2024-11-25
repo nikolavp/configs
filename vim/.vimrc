@@ -397,7 +397,7 @@ lua <<EOF
   }
 
 
-  lsp_config.tsserver.setup{
+  lsp_config.ts_ls.setup{
     capabilities = capabilities
   }
 

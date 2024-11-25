@@ -23,6 +23,7 @@ test -h $HOME/.vim || ln -sf $PWD/vim $HOME/.vim
 test -h $HOME/.vimrc || ln -sf $PWD/vim/.vimrc $HOME/.vimrc
 mkdir -p $HOME/.config
 test -h $HOME/.vim || ln -sf $PWD/vim $HOME/.config/nvim
+mkdir -p ~/.config/nvim
 ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 
 git submodule sync

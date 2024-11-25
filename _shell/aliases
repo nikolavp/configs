@@ -23,3 +23,5 @@ alias gc='git checkout'
 # see https://unix.stackexchange.com/a/244516
 alias xargs='xargs '
 alias sudo='sudo '
+alias k='kubectl'
+alias tf='terraform'
