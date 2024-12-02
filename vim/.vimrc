@@ -53,6 +53,7 @@ Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
 
 Plug 'neovim/nvim-lspconfig'
 
@@ -404,6 +405,24 @@ lua <<EOF
   lsp_config.jsonls.setup{
     capabilities = capabilities
   }
+
+-- https://neovim.discourse.group/t/how-to-add-a-custom-server-to-nvim-lspconfig/3925/4
+-- Setup a custom lsp server
+-- local lspconfig = require 'lspconfig'
+-- local configs = require 'lspconfig.configs'
+-- 
+-- if not configs.noir_lsp then
+--   configs.noir_lsp = {
+--     default_config = {
+--       cmd = { 'nargo', 'lsp' },
+--       root_dir = lspconfig.util.root_pattern('.git'),
+--       filetypes = { 'noir' },
+--     },
+--   }
+-- end
+-- lspconfig.noir_lsp.setup {}
+
+
 
   -- Setup nvim-autopairs
   require('nvim-autopairs').setup{}
