@@ -23,8 +23,7 @@ test -h $HOME/.vimrc || ln -sf $PWD/vim/.vimrc $HOME/.vimrc
 mkdir -p $HOME/.config
 test -h $HOME/.vim || ln -sf $PWD/vim $HOME/.config/nvim
 mkdir -p ~/.config/nvim
-test -h $HOME/.config/nvim/init.vim || ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
-test -h $HOME/.finicky.js || ln -sf $PWD/_finicky.js $HOME/.finicky.js
+test -h $HOME/.config/nvim/init.vim || ln -sf $HOME/.vimrc $HOME/.config/nvim/init.vim
 
 git submodule sync
 git submodule init

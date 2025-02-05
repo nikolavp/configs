@@ -130,3 +130,7 @@ yt() {
     local video_link="$1"
     fabric -y "$video_link" --transcript
 }
+
+if which fnm &> /dev/null;then
+    eval "$(fnm env --use-on-cd --shell zsh)"
+fi

@@ -35,9 +35,13 @@ I am using dvorak and because I am from Bulgaria, I needed a dvorak mapping for 
 
     brew install --cask karabiner-elements
     brew install --cask hammerspoon
-    brew install autojump nvim direnv fzf blueutil bat glow
+    brew install autojump nvim direnv fzf blueutil bat glow docker-credential-helper-ecr
 
 https://loshadki.app/
+https://github.com/Schniz/fnm - faster nvm alternative
+https://github.com/awslabs/amazon-ecr-credential-helper
+
+Give access to bluetooth for hammerspoon: Go to Settings -> Privacy & Security -> Bluetooth and add hammerspoon. This allows it to use blueutil to disable/enable bluetooth when the lid is closed.
 
 ## Karabiner setup
 
