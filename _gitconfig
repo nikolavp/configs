@@ -6,11 +6,19 @@
 	status = auto
 	branch = auto
 	ui = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    side-by-side = true
+
 # This one is reused by rsync and other tools
 [core]
 	excludesfile = ~/.cvsignore
-[push]
-	#default = simple
+    pager = delta
+
 [alias]
     st = status
     amend = commit --amend --no-edit -a

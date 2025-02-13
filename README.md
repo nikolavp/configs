@@ -35,7 +35,7 @@ I am using dvorak and because I am from Bulgaria, I needed a dvorak mapping for 
 
     brew install --cask karabiner-elements
     brew install --cask hammerspoon
-    brew install autojump nvim direnv fzf blueutil bat glow docker-credential-helper-ecr
+    brew install autojump nvim direnv fzf blueutil bat glow docker-credential-helper-ecr delta
 
 https://loshadki.app/
 https://github.com/Schniz/fnm - faster nvm alternative
