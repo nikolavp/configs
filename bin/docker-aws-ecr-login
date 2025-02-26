@@ -1,0 +1,16 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+# This script fixes the problem of authenticating docker to ecr.
+# Preferably, one can use https://github.com/awslabs/amazon-ecr-credential-helper to do that. But for some reason that's
+# not possible, this script will do it for a specific AWS region
+
+if [ $# -lt 1 ];then
+    echo Usage:
+    echo "$0 <aws-region>"
+    exit
+fi
+
+
+aws_region=$1
+
+aws ecr get-login-password --region $aws_region | docker login -u AWS --password-stdin "https://$(aws sts get-caller-identity --query 'Account' --output text).dkr.ecr.${aws_region}.amazonaws.com"
