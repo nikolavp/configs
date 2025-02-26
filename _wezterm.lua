@@ -17,5 +17,21 @@ config.quick_select_patterns = {
 }
 config.scrollback_lines = 10000
 
+config.font_size = 13.0
+config.line_height = 1.3
+config.font_rules = {
+	{
+		intensity = "Bold",
+		italic = false,
+		font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Normal" }),
+	},
+	{
+		intensity = "Bold",
+		italic = true,
+		font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Italic" }),
+	},
+}
+
 -- and finally, return the configuration to wezterm
 return config
+
