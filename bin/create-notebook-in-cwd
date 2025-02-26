@@ -1,0 +1,7 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+
+uv venv
+uv pip install notebook
+uv run jupyter notebook
+
