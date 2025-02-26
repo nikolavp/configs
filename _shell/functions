@@ -25,3 +25,8 @@ cdl()
 {
     cd $1;ls
 }
+
+main()
+{
+    git checkout main
+}
