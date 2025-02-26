@@ -26,9 +26,10 @@ apps = {
     b = 'Google Chrome',
     c = 'Google Calendar',
     m = 'Slack',
-    t = 'iTerm',
+    t = 'Wezterm',
     -- change this depending on the distribution that you use (i.e. CE vs Enterprise)
     j = 'IntelliJ IDEA Community Edition',
+    g = 'Goland',
     s = 'Safari',
     v = 'Viber'
 }
