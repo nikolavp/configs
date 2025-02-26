@@ -26,8 +26,6 @@ let mapleader = "\<Space>"
 call plug#begin('~/.vim/bundle')
 
 
-Plug 'ciaranm/inkpot'
-
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'nikolavp/sparql.vim', { 'for': 'sparql' }
 Plug 'nikolavp/vim-jape', { 'for': 'jape' }
@@ -79,6 +77,10 @@ Plug 'gfanto/fzf-lsp.nvim'
 Plug 'andymass/vim-matchup'
 " Copy paste from remote machines
 Plug 'ojroques/vim-oscyank'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'williamboman/mason.nvim'
+Plug 'folke/tokyonight.nvim'
 
 call plug#end()
 
@@ -155,7 +157,7 @@ set showmatch
 "Do spell checking for English
 set spell
 silent set spelllang+=en
-colorscheme inkpot
+colorscheme tokyonight
 set autoindent
 set smartindent
 "{{{Enable folds
@@ -388,6 +390,7 @@ lua <<EOF
   lsp_config.pylsp.setup{
     capabilities = capabilities
   }
+
   lsp_config.gopls.setup{
     root_dir = lsp_config.util.root_pattern("itea.setup.yaml", "main.go", "go.mod", ".git"),
     capabilities = capabilities,
@@ -398,6 +401,16 @@ lua <<EOF
   }
 
 
+  lsp_config.helm_ls.setup {
+    settings = {
+      ['helm-ls'] = {
+        yamlls = {
+          path = "yaml-language-server",
+        }
+      }
+    }
+  }
+
   lsp_config.ts_ls.setup{
     capabilities = capabilities
   }
@@ -405,24 +418,32 @@ lua <<EOF
   lsp_config.jsonls.setup{
     capabilities = capabilities
   }
+  lsp_config.svelte.setup{
+    capabilities = capabilities
+  }
+  lsp_config.tailwindcss.setup{
+    capabilities = capabilities
+  }
 
+-- a little bit based on https://github.com/neovim/nvim-lspconfig/blob/ead2fbc4893fdd062e1dd0842679a48bfb7bac5c/lua/lspconfig/configs/sourcery.lua#L17
 -- https://neovim.discourse.group/t/how-to-add-a-custom-server-to-nvim-lspconfig/3925/4
 -- Setup a custom lsp server
--- local lspconfig = require 'lspconfig'
--- local configs = require 'lspconfig.configs'
--- 
--- if not configs.noir_lsp then
---   configs.noir_lsp = {
---     default_config = {
---       cmd = { 'nargo', 'lsp' },
---       root_dir = lspconfig.util.root_pattern('.git'),
---       filetypes = { 'noir' },
---     },
+--   local configs = require 'lspconfig.configs'
+--   if not configs.noir_lsp then
+--     configs.noir_lsp = {
+--       default_config = {
+--         cmd = { '/Users/nikolavp/test.sh' },
+--         root_dir = lsp_config.util.root_pattern('.git'),
+--         filetypes = { 'go' },
+--       },
+--     }
+--   end
+--   lsp_config.noir_lsp.setup {
+--       init_options = {
+--           token = "",
+--           apiUrl = ""
+--       }
 --   }
--- end
--- lspconfig.noir_lsp.setup {}
-
-
 
   -- Setup nvim-autopairs
   require('nvim-autopairs').setup{}
@@ -431,6 +452,46 @@ lua <<EOF
   local cmp = require('cmp')
   cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
   require'lsp_signature'.setup({})
+
+
+  require'nvim-treesitter.configs'.setup {
+    -- A list of parser names, or "all" (the listed parsers MUST always be installed)
+    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "svelte", "typescript", "tsx", "json", "css", "javascript" },
+
+    -- Install parsers synchronously (only applied to `ensure_installed`)
+    sync_install = false,
+
+    -- Automatically install missing parsers when entering buffer
+    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+    auto_install = true,
+
+    -- List of parsers to ignore installing (or "all")
+    ignore_install = { },
+
+    highlight = {
+      enable = true,
+
+      -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+      -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+      -- the name of the parser)
+      -- list of language that will be disabled
+      disable = { },
+      -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+      -- disable = function(lang, buf)
+      --     local max_filesize = 100 * 1024 -- 100 KB
+      --     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      --     if ok and stats and stats.size > max_filesize then
+      --         return true
+      --     end
+      -- end,
+
+      additional_vim_regex_highlighting = false,
+    },
+    indent = {
+      enable = true
+    }
+  }
+  require("mason").setup()
 EOF
 
 " Use terminal background for performance.
