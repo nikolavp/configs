@@ -66,7 +66,6 @@ map <leader>brn mR:call functions#BuffersRenameVar("<C-R><C-W>", "nvname")
 cmap w!! %!sudo tee > /dev/null %
 
 imap <c-space> <C-x><C-o>
-map <F12> :TagbarToggle<CR>
 map <F6> :NERDTreeToggle<CR>
 
 " portable ctrl + space

@@ -15,7 +15,6 @@ set grepformat+=%f:%l:%c:%m
 " normal :grep
 command! -nargs=+ Grep silent! grep! <args>
 
-
 scriptencoding utf-8
 if has('vim_starting')
     set nocompatible               " Be iMproved
@@ -32,7 +31,6 @@ Plug 'nikolavp/vim-jape', { 'for': 'jape' }
 Plug 'tpope/vim-cucumber', { 'for': 'cucumber' }
 Plug 'rosstimson/scala-vim-support', { 'for': 'scala' }
 Plug 'plasticboy/vim-markdown', { 'for': 'mkd' }
-Plug 'vim-scripts/n3.vim', { 'for': 'n3' }
 
 Plug 'godlygeek/tabular', {'for': 'puppet'}
 Plug 'rodjek/vim-puppet', { 'for': 'puppet'}
@@ -46,8 +44,6 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-
-Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -84,13 +80,13 @@ Plug 'folke/tokyonight.nvim'
 
 call plug#end()
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#gocode_binary = '/Users/nikolavp/gocode/bin/gocode'
-let g:go_auto_type_info = 1
 set updatetime=100
 
 " Max line length to be readable
 set colorcolumn=120
+" Note that this doesn't result in the buffer being wrapped at this column, it
+" will just look visually like so
+set columns=120
 
 set numberwidth=1   "Make it low so it doesn't get too much space.
 "{{{2 Filetype options
@@ -101,7 +97,6 @@ filetype indent on
 syntax on
 set showfulltag     " Show the full tag when we are doing search completion
 set showcmd         " Show the command we are typing
-set nowrap          " Make this default and switch it on if we need
 set linebreak       " This don't just cut our words but wraps nice
 set lazyredraw      " speed up macros
 set tabstop=4       " numbers of spaces of tab character
@@ -186,52 +181,17 @@ set statusline+=%=                           " right align
 set statusline+=%2*0x%-8B\                   " current char
 set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset"
 "}}}
-"{{{2 Window title options(ciaranm''s vimrc)
-if has('title') && (has('gui_running') || &title)
-    set titlestring=
-    set titlestring+=%f\                                              " file name
-    set titlestring+=%h%m%r%w                                         " flags
-    set titlestring+=\ -\ %{v:progname}                               " program name
-    set titlestring+=\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}  " working directory
-endif
-"}}}
 "}}}
 ""{{{1
-"Gui options 
-""{{{2
-"Gui options which I like(Clean and simple)
-if has('gui')
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=l
-    set guioptions-=L
-    set guioptions-=r
-    set guioptions-=R
-end
-"}}}
-"}}}
 source ~/.vim/filetypes.vim
 source ~/.vim/maps.vim
 source ~/.vim/contents.vim
-" Added and stolen from Radev lately
+" Added and stolen from Radev
 source ~/.vim/cyrillic.vim
 "{{{ Options for the plugins
-let python_highlight_all=1
-" Settings for tagbar
-let g:tagbar_compact = 1
-let g:tagbar_width = 28
-let g:tagbar_autoclose = 1
-let g:tagbar_autofocus = 1
 
 "Close NERDTree if open after we open a new file
 let g:NERDTreeQuitOnOpen=1
-"Doxygen
-let g:load_doxygen_syntax=1
-let g:doxygen_enhanced_color=1
-"Latex options
-let g:Tex_DefaultTargetFormat="pdf"
-let g:Tex_ViewRule_pdf="kpdf"
-
 "}}}
 "-----------------------------------------------------------------------
 " final commands
@@ -244,9 +204,7 @@ command! -nargs=+ Abb :call functions#Abbreviate(<f-args>)
 "Spot any double word, which are really hard to find. Especially useful for latex and plain text
 au Syntax * syn match Error "\c\<\(\a\+\)\_s\+\1\>"
 "Highlight extra whitespace
-au Syntax * syn match Error /\s\+$\| \+\ze\t/  " highlight extra whitespace
-let java_highlight_java_lang_ids=1
-let java_highlight_java_io=1
+au Syntax * syn match Error /\s\+$\| \+\ze\t/
 "This deletes the space after the iabrev i don't like sometimes.
 "{{{Getchar function + Eathchar - a neat way for iabbrev that eat a space
 fun! Eatchar(pat)
@@ -277,13 +235,6 @@ endif
 
 "More on this option here http://www.johnhawthorn.com/2012/09/vi-escape-delays/
 set ttimeoutlen=0
-
-"turtle filetypes
-augroup filetypedetect
-    au BufNewFile,BufRead *.n3  setfiletype n3
-    au BufNewFile,BufRead *.ttl  setfiletype n3
-    au BufNewFile,BufRead *.confluence  setfiletype confluencewiki
-augroup END
 
 " Save folds as described here
 " http://vimrc-dissection.blogspot.com/2014/10/save-state-of-folds-mkview.html
