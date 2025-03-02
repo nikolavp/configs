@@ -209,22 +209,6 @@ if has('gui')
     set guioptions-=R
 end
 "}}}
-""{{{2
-if has("gui_running")
-    " See ~/.gvimrc
-    set guifont=Consolas\ 10.5  " use this font
-    set guicursor=
-    set guicursor+=n-v-c:block-Cursor/lCursor-blinkon0,
-                \ve:ver35-Cursor-blinkon0,
-                \o:hor50-Cursor-blinkon0,
-                \i-ci:ver25-Cursor/lCursor-blinkon0,
-                \r-cr:hor20-Cursor/lCursor-blinkon0,
-                \sm:block-Cursor-blinkon0
-    set lines=30      " height = 50 lines
-    set columns=100        " width = 100 columns
-    set keymodel=
-endif
-""}}}
 "}}}
 source ~/.vim/filetypes.vim
 source ~/.vim/maps.vim
