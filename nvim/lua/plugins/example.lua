@@ -1,6 +1,14 @@
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
-if true then return {} end
+if true then return {
+  { "folke/flash.nvim", enabled = false},
+  { "folke/noice.nvim", enabled = false},
+  { "MunifTanjim/nui.nvim", enabled = false},
+  { "akinsho/bufferline.nvim", enabled = false},
+  { "folke/todo-comments.nvim", enabled = false},
+  { "echasnovski/mini.ai", enabled = false},
+  { "MagicDuck/grug-far.nvim", enabled = false},
+} end
 
 -- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
 --

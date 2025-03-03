@@ -11,13 +11,12 @@ map("c", "q1", "q!")
 map("c", "Q1", "q!")
 map("c", "W", "w")
 
-map("n", "qq", ":bdelete<CR>")
-map("n", ",e", ":e ~/.config/nvim/lua/config<CR>")
-map("n", ",u", ":source ~/.config/nvim/init.lua<CR>")
-map("n", "<leader>i", "i<space><esc>r")
-map("n", "<leader>o", "o<esc>")
-map("n", "<leader>O", "O<esc>")
-map("n", "<leader>dbl", ":g/^$/d<CR>:nohls<CR>")
+map("n", "qq", ":bdelete<CR>", { desc = "Delete current buffer" })
+map("n", ",e", ":e ~/.config/nvim/lua<CR>")
+map("n", "<leader>i", "i<space><esc>r", { desc = "Add a single character" })
+map("n", "<leader>o", "o<esc>", { desc = "Add a single line below current line" })
+map("n", "<leader>O", "O<esc>", { desc = "Add a single line above the current line" })
+map("n", "<leader>dbl", ":g/^$/d<CR>:nohls<CR>", { desc = "Delete blank lines in a file" })
 map("n", "<Leader>ed", ':e <C-r>=expand("%:p:h")<CR>/<C-d>')
 
 map("n", "<F7>", ":make<CR><CR>")
@@ -45,3 +44,4 @@ map(
   "<c-g>u<Esc>[s1z=`]a<c-g>u",
   { desc = "fix the last spelling mistake and continue at the same insert mode position with ctrl-l" }
 )
+map("n", "<CR>", "gd", { desc = "Map Enter to go to definition" })
