@@ -8,6 +8,11 @@ if true then return {
   { "folke/todo-comments.nvim", enabled = false},
   { "echasnovski/mini.ai", enabled = false},
   { "MagicDuck/grug-far.nvim", enabled = false},
+  {
+    "gbprod/substitute.nvim",
+    opts = {
+    }
+  }
 } end
 
 -- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim

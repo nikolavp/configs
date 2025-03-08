@@ -15,3 +15,4 @@ iabbrev sollution solution
 iabbrev adn and
 iabbrev QWdiget QWidget
 iabbrev verobsity verbosity
+iabbrev evaulation evaluation

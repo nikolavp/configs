@@ -45,3 +45,13 @@ map(
   { desc = "fix the last spelling mistake and continue at the same insert mode position with ctrl-l" }
 )
 map("n", "<CR>", "gd", { desc = "Map Enter to go to definition" })
+
+map({ "v", "n" }, "<leader>be", function()
+  Snacks.picker.buffers()
+end, { desc = "Buffers" })
+
+-- Lua
+map("n", "s", require("substitute").operator, { noremap = true })
+map("n", "ss", require("substitute").line, { noremap = true })
+map("n", "S", require("substitute").eol, { noremap = true })
+map("x", "s", require("substitute").visual, { noremap = true })
