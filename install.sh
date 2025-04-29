@@ -25,6 +25,7 @@ test -h $HOME/.config/compton.conf || ln -sf $PWD/_compton.conf $HOME/.config/co
 # mkdir -p ~/.config/nvim
 # test -h $HOME/.config/nvim/init.vim || ln -sf $HOME/.vimrc $HOME/.config/nvim/init.vim
 test -h $HOME/.config/nvim || ln -sf $PWD/nvim $HOME/.config/nvim
+test -h $HOME/.config/ghostty || ln -sf $PWD/ghostty/ $HOME/.config/ghostty
 
 git submodule sync
 git submodule init

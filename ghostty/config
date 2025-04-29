@@ -1,0 +1,31 @@
+# If problems in ssh occur, read this https://ghostty.org/docs/help/terminfo
+# Copy the terminfo entries for ghostty with
+# infocmp -x ghostty | ssh YOUR-SERVER -- tic -x -
+keybind = super+f=write_screen_file:open
+
+# RECOMMENDED: Set this to something big so you can capture all of your scrollback
+scrollback-limit = 20000000
+
+copy-on-select = clipboard
+
+#theme = tokyonight
+#theme = niji
+#theme = HaX0R_R3D
+theme = MaterialDesignColors
+#theme = Snazzy
+
+background-opacity = 1.0
+background-blur-radius = 75
+
+# disable dimming other splits
+# unfocused-split-opacity = 1.0
+
+mouse-scroll-multiplier = 0.5
+macos-option-as-alt = true
+
+# use single window
+keybind = cmd+n=unbind
+
+macos-titlebar-style = hidden
+macos-non-native-fullscreen = true
+macos-titlebar-style = tabs
