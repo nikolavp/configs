@@ -2,9 +2,13 @@
 # vim: set sw=4 sts=4 et foldmethod=indent :
 
 # Remove the log prefix
-sed -e 's|.*STDOUT:||' | 
-# Join multiple lines together because stdout will emit them as separate lines
-tr -d '\n' |
-# Beautify the stacktrace by making \n into real new lines and
-# \t into real tabs
-sed -e 's|\\n|\n|g' | sed -e 's|\\t|\t|g'
+sed -e 's|.*STDOUT:||' |
+    # Join multiple lines together because stdout will emit them as separate lines
+    tr -d '\n' |
+    # Beautify the stacktrace by making \n into real new lines and
+    # \t into real tabs. Sometimes there is additional escaping that's applied because of json
+    # java strings. So first try to match with additional \\ as well.
+    sed -e "s|\\'|\'|g" | sed -e 's|\\"|\"|g' |
+    # Also remove double quotes
+    sed -e 's|\\\\n|\n|g' | sed -e 's|\\\\t|\t|g' |
+    sed -e 's|\\n|\n|g' | sed -e 's|\\t|\t|g'

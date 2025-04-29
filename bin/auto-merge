@@ -1,13 +1,13 @@
 #!/bin/bash
 # vim: set sw=4 sts=4 et foldmethod=indent :
 
-if [ $# -lt 1 ];then
+if [ $# -lt 1 ]; then
     echo Usage:
     echo "$0 <pr-number>"
     exit
 fi
 
-while [[ $(gh pr view --json mergeStateStatus $1 | jq -r .mergeStateStatus) != 'CLEAN' ]];do
+while [[ $(gh pr view --json mergeStateStatus $1 | jq -r .mergeStateStatus) != 'CLEAN' ]]; do
     echo "[$(date +%FT%T)] PR $1 is still not ready for merging"
     sleep 5
 done
