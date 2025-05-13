@@ -1,8 +1,10 @@
 {
   "extras": [
     "lazyvim.plugins.extras.lang.go",
+    "lazyvim.plugins.extras.lang.helm",
     "lazyvim.plugins.extras.lang.python",
-    "lazyvim.plugins.extras.lang.terraform"
+    "lazyvim.plugins.extras.lang.terraform",
+    "lazyvim.plugins.extras.lang.yaml"
   ],
   "install_version": 8,
   "news": {

@@ -6,3 +6,6 @@
 -- see also https://github.com/LazyVim/LazyVim/discussions/2715. Try in a couple of versions if this works
 -- out of the box with lazyvim.
 vim.opt.clipboard = "unnamedplus"
+
+vim.api.nvim_set_hl(0, "Normal", { ctermbg = "NONE", bg = "NONE" })
+vim.api.nvim_set_hl(0, "MatchWord", { fg = "red", underline = true })
