@@ -1,6 +1,20 @@
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
 if true then return {
+  {
+    "snacks.nvim",
+    opts = {
+      indent = { enabled = false },
+      input = { enabled = true },
+      notifier = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = false },
+      statuscolumn = { enabled = false }, -- we set this in options.lua
+      toggle = { map = LazyVim.safe_keymap_set },
+      words = { enabled = true },
+    },
+  },
+
   { "folke/flash.nvim", enabled = false},
   { "folke/noice.nvim", enabled = false},
   { "MunifTanjim/nui.nvim", enabled = false},
@@ -11,6 +25,38 @@ if true then return {
   {
     "gbprod/substitute.nvim",
     opts = {
+    },
+    keys = {
+      {
+        "s",
+        function (options)
+          return require("substitute").operator(options)
+        end,
+        desc = "Substitute with an operator"
+      },
+      {
+        "ss",
+        function (options)
+          return require("substitute").line(options)
+        end,
+        desc = "Substitute line"
+      },
+      {
+        "S",
+        function (options)
+          return require("substitute").eol(options)
+        end,
+        desc = "Substitute to the end of line"
+      },
+      {
+        "s",
+        function (options)
+          return require("substitute").visual(options)
+        end,
+        desc = "Substitute with visual",
+        mode = {"x"}
+      }
+
     }
   }
 } end
