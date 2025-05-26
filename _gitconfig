@@ -22,6 +22,7 @@
 [alias]
     st = status
     amend = commit --amend --no-edit -a
+    fixup = commit -a --fixup=HEAD
     cob = !git checkout $(git branch | fzf)
     bd = !git branch -D $(git branch | fzf)
     up= !git push origin $(git rev-parse --abbrev-ref HEAD)
