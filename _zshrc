@@ -39,6 +39,7 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(fabric git autojump svn extract vi-mode
     # Adds pyfind pyclean and pygrep
     python taskwarrior
+    zsh-syntax-highlighting fast-syntax-highlighting
 )
 
 source /etc/profile
