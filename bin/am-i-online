@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+# Taken from https://antonz.org/is-online/
+is_online() {
+  local url="http://google.com/generate_204"
+  local timeout=${1:-1}
+  local response=$(
+    curl \
+      --output /dev/null \
+      --write-out "%{http_code}" \
+      --max-time "$timeout" \
+      --silent \
+      "$url"
+  )
+  if [ "$response" = "200" ] || [ "$response" = "204" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+is_online
+
+if [[ $? == 0 ]]; then
+  echo "yes"
+else
+  echo "no"
+fi
