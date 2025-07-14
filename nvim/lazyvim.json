@@ -4,7 +4,8 @@
     "lazyvim.plugins.extras.lang.helm",
     "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.terraform",
-    "lazyvim.plugins.extras.lang.yaml"
+    "lazyvim.plugins.extras.lang.yaml",
+    "lazyvim.plugins.extras.test.core"
   ],
   "install_version": 8,
   "news": {
