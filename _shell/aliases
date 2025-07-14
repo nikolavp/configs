@@ -27,3 +27,4 @@ alias k='kubectl'
 alias tf='terraform'
 alias g='git'
 alias bazel='bazelisk '
+alias c=claude

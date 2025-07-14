@@ -200,5 +200,3 @@ source $HOME/.sshagent
 source ~/.shell/aliases
 source ~/.shell/env
 source ~/.shell/functions
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
