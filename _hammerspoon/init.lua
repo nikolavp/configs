@@ -52,6 +52,49 @@ hs.hotkey.bind({'ctrl', 'alt'}, 'right', function()
     spoon.WinWin:centerCursor()
 end)
 
+-- Function to arrange Granola and Zoom side by side
+function arrangeGranolaZoom()
+    local screen = hs.screen.mainScreen()
+    local screenFrame = screen:frame()
+    -- Define left and right halves
+    local leftHalf = {
+        x = screenFrame.x,
+        y = screenFrame.y,
+        w = screenFrame.w * 0.7,
+        h = screenFrame.h
+    }
+    local rightHalf = {
+        x = screenFrame.x + screenFrame.w * 0.7,
+        y = screenFrame.y,
+        w = screenFrame.w * 0.3,
+        h = screenFrame.h
+    }
+
+    -- Find and position Granola
+    hs.application.launchOrFocus("Granola")
+    local granola = hs.application.find("Granola")
+    if granola then
+        local granolaWindow = granola:mainWindow()
+        if granolaWindow then
+
+            granolaWindow:setFrame(rightHalf)
+        end
+    end
+
+    -- Find and position Zoom
+    hs.application.launchOrFocus("zoom.us")
+    local zoom = hs.application.find("zoom.us")
+
+    if zoom then
+        local zoomWindow = zoom:mainWindow()
+        if zoomWindow then
+            zoomWindow:setFrame(leftHalf)
+        end
+    end
+end
+-- Bind Cmd+Shift+G to the function
+hs.hotkey.bind(hyper, "G", arrangeGranolaZoom)
+
 hs.hotkey.bind(hyper, 't', function()
     hs.execute('todo', true)
 end)
