@@ -28,3 +28,6 @@ alias tf='terraform'
 alias g='git'
 alias bazel='bazelisk '
 alias c=claude
+alias p=pool
+alias mg='make gazelle'
+alias gh-linear-worktree="source $HOME/configs/bin/gh-linear-worktree"
