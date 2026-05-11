@@ -5,18 +5,22 @@ module.exports = {
   defaultBrowser: "Google Chrome",
   handlers: [
     {
-      match: [
-        finicky.matchHostnames(["linkedin.com"]),
-        "*.linkedin.com/*",
+      match: ({ url }) => {
+        const domains = [
+          "linkedin.com",
+          "instagram.com",
+          "youtube.com",
+          "youtu.be",
+          "rescuetime.com",
+          "facebook.com",
+          "x.com",
+        ];
+        // finicky.log("Checking Host: " + url.host);
 
-        finicky.matchHostnames(["youtube.com"]),
-        "*.youtube.com/*",
-        finicky.matchHostnames(["youtu.be"]),
-        "*.youtu.be/*",
 
-        finicky.matchHostnames(["rescuetime.com"]),
-        "*.rescuetime.com/*"
-      ],
+        return domains.some(domain => url.host === domain || url.host.endsWith(domain))
+      },
+
       browser: "Safari"
     }
   ]
