@@ -12,3 +12,13 @@ vim/bundle/
 /vim/view
 __MACOSX
 .DS_Store
+/_gradle/.tmp/
+/_gradle/android.lock
+/_gradle/android/
+/_gradle/caches/
+/_gradle/daemon/
+/_gradle/jdks/
+/_gradle/native/
+/_gradle/notifications/
+/_gradle/undefined-build/
+/_gradle/wrapper/
