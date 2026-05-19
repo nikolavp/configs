@@ -132,6 +132,12 @@ yt() {
     fabric -y "$video_link" --transcript
 }
 
-if which fnm &> /dev/null;then
-    eval "$(fnm env --use-on-cd --shell zsh)"
-fi
+export PATH="/opt/homebrew/opt/bison/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+
+ulimit -n 10240 # wt hits the too many open files limit while copying ignored files
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi

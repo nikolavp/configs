@@ -1,0 +1,14 @@
+[pre-start]
+copy = "wt step copy-ignored --force"
+install = "[ -f package.json ] && pnpm install || true"
+
+[pre-remove]
+bazel_clean = "[ -f MODULE.bazel ] && bazel clean --expunge || true"
+
+# [step.copy-ignored]
+# exclude = [".turbo/", ".next/"]
+#
+# node modules has a lot of links and this doesn't work even 
+# with the --force flag above.
+[step.copy-ignored]
+exclude = ["node_modules/"]

@@ -15,6 +15,7 @@ for x in _*; do
 done
 
 mkdir -p $HOME/.config/fontconfig
+test -h $HOME/.config/worktrunk || ln -sf $PWD/worktrunk/ $HOME/.config/worktrunk
 test -h $HOME/.config/fontconfig/fonts.conf || ln -sf $PWD/_fonts.conf $HOME/.config/fontconfig/fonts.conf
 test -h $HOME/.config/awesome || ln -sf $PWD/awesome $HOME/.config/awesome
 test -h $HOME/.config/compton.conf || ln -sf $PWD/_compton.conf $HOME/.config/compton.conf
