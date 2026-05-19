@@ -5,6 +5,10 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
+if which mise &> /dev/null; then
+  eval "$(mise activate zsh --shims)"
+fi
+
 export PAGER=less
 export GIT_EDITOR=nvim
 #Prefer vim for everything. Some strange distros like ubuntu have bad defaults like ed -.-

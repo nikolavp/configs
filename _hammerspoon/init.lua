@@ -11,6 +11,8 @@ clipboard:bindHotkeys({
 })
 clipboard.show_in_menubar = false
 clipboard.paste_on_select = true
+clipboard.hist_size = 30
+clipboard.display_max_length = 50
 clipboard:start()
 
 miromanager = hs.loadSpoon('MiroWindowsManager')
