@@ -1,0 +1,17 @@
+#!/bin/bash
+# vim: set sw=4 sts=4 et foldmethod=indent :
+# Just copy the whole addressbar in the browser, execute this and it will
+# create a new branch based on the issue using your main branch
+
+linear_url=$(pbpaste)
+branch_name=$(echo $linear_url | sed -e 's|.*/poolside/issue/\(\.*\)|\1|g' | tr '/' '-')
+
+if [[ "$linear_url" = "$branch_name" ]]; then
+    echo "Couldn't extract branch name. Clipboard contained '$linear_url'"
+    return 1 2>/dev/null || exit 1
+fi
+
+# new_worktree_dir="../$(basename $(pwd))-$branch_name"
+# git worktree add -b $branch_name $new_worktree_dir main
+# cd $new_worktree_dir
+wt switch --create $branch_name
